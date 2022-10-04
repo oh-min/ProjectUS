@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+#join {
+	width: 70%;
+	margin: 0 auto;
+}
+
+h2 {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#join>div {
+	width: 50%;
+	margin: 0 auto;
+}
+
+input[type="text"], input[type="password"] {
+	width: 98%;
+	height: 30px;
+}
+
+.chk>input[type="text"], .chk>[type="password"] {
+	width: 70%
+}
+
+input[type="button"] {
+	width: 26%;
+	height: 35px;
+	margin-left: 5px;
+}
+
+#birth {
+	width: 42%;
+}
+
+select {
+	width: 20%;
+	height: 35px;
+}

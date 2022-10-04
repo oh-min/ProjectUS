@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/* 공통 */
+a {
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	color: white;
+}
+
+li {
+	list-style: none;
+}
+/* header */
+#header {
+	background-color: #3793BC;
+	height: 100px;
+	padding: 5px 10px 0px 10px;
+}
+
+#logo {
+	float: left;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+#headerR>ul>li {
+	float: right;
+	margin-right: 10px;
+}
+
+/* nav */
+#nav {
+	background-color: #FFC347;
+	height: 50px;
+}
+
+#nav>ul {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+#nav>ul>li {
+	float: left;
+	padding-right: 20px;
+	padding-left: 20px;
+	line-height: 50px;
+}
+
+#nav>ul>li>a {
+	font-size: 20px;
+}
+/* content */
+#content {
+	background-color: #F4F4F4;
+	height: 100%;
+	overflow: hidden auto; 
+}
+/* 이벤트 슬라이드 */
+#event{
+	border: solid 2px black;
+	width: 70%;
+	margin: 0 auto;
+	height: 300px;
+	margin-top: 30px;
+}
+/* 대회 슬라이드 */
+#competition{
+ border: solid 2px black;
+ width: 70%;
+ margin: 0 auto;
+ height: 200px;
+ margin-top: 30px;
+}
+/* 크루,공지 목록 */
+#crew, #notice{
+	border: solid 2px black;
+	width: 33%;
+	margin: 0 auto;
+	height: 200px;
+	margin-top: 30px;
+}
+#crew{
+	float: left;
+	margin-left: 15%;
+}
+#notice{
+	float: right;
+	margin-right: 15%;
+}
+/* footer */
+#footer {
+	background-color: #c0c0c0;
+	height: 100px;
+}
