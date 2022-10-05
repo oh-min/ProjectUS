@@ -7,32 +7,33 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/join.css">
+<script type="text/javascript" src="/resources/js/join.js"></script>
 <title>Join</title>
 </head>
 <body>
 	<%@include file="../header.jsp"%>
 	<%@include file="../nav.jsp"%>
 	<div id="content">
-		<div id="join">
+		<form id="join" action="/join" method="post">
 			<h2>회원가입</h2>
 			<div id="name">
-				<p>이름</p>
+				<p>이름*</p>
 				<input type="text">
 			</div>
 			<div class="chk">
-				<p>아이디</p>
+				<p>아이디*</p>
 				<input type="text"><input type="button" value="중복확인">
 			</div>
 			<div>
-				<p>비밀번호</p>
+				<p>비밀번호*</p>
 				<input type="password">
 			</div>
 			<div class="chk">
-				<p>비밀번호 재확인</p>
-				<input type="password"><input type="button" value="비밀번호 확인">
+				<p>비밀번호 재확인*</p>
+				<input type="password">
 			</div>
 			<div class="chk">
-				<p>닉네임</p>
+				<p>닉네임*</p>
 				<input type="text"><input type="button" value="중복확인">
 			</div>
 			<div>
@@ -68,7 +69,7 @@
 				</select> 일
 			</div>
 			<div class="chk">
-				<p>전화번호</p>
+				<p>전화번호*</p>
 				<input type="text"><input type="button" value="본인인증">
 			</div>
 			<div>
@@ -103,12 +104,15 @@
 				</select>
 			</div>
 			<div>
-				<p>회원가입 동의</p>
-				<input type="checkbox">
+				<p>
+					서비스 이용약관 및 개인정보취급방침 동의 <input type="checkbox">
+				</p>
 			</div>
-		</div>
+			<div>
+				<input type="button" value="회원가입" id="joinbtn">
+			</div>
+		</form>
 		<!-- join end -->
-		<input type="submit" value="회원가입">
 	</div>
 	<!-- content end -->
 	<%@include file="../footer.jsp"%>

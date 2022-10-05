@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#login, #sns {
+	width: 70%;
+	margin: 0 auto;
+}
+
+#sns {
+	margin-bottom: 30px;
+}
+
+h2 {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#login>div, #sns>div {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#sns>div {
+	border: solid 2px black;
+	height: 30px;
+	margin-top: 10px;
+}
+
+input[type="text"], input[type="password"] {
+	width: 98%;
+	height: 40px;
+	margin-top: 5px;
+}
+
+#loginbtn {
+	width: 100%;
+	height: 45px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
