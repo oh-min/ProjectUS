@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #join {
-	width: 70%;
+	width: 800px;
 	margin: 0 auto;
 }
 
@@ -36,7 +36,7 @@ input[type="button"] {
 }
 
 #birth {
-	width: 42%;
+	width: 38%;
 }
 
 select {
@@ -45,6 +45,7 @@ select {
 }
 #joinbtn{
 	width: 100%;
+	height: 45px;
 	margin: 0 auto;
 	margin-top: 30px;
 	margin-bottom: 30px;

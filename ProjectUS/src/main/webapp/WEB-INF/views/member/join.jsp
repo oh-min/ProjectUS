@@ -18,7 +18,7 @@
 			<h2>회원가입</h2>
 			<div id="name">
 				<p>이름*</p>
-				<input type="text">
+				<input type="text" name="name">
 			</div>
 			<div class="chk">
 				<p>아이디*</p>
@@ -79,28 +79,6 @@
 					<option>남</option>
 					<option>여</option>
 					<option>선택안함</option>
-				</select>
-			</div>
-			<div>
-				<p>지역</p>
-				<select>
-					<option>서울</option>
-					<option>부산</option>
-					<option>대구</option>
-					<option>인천</option>
-					<option>광주</option>
-					<option>대전</option>
-					<option>울산</option>
-					<option>세종</option>
-					<option>경기</option>
-					<option>강원</option>
-					<option>충북</option>
-					<option>충남</option>
-					<option>전북</option>
-					<option>전남</option>
-					<option>경북</option>
-					<option>경남</option>
-					<option>제주</option>
 				</select>
 			</div>
 			<div>

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/* 공지 목록 */
+#Nlist{
+	width: 1000px;
+	margin: 0 auto;
+}
+h2{
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+#Ntable{
+	width: 80%;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+}

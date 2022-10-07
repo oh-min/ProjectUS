@@ -8,6 +8,6 @@
 		<li><a href="">가게 정보</a></li>
 		<li><a href="">자유게시판</a></li>
 		<li><a href="">이벤트</a></li>
-		<li><a href="">공지</a></li>
+		<li><a href="/notice/list">공지</a></li>
 	</ul>
 </div>

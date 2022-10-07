@@ -1,10 +1,17 @@
 @charset "UTF-8";
 /* 공통 */
+body{
+	height: 100%;
+	position: relative;
+	padding-bottom:100px;
+	min-height: calc(100vh - 100px);
+}
 a {
 	text-decoration: none;
 	color: black;
 }
-a:hover{
+
+a:hover {
 	color: white;
 }
 
@@ -14,7 +21,7 @@ li {
 /* header */
 #header {
 	background-color: #528555;
-	height: 100px;
+	height: 120px;
 	padding: 5px 10px 0px 10px;
 }
 
@@ -24,7 +31,9 @@ li {
 	font-weight: bold;
 	color: white;
 }
-
+#headerR{
+	overflow: hidden;
+}
 #headerR>ul>li {
 	float: right;
 	margin-right: 10px;
@@ -32,22 +41,26 @@ li {
 
 /* nav */
 #nav {
+	overflow: hidden;
 	background-color: #FED168;
 	height: 50px;
+	width: 100%;
 }
 
 #nav>ul {
-	display: flex;
-	justify-content: center;
-	margin: 0;
 	padding: 0;
+	width: fit-content;
+	height: 50px;
+	margin: 0 auto;
 }
 
 #nav>ul>li {
 	float: left;
+	width: fit-content;
 	padding-right: 20px;
 	padding-left: 20px;
 	line-height: 50px;
+	margin: 0 auto;
 }
 
 #nav>ul>li>a {
@@ -55,12 +68,13 @@ li {
 }
 /* content */
 #content {
-	background-color: whiter;
+	clear: both;
+	background-color: white;
 	height: 100%;
-	overflow: hidden auto; 
 }
+
 /* 이벤트 슬라이드 */
-#event{
+#event {
 	border: solid 2px black;
 	width: 70%;
 	margin: 0 auto;
@@ -68,31 +82,37 @@ li {
 	margin-top: 30px;
 }
 /* 대회 슬라이드 */
-#competition{
- border: solid 2px black;
- width: 70%;
- margin: 0 auto;
- height: 200px;
- margin-top: 30px;
+#competition {
+	border: solid 2px black;
+	width: 70%;
+	margin: 0 auto;
+	height: 200px;
+	margin-top: 30px;
 }
 /* 크루,공지 목록 */
-#crew, #notice{
+#crew, #notice {
 	border: solid 2px black;
 	width: 33%;
 	margin: 0 auto;
 	height: 200px;
 	margin-top: 30px;
 }
-#crew{
+
+#crew {
 	float: left;
 	margin-left: 15%;
 }
-#notice{
+
+#notice {
 	float: right;
 	margin-right: 15%;
 }
 /* footer */
 #footer {
 	background-color: #F5F5F4;
+	position: absolute;
+	bottom: 0px;
 	height: 100px;
+	width: 100%;
+	box-sizing: border-box;
 }
