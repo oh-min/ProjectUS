@@ -20,6 +20,9 @@ p{
 	margin-bottom: 5px;
 	margin-top: 30px;
 }
+.msg, .msgexcept{
+	margin-top: 5px;
+}
 input[type="text"], input[type="password"] {
 	width: 98%;
 	height: 30px;
@@ -35,7 +38,7 @@ input[type="button"] {
 	margin-left: 5px;
 }
 
-#birth {
+#birthY {
 	width: 38%;
 }
 

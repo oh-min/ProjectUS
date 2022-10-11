@@ -107,10 +107,10 @@ li {
 	float: right;
 	margin-right: 15%;
 }
+
 /* footer */
 #footer {
 	background-color: #F5F5F4;
-	position: absolute;
 	bottom: 0px;
 	height: 100px;
 	width: 100%;

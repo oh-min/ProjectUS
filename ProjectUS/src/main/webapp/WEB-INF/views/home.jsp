@@ -5,6 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
+<link rel="shortcut icon" href="#">
 <title>Home</title>
 </head>
 <body>
