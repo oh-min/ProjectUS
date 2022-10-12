@@ -8,14 +8,14 @@
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/join.css">
 <script type="text/javascript" src="/resources/js/join.js"></script>
-<link rel="shortcut icon" href="#">
+<link rel="shortcut icon" href="#"> <!-- 임시 -->
 <title>Join</title>
 </head>
 <body>
 	<%@include file="../header.jsp"%>
 	<%@include file="../nav.jsp"%>
 	<div id="content">
-		<form id="join" action="/join" method="post">
+		<form id="join" action="/member/join" method="post">
 			<h2>회원가입</h2>
 			<div>
 				<p>이름*</p>
@@ -25,7 +25,7 @@
 			<div class="chk">
 				<p>아이디*</p>
 				<input type="text" name="id" id="id"><input type="button"
-					value="중복확인">
+					value="중복확인" id="sameidchk">
 				<p class="msg" id="idmsg"></p>
 			</div>
 			<div>
@@ -39,6 +39,12 @@
 				<p class="msgexcept" id="pwchkmsg"></p>
 			</div>
 			<div class="chk">
+				<p>이메일*</p>
+				<input type="text" name="email" id="email"><input
+					type="button" value="본인인증">
+				<p class="msg" id="emailmsg"></p>
+			</div>
+			<div class="chk">
 				<p>닉네임*</p>
 				<input type="text" name="nick" id="nick"><input
 					type="button" value="중복확인">
@@ -46,9 +52,9 @@
 			</div>
 			<div>
 				<p>생년월일</p>
-				<input type="text" id="birthY" name="birthY"> 년 
-				<select id="birthM">
-					<option value="empty">선택</option>
+				<input type="text" id="birthY" name="birthY" maxlength="4"> 년 
+				<select id="birthM" name="birthM">
+					<option value="null">선택</option>
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -62,8 +68,8 @@
 					<option>11</option>
 					<option>12</option>
 				</select> 월 
-				<select id="birthD">
-					<option value="empty">선택</option>
+				<select id="birthD" name="birthD">
+					<option value="null">선택</option>
 				</select> 일
 				<p class="msg" id="birthmsg"></p>
 			</div>
@@ -75,16 +81,17 @@
 			</div>
 			<div>
 				<p>성별</p>
-				<select name="gender" id="gender">
-					<option value="empty">선택</option>
+				<select name="gender" id="gender" name="gender">
+					<option value="null">선택</option>
 					<option value="m">남</option>
 					<option value="f">여</option>
 				</select>
 			</div>
 			<div>
 				<p>
-					서비스 이용약관 및 개인정보취급방침 동의 <input type="checkbox">
+					서비스 이용약관 및 개인정보취급방침 동의 <input type="checkbox" id="chkbox">
 				</p>
+				<p class="msg" id="chkboxmsg"></p>
 			</div>
 			<div>
 				<input type="button" value="회원가입" id="joinbtn">

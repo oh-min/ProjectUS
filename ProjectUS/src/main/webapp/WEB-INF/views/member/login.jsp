@@ -7,17 +7,20 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/login.css">
+
+<link rel="shortcut icon" href="#"> <!-- 임시 -->
 <title>Login</title>
 </head>
 <body>
 	<%@include file="../header.jsp"%>
 	<%@include file="../nav.jsp"%>
 	<div id="content">
-		<form id="login">
+		<form id="login" action="/member/login" method="post">
 			<h2>로그인</h2>
 			<div>
-				<input type="text" placeholder="아이디">
-				<input type="password" placeholder="비밀번호"> 
+				<input type="text" placeholder="아이디" name="id" id="id">
+				<input type="password" placeholder="비밀번호" name="pw" id="pw"> 
+				<p class="msg" id="loginmsg"></p>
 				<input type="button" value="로그인" id="loginbtn">
 				<a href="/member/join">회원가입</a>
 				<a href="">아이디/비밀번호 찾기</a>
@@ -37,4 +40,7 @@
 	</div>
 	<%@include file="../footer.jsp"%>
 </body>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/resources/js/login.js"></script>
 </html>
