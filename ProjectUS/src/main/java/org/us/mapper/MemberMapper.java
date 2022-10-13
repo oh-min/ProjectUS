@@ -8,4 +8,7 @@ public interface MemberMapper {
 
 	// 로그인 DB설계
 	public MemberVO signin(MemberVO mvo);
+	
+	// 아이디 중복확인 DB설계
+	public MemberVO idsamechk(MemberVO mvo);
 }

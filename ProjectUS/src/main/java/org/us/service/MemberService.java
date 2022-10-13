@@ -7,4 +7,6 @@ public interface MemberService {
 	public void signup(MemberVO mvo);
 	// 로그인 설계
 	public MemberVO signin(MemberVO mvo);
+	// 아이디 중복확인 설계
+	public MemberVO idsamechk(MemberVO mvo);
 }

@@ -13,7 +13,7 @@
 	<%@include file="header.jsp"%>
 	<%@include file="nav.jsp"%>
 	<div id="content">
-		<div id="event">이벤트(슬라이드)</div>
+		<div id="event">이벤트(슬라이드) ${user} ${user.id} ${user.pw}</div>
 		<div id="competition">대회(슬라이드)</div>
 		<div id="crew">크루(목록)</div>
 		<div id="notice">공지(목록)</div>

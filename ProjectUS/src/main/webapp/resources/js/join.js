@@ -2,7 +2,6 @@
  * 회원가입
  */
 window.onload = function() {
-
 	var name = document.getElementById('name');
 	var id = document.getElementById('id');
 	var pw = document.getElementById('pw');
@@ -16,7 +15,6 @@ window.onload = function() {
 	var gender = document.getElementById('gender');
 	var chkbox = document.getElementById('chkbox');
 
-	var allmsg = document.getElementsByClassName("msg")
 	var namemsg = document.getElementById('namemsg');
 	var idmsg = document.getElementById('idmsg');
 	var pwmsg = document.getElementById('pwmsg');
@@ -26,7 +24,7 @@ window.onload = function() {
 	var birthmsg = document.getElementById('birthmsg');
 	var phonemsg = document.getElementById('phonemsg');
 	var chkboxmsg = document.getElementById('chkboxmsg');
-	
+
 	/* 정규식 */
 	let namereg = /^[가-힣]{2,20}$/;
 	let idreg = /^[a-z0-9]{6,20}$/;
@@ -34,7 +32,7 @@ window.onload = function() {
 	let emailreg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	let nickreg = /^.{4,20}$/;
 	let phonereg = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-	
+
 	/* 정규식 불일치시 msg */
 	let nameInnermsg = "2 ~ 20자 이내의 한글만 입력 가능합니다."
 	let idInnermsg = "영문자 또는 숫자 6~20자만 입력 가능합니다."
@@ -45,31 +43,57 @@ window.onload = function() {
 
 	/* blur시 정규식 함수 호출 */
 	regchkfnc(name, namemsg, namereg, nameInnermsg); // 이름
-	regchkfnc(id, idmsg, idreg, idInnermsg) // 아이디
+// regchkfnc(id, idmsg, idreg, idInnermsg) // 아이디
 	regchkfnc(pw, pwmsg, pwreg, pwInnermsg) // 비밀번호
-	regchkfnc(email, emailmsg, emailreg, emailInnermsg) // 닉네임
+	regchkfnc(email, emailmsg, emailreg, emailInnermsg) // 이메일
 	regchkfnc(nick, nickmsg, nickreg, nickInnermsg) // 닉네임
 	regchkfnc(phone, phonemsg, phonereg, phoneInnermsg) // 휴대폰번호
+
+	
+	/* 아이디 중복체크(click) */
+	var httpRequest;
+	document.getElementById("sameidchk").addEventListener('click', () => {
+		
+		// 데이터를 json 타입으로 변형
+		data = JSON.stringify({
+	        id: id.value,
+	    });
+		console.log(data)
+		// 통신에 사용 될 XMLHttpRequest 객체 정의
+		xhr = new XMLHttpRequest();
+		// httpRequest의 readyState가 변화했을때 함수 실행
+		xhr.onreadystatechange = () => {
+			// readyState가 Done이고 응답 값이 200일 때, 받아온 response로 id를 그려줌
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				let txt = xhr.responseText; // controller에서 응답된 문자열
+				if (xhr.status === 200) {
+					console.log("연결성공 & "+txt)
+					idmsg.innerText="사용가능한 아이디 입니다.";
+					idmsg.style.color = "green";
+				} else {
+					console.log("연결실패 & "+txt)
+					idmsg.innerText="이미 사용중인 아이디 입니다.";
+					idmsg.style.color = "red";
+				}
+			}	
+		};
+		// post / get 방식으로 id 파라미터와 할께 요청
+		xhr.open('POST','/member/idsamechk',true)
+		// 요청 Header에 컨텐츠 타입은 Json으로 사전 정의
+	    xhr.setRequestHeader('Content-Type', 'application/json');
+		// 정의된 서버에 Json 형식의 요청 Data를 포함하여 요청을 전송
+		xhr.send(data);	
+		
+	});
+	
 	
 	/* 비밀번호 확인 정규식(비밀번호재확인 blur) */
 	pwchk.onblur = function() {
-		if (pw.value == pwchk.value) { // 비밀번호와 비밀번호 재확인 값이 일치할 경우
-			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치합니다."
-			pwchkmsg.style.color = "green";
-		} else { // 일치하지 않을 경우
-			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치하지 않습니다."
-			pwchkmsg.style.color = "red";
-		}
+		pwchkfnc(pw, pwchk)
 	}
 	/* 비밀번호 확인 정규식(비밀번호 change) */
 	pw.onchange = function() {
-		if (pw.value == pwchk.value) { // 비밀번호와 비밀번호 재확인 값이 일치할 경우
-			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치합니다."
-			pwchkmsg.style.color = "green";
-		} else { // 일치하지 않을 경우
-			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치하지 않습니다."
-			pwchkmsg.style.color = "red";
-		}
+		pwchkfnc(pw, pwchk)
 	}
 
 	/* 년도 정규식(년도 blur) */
@@ -86,10 +110,17 @@ window.onload = function() {
 			} else if (!yearchk2.test(birthY.value)) { // 숫자 4자리를 입력하지 않는 경우
 				birthmsg.innerHTML = "태어난 년도 4자리를 정확하게 입력하세요."
 				birthmsg.style.color = "red";
+			} else if (birthM.value == "null" || birthD.value == "null") {
+				birthmsg.innerHTML = "필수 항목입니다."
+				birthmsg.style.color = "red";
 			} else {
 				birthmsg.innerHTML = ""
 			}
+		} else {
+			birthmsg.innerHTML = "필수 항목입니다."
+			birthmsg.style.color = "red";
 		}
+
 		// 년도, 월 입력시 일 옵션 정하기
 		if (birthM.value) { // 월에 값이 있는 경우
 			birthDayfnc(birthY.value, birthM.value) // 월 입력시 1~12만 선택하는 함수 호출
@@ -99,7 +130,53 @@ window.onload = function() {
 	/* 년도, 월 입력시 일 옵션 정하기(월 blur) */
 	birthM.onblur = function() {
 		if (birthY.value) { // 년도에 값이 있는 경우
+			if (!birthY.value || birthD.value == "null") {
+				birthmsg.innerHTML = "필수 항목입니다."
+				birthmsg.style.color = "red";
+			}
 			birthDayfnc(birthY.value, birthM.value) // 월 입력시 1~12만 선택하는 함수 호출
+		} else {
+			birthmsg.innerHTML = "필수 항목입니다."
+			birthmsg.style.color = "red";
+		}
+
+	}
+
+	/* 생년월일 모두 입력했을 경우(일 blur) */
+	birthD.onblur = function() {
+
+		if (birthY.value && birthM.value && birthD.value) { // 생년월일 모두 값이 존재
+			// 현재 날짜 구하기
+			let today = new Date();
+			let todayY = today.getFullYear(); // 년도
+			let todayM = today.getMonth() + 1; // 월
+			let todayD = today.getDate(); // 날짜
+
+			// 한자리 수인 경우 앞에 0을 넣어 2자리로 맞추기
+			var birthM00 = ('00' + birthM.value).slice(-2);
+			var birthD00 = ('00' + birthD.value).slice(-2);
+
+			var todayYMD = todayY + "/" + todayM + "/" + todayD; // 현재날짜
+			var birthYMD = birthY.value + "/" + birthM00 + "/" + birthD00; // 입력한날짜
+
+			// 만 14세 미만인 경우
+			var childtoday = todayY + "" + todayM + "" + todayD;
+			var childBirth = birthY.value + birthM00 + birthD00;
+			var under14 = (childtoday - childBirth) - 140000
+			console.log(under14)
+
+			// 현재날짜보다 입력한 날짜가 미래인 경우
+			if (todayYMD >= birthYMD) {
+				if (under14 < 0) { // 14세 미만인 경우
+					birthmsg.innerHTML = "만 14세 미만인 경우 부모의 동의가 필요합니다."
+					birthmsg.style.color = "red";
+				} else {
+					birthmsg.innerHTML = ""
+				}
+			} else if (todayYMD < birthYMD) {
+				birthmsg.innerHTML = "미래에서 오셨나요."
+				birthmsg.style.color = "red";
+			}
 		}
 	}
 
@@ -108,7 +185,6 @@ window.onload = function() {
 		chkboxfnc(chkbox, chkboxmsg) // 약관 동의 함수 호출
 	}
 
-	
 	/* 회원가입 버튼 클릭시(회원가입 버튼 click) */
 	document.getElementById("joinbtn").onclick = function() {
 
@@ -116,32 +192,34 @@ window.onload = function() {
 		clickregfnc(name, namemsg, namereg, nameInnermsg); // 이름
 		clickregfnc(id, idmsg, idreg, idInnermsg) // 아이디
 		clickregfnc(pw, pwmsg, pwreg, pwInnermsg) // 비밀번호
-		clickregfnc(email, emailmsg, emailreg, emailInnermsg) // 닉네임
+		clickregfnc(email, emailmsg, emailreg, emailInnermsg) // 이메일
 		clickregfnc(nick, nickmsg, nickreg, nickInnermsg) // 닉네임
 		clickregfnc(phone, phonemsg, phonereg, phoneInnermsg) // 휴대폰번호
-
+	
+		// 생일
+		if (!birthY.value || !birthM.value || !birthD.value) {
+			birthmsg.innerHTML = "필수 항목입니다."
+			birthmsg.style.color = "red";
+		} else if (birthM.value == "null" || birthD.value == "null") {
+			birthmsg.innerHTML = "필수 항목입니다."
+			birthmsg.style.color = "red";
+		} else {
+			birthmsg.innerHTML = ""
+		}
+		
 		// 약관 동의 함수 호출
 		chkboxfnc(chkbox, chkboxmsg)
 		
 		// 모든 값이 다 입력되었으면 controller 로 값 보내기
-		if (!allmsg[0].innerText && !allmsg[1].innerText
-				&& !allmsg[2].innerText && !allmsg[3].innerText
-				&& !allmsg[4].innerText && !allmsg[5].innerText
-				&& pwchkmsg.innerText == "위에 입력한 비밀번호와 일치합니다."
-				&& chkbox.checked) {
-				console.log("아이디 = "+id.value)
-				console.log("비밀번호 = "+pw.value)
-				console.log("이름 = "+name.value)
-				console.log("닉네임 = "+nick.value)
-				console.log("년도 = "+birthY.value)
-				console.log("월 = "+birthM.value)
-				console.log("일 = "+birthD.value)
-				console.log("전화번호 = "+phone.value)
-				console.log("성별 = "+gender.value)
+		if (namemsg.innerText=="" && idmsg.innerText=="사용가능한 아이디 입니다." && pwmsg.innerText=="" && emailmsg.innerText=="" && nickmsg.innerText==""
+				&& phonemsg.innerText=="" && birthmsg.innerText=="" && pwchkmsg.innerText == "위에 입력한 비밀번호와 일치합니다." && chkbox.checked) {
+			console.log("1차완료")
+			
 			if (confirm("가입하시겠습니까?")) {
-				console.log("done")
 				document.getElementById('join').submit();
 			}
+		}else{
+			console.log("회원가입 실패")
 		}
 	}
 
@@ -172,6 +250,20 @@ window.onload = function() {
 			} else {
 				msg.innerHTML = ""
 			}
+		}
+	}
+	
+	/* 중복확인이 필요한 값의 blur시 정규식 함수 선언 */
+	
+	
+	/* 비밀번호 일치 함수 선언 */
+	function pwchkfnc(pw, pwchk) {
+		if (pw.value == pwchk.value) { // 비밀번호와 비밀번호 재확인 값이 일치할 경우
+			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치합니다."
+			pwchkmsg.style.color = "green";
+		} else { // 일치하지 않을 경우
+			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치하지 않습니다."
+			pwchkmsg.style.color = "red";
 		}
 	}
 	/* 회원가입 클릭시 정규식 함수 선언 */
