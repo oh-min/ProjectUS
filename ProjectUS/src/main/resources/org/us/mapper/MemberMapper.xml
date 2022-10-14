@@ -5,15 +5,16 @@
 <mapper namespace="org.us.mapper.MemberMapper">
 	<insert id="signup">
 		insert into member(id, pw, name, nick, gender, birthY, birthM, birthD, phone, email)
-		values(#{id},#{pw},#{name},#{nick},#{gender},#{birthY},#{birthM},#{birthD},#{phone},#{email});
+		values(#{id},#{pw},#{name},#{nick},#{gender},#{birthY},#{birthM},#{birthD},#{phone},#{email})
 	</insert>
 	<select id="signin" resultType="org.us.model.MemberVO">
 		select * from member
 		where id =
-		#{id} and pw = #{pw};
+		#{id} and pw = #{pw}
 	</select>
-	<select id="idsamechk" resultType="org.us.model.MemberVO">
+	<select id="samechk" resultType="org.us.model.MemberVO">
 		select * from member
-		where id =#{id};
+		where id = #{id}
+		or nick = #{nick}
 	</select>
 </mapper>

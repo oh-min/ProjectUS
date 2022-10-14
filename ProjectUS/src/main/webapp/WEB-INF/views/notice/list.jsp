@@ -1,12 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/notice.css">
+<!-- 임시 -->
+<link rel="shortcut icon" href="#">
+<!-- 임시 -->
 <meta charset="UTF-8">
-<title>공지</title>
+<title>공지사항</title>
 </head>
 <body>
 	<%@include file="../header.jsp"%>
@@ -14,39 +18,26 @@
 	<div id="content">
 		<div id="Nlist">
 			<h2>공지사항</h2>
-			<table border="1" id="Ntable">
+			<table class="Ntable" id="listTable" border="1">
 				<tr>
-					<th>No.</th>
+					<th>번호</th>
 					<th>분류</th>
 					<th>제목</th>
 					<th>작성자</th>
-					<th>조회</th>
 					<th>작성일자</th>
+					<th>조회</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>일반</td>
-					<td>공지사항입니다</td>
-					<td>관리자</td>
-					<td>434</td>
-					<td>2022.10.17</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>일반</td>
-					<td>공지사항입니다</td>
-					<td>관리자</td>
-					<td>434</td>
-					<td>2022.10.17</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>일반</td>
-					<td>공지사항입니다</td>
-					<td>관리자</td>
-					<td>434</td>
-					<td>2022.10.17</td>
-				</tr>
+				<c:forEach items="${list}" var="list">
+					<tr id="NlistInfo">
+						<td class="nno">${list.nno}</td>
+						<td class="category">${list.category}</td>
+						<td class="title"><a href="">${list.title}</a></td>
+						<td class="id">${list.id}</td>
+						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
+						<td class="cnt">${list.cnt}</td>
+					</tr>
+				</c:forEach>
+
 			</table>
 		</div>
 	</div>

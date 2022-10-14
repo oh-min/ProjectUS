@@ -22,10 +22,9 @@ public class MemberServiceImpl implements MemberService {
 		return mm.signin(mvo);
 	}
 	
-	// 아이디 중복확인 구현
-	public MemberVO idsamechk(MemberVO mvo) {
-		System.out.println("아이디 중복확인 service 연결 완료");
-		System.out.println(mvo);
-		return mm.idsamechk(mvo);
+	// 아이디, 닉네임 중복확인 구현
+	public MemberVO samechk(MemberVO mvo) {
+		System.out.println("아이디 중복확인 서비스"+mvo);
+		return mm.samechk(mvo);
 	}
 }

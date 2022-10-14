@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-${user.id} ${user.pw}
 <div id="header">
 	<div id="logo" ><a href="/">Save ♺︎<br>the earth</a></div>
 	<div id="headerR">

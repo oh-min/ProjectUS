@@ -35,28 +35,28 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	/* 아이디 중복 체크 */
-	@RequestMapping(value = "/member/idsamechk", method = RequestMethod.POST)
-	public ResponseEntity<String> idsamechk(@RequestBody MemberVO mvo) {
-		System.out.println("아이디 중복확인 controller 연결 완료");
-		System.out.println(mvo);
-		System.out.println("돌아왔다" + ms.idsamechk(mvo));
+	/* 아이디, 닉네임 중복 체크 */
+	@RequestMapping(value = "/member/samechk", method = RequestMethod.POST)
+	public ResponseEntity<String> samechk(@RequestBody MemberVO mvo) {
+		System.out.println("아이디 중복확인 간다" +mvo);
+		System.out.println("아이디 중복확인 돌아옴" + ms.samechk(mvo));
 
-		return ms.idsamechk(mvo) == null ? new ResponseEntity<>("can use", HttpStatus.OK) : new ResponseEntity<>("can't use",HttpStatus.INTERNAL_SERVER_ERROR);
+		return ms.samechk(mvo) == null ? new ResponseEntity<>("canUse", HttpStatus.OK) : new ResponseEntity<>("cannotUse",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	/* 로그인 페이지로 이동 */
 	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
 	public void login() {
+		// session.invalidate(); == 로그인 무효화
 	}
 
 	/* 로그인 */
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String signin(MemberVO mvo, HttpSession session, HttpServletResponse response) {
-		// service로 넘긴 id, pw를 이용하여 select되어 넘어온 값(id,pw 불일치 -> null)
-		session.setAttribute("user", ms.signin(mvo));
+		// service로 넘긴 id, pw를 이용하여 select되어 넘어온 값
+		session.setAttribute("user", ms.signin(mvo)); // id,pw 불일치 -> null
 
-		if (session.getAttribute("user") != null) { // id, pw가 일치 -> home으로 이동
+		if (session.getAttribute("user") != null) {
 			return "redirect:/";
 		} else { // 불일치 -> alert 띄우고 이전페이지로 이동
 			try {
@@ -76,7 +76,7 @@ public class MemberController {
 	/* 로그아웃 */
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logoutget(HttpSession session) {
-		session.invalidate();
+		session.invalidate(); // 로그인 무효화
 		return "redirect:/";
 	}
 

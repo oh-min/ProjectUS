@@ -44,7 +44,7 @@
 			</div>
 			<div class="chk">
 				<p>닉네임*</p>
-				<input type="text" name="nick" id="nick"><input type="button" value="중복확인">
+				<input type="text" name="nick" id="nick"><input type="button" value="중복확인" id="samenickchk">
 				<p class="msg" id="nickmsg"></p>
 			</div>
 			<div>

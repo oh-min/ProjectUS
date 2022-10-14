@@ -1,18 +1,47 @@
 @charset "UTF-8";
-/* 공지 목록 */
-#Nlist{
-	width: 1000px;
+/* 공통사항 */
+#Nlist, #Ndetail {
+	width: 1500px;
 	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
-h2{
+
+h2 {
 	width: 80%;
 	margin: 0 auto;
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
-#Ntable{
+
+.Ntable {
 	width: 80%;
 	margin: 0 auto;
-	border: 1px solid black;
+	border: 2px solid black;
 	border-collapse: collapse;
+}
+
+tr {
+	height: 40px;
+}
+
+a:hover {
+	color: #528555;
+	text-decoration: underline;
+}
+.nno, .category, .id, .regdate, .cnt {
+	text-align: center;
+}
+/* 공지 목록 */
+#NlistInfo>.title {
+	padding-left: 10px;
+	width: 600px;
+}
+
+#NlistInfo>.title>a {
+	display: inline-block;
+	width: 580px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }

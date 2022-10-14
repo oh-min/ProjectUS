@@ -2,100 +2,74 @@
  * 회원가입
  */
 window.onload = function() {
-	var name = document.getElementById('name');
-	var id = document.getElementById('id');
-	var pw = document.getElementById('pw');
-	var pwchk = document.getElementById('pwchk');
-	var email = document.getElementById('email');
-	var nick = document.getElementById('nick');
-	var birthY = document.getElementById('birthY');
-	var birthM = document.getElementById('birthM');
-	var birthD = document.getElementById('birthD');
-	var phone = document.getElementById('phone');
-	var gender = document.getElementById('gender');
-	var chkbox = document.getElementById('chkbox');
-
-	var namemsg = document.getElementById('namemsg');
-	var idmsg = document.getElementById('idmsg');
-	var pwmsg = document.getElementById('pwmsg');
-	var pwchkmsg = document.getElementById('pwchkmsg');
-	var emailmsg = document.getElementById('emailmsg');
-	var nickmsg = document.getElementById('nickmsg');
-	var birthmsg = document.getElementById('birthmsg');
-	var phonemsg = document.getElementById('phonemsg');
-	var chkboxmsg = document.getElementById('chkboxmsg');
-
+	/* 입력된 값 */
+	const name = document.getElementById('name');
+	const id = document.getElementById('id');
+	const pw = document.getElementById('pw');
+	const pwchk = document.getElementById('pwchk');
+	const email = document.getElementById('email');
+	const nick = document.getElementById('nick');
+	const birthY = document.getElementById('birthY');
+	const birthM = document.getElementById('birthM');
+	const birthD = document.getElementById('birthD');
+	const phone = document.getElementById('phone');
+	const gender = document.getElementById('gender');
+	const chkbox = document.getElementById('chkbox');
+	/* msg */
+	const namemsg = document.getElementById('namemsg');
+	const idmsg = document.getElementById('idmsg');
+	const pwmsg = document.getElementById('pwmsg');
+	const pwchkmsg = document.getElementById('pwchkmsg');
+	const emailmsg = document.getElementById('emailmsg');
+	const nickmsg = document.getElementById('nickmsg');
+	const birthmsg = document.getElementById('birthmsg');
+	const phonemsg = document.getElementById('phonemsg');
+	const chkboxmsg = document.getElementById('chkboxmsg');
 	/* 정규식 */
-	let namereg = /^[가-힣]{2,20}$/;
-	let idreg = /^[a-z0-9]{6,20}$/;
-	let pwreg = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-	let emailreg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	let nickreg = /^.{4,20}$/;
-	let phonereg = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-
+	const namereg = /^[가-힣]{2,20}$/;
+	const idreg = /^[a-z0-9]{6,20}$/;
+	const pwreg = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+	const emailreg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	const nickreg = /^.{4,20}$/;
+	const phonereg = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 	/* 정규식 불일치시 msg */
-	let nameInnermsg = "2 ~ 20자 이내의 한글만 입력 가능합니다."
-	let idInnermsg = "영문자 또는 숫자 6~20자만 입력 가능합니다."
-	let pwInnermsg = "8 ~ 16자 영문, 숫자 조합만 입력 가능합니다."
-	let emailInnermsg = "이메일 주소를 다시 확인해주세요."
-	let nickInnermsg = "4 ~ 20자만 입력 가능합니다."
-	let phoneInnermsg = "형식에 맞지 않는 번호입니다."
+	const nameInnermsg = "2 ~ 20자 이내의 한글만 입력 가능합니다."
+	const idInnermsg = "영문자 또는 숫자 6~20자만 입력 가능합니다."
+	const pwInnermsg = "8 ~ 16자 영문, 숫자 조합만 입력 가능합니다."
+	const emailInnermsg = "이메일 주소를 다시 확인해주세요."
+	const nickInnermsg = "4 ~ 20자만 입력 가능합니다."
+	const phoneInnermsg = "형식에 맞지 않는 번호입니다."
+	/* 버튼 */
+	const sameidchk = document.getElementById('sameidchk');
+	const samenickchk = document.getElementById('samenickchk');
 
-	/* blur시 정규식 함수 호출 */
-	regchkfnc(name, namemsg, namereg, nameInnermsg); // 이름
-// regchkfnc(id, idmsg, idreg, idInnermsg) // 아이디
-	regchkfnc(pw, pwmsg, pwreg, pwInnermsg) // 비밀번호
-	regchkfnc(email, emailmsg, emailreg, emailInnermsg) // 이메일
-	regchkfnc(nick, nickmsg, nickreg, nickInnermsg) // 닉네임
-	regchkfnc(phone, phonemsg, phonereg, phoneInnermsg) // 휴대폰번호
-
-	
-	/* 아이디 중복체크(click) */
-	var httpRequest;
-	document.getElementById("sameidchk").addEventListener('click', () => {
-		
-		// 데이터를 json 타입으로 변형
-		data = JSON.stringify({
-	        id: id.value,
-	    });
-		console.log(data)
-		// 통신에 사용 될 XMLHttpRequest 객체 정의
-		xhr = new XMLHttpRequest();
-		// httpRequest의 readyState가 변화했을때 함수 실행
-		xhr.onreadystatechange = () => {
-			// readyState가 Done이고 응답 값이 200일 때, 받아온 response로 id를 그려줌
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				let txt = xhr.responseText; // controller에서 응답된 문자열
-				if (xhr.status === 200) {
-					console.log("연결성공 & "+txt)
-					idmsg.innerText="사용가능한 아이디 입니다.";
-					idmsg.style.color = "green";
-				} else {
-					console.log("연결실패 & "+txt)
-					idmsg.innerText="이미 사용중인 아이디 입니다.";
-					idmsg.style.color = "red";
-				}
-			}	
-		};
-		// post / get 방식으로 id 파라미터와 할께 요청
-		xhr.open('POST','/member/idsamechk',true)
-		// 요청 Header에 컨텐츠 타입은 Json으로 사전 정의
-	    xhr.setRequestHeader('Content-Type', 'application/json');
-		// 정의된 서버에 Json 형식의 요청 Data를 포함하여 요청을 전송
-		xhr.send(data);	
-		
-	});
-	
-	
-	/* 비밀번호 확인 정규식(비밀번호재확인 blur) */
-	pwchk.onblur = function() {
-		pwchkfnc(pw, pwchk)
+	/* 이름 확인 정규식 (name blur) */
+	name.onblur = function(){
+		regchkfnc(name, namemsg, namereg, nameInnermsg); 
 	}
-	/* 비밀번호 확인 정규식(비밀번호 change) */
+	
+	/* 아이디 확인 정규식(id blur,sameidchk click) */
+	sameregchkfnc(id, idmsg, idreg, idInnermsg, sameidchk) 
+
+	/* 비밀번호 확인 정규식(pw change) */
 	pw.onchange = function() {
 		pwchkfnc(pw, pwchk)
 	}
-
+	/* 비밀번호 확인 정규식 (pw blur) */
+	pw.onblur = function(){
+		regchkfnc(pw, pwmsg, pwreg, pwInnermsg) 
+	}
+	/* 비밀번호 확인 정규식(pwchk blur) */
+	pwchk.onblur = function() {
+		pwchkfnc(pw, pwchk)
+	}
+	/* 이메일 확인 정규식 (email blur) */
+	email.onblur = function(){
+		regchkfnc(email, emailmsg, emailreg, emailInnermsg) 
+	}
+	/* 닉네임 확인 정규식 (nick blur) */
+	sameregchkfnc(nick, nickmsg, nickreg, nickInnermsg, samenickchk)
+	
 	/* 년도 정규식(년도 blur) */
 	birthY.onblur = function() {
 		// 년도 입력 정규식
@@ -129,6 +103,7 @@ window.onload = function() {
 
 	/* 년도, 월 입력시 일 옵션 정하기(월 blur) */
 	birthM.onblur = function() {
+		
 		if (birthY.value) { // 년도에 값이 있는 경우
 			if (!birthY.value || birthD.value == "null") {
 				birthmsg.innerHTML = "필수 항목입니다."
@@ -139,12 +114,12 @@ window.onload = function() {
 			birthmsg.innerHTML = "필수 항목입니다."
 			birthmsg.style.color = "red";
 		}
-
 	}
 
 	/* 생년월일 모두 입력했을 경우(일 blur) */
 	birthD.onblur = function() {
-
+			
+		
 		if (birthY.value && birthM.value && birthD.value) { // 생년월일 모두 값이 존재
 			// 현재 날짜 구하기
 			let today = new Date();
@@ -178,47 +153,48 @@ window.onload = function() {
 				birthmsg.style.color = "red";
 			}
 		}
+		
+		
 	}
-
+	/* 전화번호 확인 정규식 (phone blur) */ 
+	phone.onblur = function(){
+		regchkfnc(phone, phonemsg, phonereg, phoneInnermsg) 
+	}
+	
 	/* 이용약관 blur 이벤트(약관 blur) */
 	chkbox.onblur = function() {
 		chkboxfnc(chkbox, chkboxmsg) // 약관 동의 함수 호출
 	}
-
+	
+	
 	/* 회원가입 버튼 클릭시(회원가입 버튼 click) */
 	document.getElementById("joinbtn").onclick = function() {
-
-		// 회원가입 클릭시 정규식 함수 호출
-		clickregfnc(name, namemsg, namereg, nameInnermsg); // 이름
-		clickregfnc(id, idmsg, idreg, idInnermsg) // 아이디
-		clickregfnc(pw, pwmsg, pwreg, pwInnermsg) // 비밀번호
-		clickregfnc(email, emailmsg, emailreg, emailInnermsg) // 이메일
-		clickregfnc(nick, nickmsg, nickreg, nickInnermsg) // 닉네임
-		clickregfnc(phone, phonemsg, phonereg, phoneInnermsg) // 휴대폰번호
-	
-		// 생일
-		if (!birthY.value || !birthM.value || !birthD.value) {
-			birthmsg.innerHTML = "필수 항목입니다."
-			birthmsg.style.color = "red";
-		} else if (birthM.value == "null" || birthD.value == "null") {
-			birthmsg.innerHTML = "필수 항목입니다."
-			birthmsg.style.color = "red";
-		} else {
-			birthmsg.innerHTML = ""
-		}
+		// 중복확인후 회원가입 버튼 클릭시 msg 유지하기위한 함수 호출
+		forKeepMsg(idmsg)
+		forKeepMsg(nickmsg)
 		
+		// 회원가입 클릭시 정규식 함수 호출
+		regchkfnc(name, namemsg, namereg, nameInnermsg); // 이름
+		regchkfnc(pw, pwmsg, pwreg, pwInnermsg) // 비밀번호
+		regchkfnc(email, emailmsg, emailreg, emailInnermsg) // 이메일
+		regchkfnc(phone, phonemsg, phonereg, phoneInnermsg) // 휴대폰번호
+		
+		// 생년월일 중 입력한 값이 하나라도 없는 경우 함수 호출
+		forBirth(birthY, birthM, birthD)
+
 		// 약관 동의 함수 호출
 		chkboxfnc(chkbox, chkboxmsg)
-		
+
 		// 모든 값이 다 입력되었으면 controller 로 값 보내기
-		if (namemsg.innerText=="" && idmsg.innerText=="사용가능한 아이디 입니다." && pwmsg.innerText=="" && emailmsg.innerText=="" && nickmsg.innerText==""
-				&& phonemsg.innerText=="" && birthmsg.innerText=="" && pwchkmsg.innerText == "위에 입력한 비밀번호와 일치합니다." && chkbox.checked) {
+		if (namemsg.innerText == "" && idmsg.innerText == "사용가능합니다." && pwmsg.innerText == "" && emailmsg.innerText == ""
+				&& nickmsg.innerText == "사용가능합니다." && phonemsg.innerText == "" && birthmsg.innerText == "" && pwchkmsg.innerText == "위에 입력한 비밀번호와 일치합니다."
+				&& chkbox.checked) {
 			console.log("1차완료")
-			
+
 			if (confirm("가입하시겠습니까?")) {
 				document.getElementById('join').submit();
 			}
-		}else{
+		} else {
 			console.log("회원가입 실패")
 		}
 	}
@@ -239,35 +215,6 @@ window.onload = function() {
 
 	/* blur시 정규식 함수 선언 */
 	function regchkfnc(val, msg, reg, eachmsg) {
-		val.onblur = function() {
-			let regchk = reg;
-			if (!val.value) { // 값이 없을시
-				msg.innerHTML = "필수 항목입니다."
-				msg.style.color = "red";
-			} else if (!regchk.test(val.value)) { // 정규식 불일치시
-				msg.innerHTML = eachmsg
-				msg.style.color = "red";
-			} else {
-				msg.innerHTML = ""
-			}
-		}
-	}
-	
-	/* 중복확인이 필요한 값의 blur시 정규식 함수 선언 */
-	
-	
-	/* 비밀번호 일치 함수 선언 */
-	function pwchkfnc(pw, pwchk) {
-		if (pw.value == pwchk.value) { // 비밀번호와 비밀번호 재확인 값이 일치할 경우
-			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치합니다."
-			pwchkmsg.style.color = "green";
-		} else { // 일치하지 않을 경우
-			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치하지 않습니다."
-			pwchkmsg.style.color = "red";
-		}
-	}
-	/* 회원가입 클릭시 정규식 함수 선언 */
-	function clickregfnc(val, msg, reg, eachmsg) {
 		let regchk = reg;
 		if (!val.value) { // 값이 없을시
 			msg.innerHTML = "필수 항목입니다."
@@ -279,6 +226,65 @@ window.onload = function() {
 			msg.innerHTML = ""
 		}
 	}
+	/* 중복확인이 필요한 값의 blur시 정규식 함수 선언 */
+	function sameregchkfnc(val, msg, reg, eachmsg, chkbtn) {
+		val.onblur = function() {
+			let regchk = reg;
+			if (!val.value) { // 값이 없을시
+				msg.innerHTML = "필수 항목입니다."
+				msg.style.color = "red";
+			} else if (!regchk.test(val.value)) { // 정규식 불일치시
+				msg.innerHTML = eachmsg
+				msg.style.color = "red";
+			} else {
+				msg.innerHTML = "중복확인 해주세요."
+				msg.style.color = "red";
+				chkbtn.onclick = function() {
+					alert("chlick")
+						
+					// 데이터를 json 타입으로 변형
+					data = JSON.stringify({
+						id: id.value,
+						nick: nick.value 
+					});
+					// 통신에 사용 될 XMLHttpRequest 객체 정의
+					xhr = new XMLHttpRequest();
+					// httpRequest의 readyState가 변화했을때 함수 실행
+					xhr.onreadystatechange = () => {
+						// readyState가 Done이고 응답 값이 200일 때, 받아온 response로 id를 그려줌
+						if (xhr.readyState === XMLHttpRequest.DONE) {
+							let txt = xhr.responseText; // controller에서 응답된 문자열
+							if (xhr.status === 200) {						
+								console.log("연결성공 & "+txt)
+								msg.innerText="사용가능합니다.";
+								msg.style.color = "green";
+							} else {
+								console.log("연결실패 & "+txt) // 500에러가 뜨는 문제 발생
+								msg.innerText="이미 사용중입니다.";
+								msg.style.color = "red";
+							}	
+						}
+					};
+					// post / get 방식으로 id 파라미터와 할께 요청
+					xhr.open('POST','/member/samechk',true)
+					// 요청 Header에 컨텐츠 타입은 Json으로 사전 정의
+					xhr.setRequestHeader('Content-Type', 'application/json');
+					// 정의된 서버에 Json 형식의 요청 Data를 포함하여 요청을 전송
+					xhr.send(data);
+				}
+			}
+		}	
+	}
+	/* 비밀번호 일치 함수 선언 */
+	function pwchkfnc(pw, pwchk) {
+		if (pw.value == pwchk.value) { // 비밀번호와 비밀번호 재확인 값이 일치할 경우
+			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치합니다."
+			pwchkmsg.style.color = "green";
+		} else { // 일치하지 않을 경우
+			pwchkmsg.innerHTML = "위에 입력한 비밀번호와 일치하지 않습니다."
+			pwchkmsg.style.color = "red";
+		}
+	}
 	/* 약관 동의 함수 선언 */
 	function chkboxfnc(val, msg) {
 		if (!val.checked) {
@@ -288,5 +294,25 @@ window.onload = function() {
 			msg.innerHTML = ""
 		}
 	}
-
+	/* 중복확인후 회원가입 버튼 클릭시 msg 유지하기위한 함수 선언 */
+	function forKeepMsg(msg){
+		if(msg.innerText=="사용가능합니다."){
+			msg.innerHTML=="사용가능합니다."
+			msg.style.color = "green";
+		}else if(msg.innerText==""){
+			msg.innerHTML = "필수 항목입니다."
+			msg.style.color = "red";
+		}
+		else{
+		}
+	}
+	/*생년월일 중 입력한 값이 하나라도 없는 경우 함수 선언*/
+	function forBirth(birthY, birthM, birthD){
+		if (!birthY.value || !birthM.value || !birthD.value || birthM.value == "null" || birthD.value == "null") {
+			birthmsg.innerHTML = "필수 항목입니다."
+			birthmsg.style.color = "red";
+		} else {
+			birthmsg.innerHTML = ""
+		}
+	}
 }
