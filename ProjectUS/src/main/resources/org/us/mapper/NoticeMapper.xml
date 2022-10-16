@@ -9,6 +9,10 @@
 	<update id="cntup">
 		update notice
 		set cnt = cnt + 1
-		where nno = #{nno};
+		where nno = #{nno}
 	</update>
+	<select id="detail" resultType="org.us.model.NoticeVO">
+		select * from notice
+		where nno=#{nno}
+	</select>
 </mapper>

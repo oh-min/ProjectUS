@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -6,6 +7,7 @@
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/notice.css">
+<script type="text/javascript" src="/resources/js/noticelist.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" href="#">
 <!-- 임시 -->
@@ -31,14 +33,19 @@
 					<tr id="NlistInfo">
 						<td class="nno">${list.nno}</td>
 						<td class="category">${list.category}</td>
-						<td class="title"><a href="">${list.title}</a></td>
+						<td class="title"><a href="/notice/detail?nno=${list.nno}">${list.title}</a></td>
 						<td class="id">${list.id}</td>
-						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
+						<td class="regdate"><fmt:formatDate value="${list.regdate}"
+								pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${list.cnt}</td>
 					</tr>
 				</c:forEach>
-
 			</table>
+			<div id="btn">
+				<div id="gowrite">
+				<input type="button" value="글쓰기" id="writebtn">
+				</div>
+			</div>
 		</div>
 	</div>
 	<%@include file="../footer.jsp"%>

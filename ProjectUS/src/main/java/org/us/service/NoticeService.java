@@ -10,4 +10,7 @@ public interface NoticeService {
 
 	// 조회수 증가 설계
 	public void cntup(NoticeVO nvo);
+	
+	// 디테일 페이지 설계
+	public NoticeVO detail(NoticeVO nvo);
 }
