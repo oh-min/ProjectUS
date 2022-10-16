@@ -6,7 +6,7 @@ window.onload = function() {
 	const category = document.getElementById("category");
 	const content = document.getElementById("content");
 	document.getElementById("writebtn").onclick = function() {
-		alert("hi");
+		alert("hello");
 		console.log(title.value);
 		console.log(category.value);
 		console.log(content); // undefined 나옴
