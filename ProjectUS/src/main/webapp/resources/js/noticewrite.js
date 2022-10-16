@@ -9,7 +9,7 @@ window.onload = function() {
 		alert("hi");
 		console.log(title.value);
 		console.log(category.value);
-		console.log(content.text); // undefined 나옴
+		console.log(content); // undefined 나옴
 		// document.getElementById('writeform').submit();
 	}
 }
