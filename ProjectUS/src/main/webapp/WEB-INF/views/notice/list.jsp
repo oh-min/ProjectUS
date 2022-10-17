@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -9,7 +8,7 @@
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticelist.js"></script>
 <!-- 임시 -->
-<link rel="shortcut icon" href="#">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
 <meta charset="UTF-8">
 <title>공지사항</title>
@@ -35,16 +34,26 @@
 						<td class="category">${list.category}</td>
 						<td class="title"><a href="/notice/detail?nno=${list.nno}">${list.title}</a></td>
 						<td class="id">${list.id}</td>
-						<td class="regdate"><fmt:formatDate value="${list.regdate}"
-								pattern="yyyy-MM-dd" /></td>
+						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${list.cnt}</td>
 					</tr>
 				</c:forEach>
 			</table>
 			<div id="btn">
 				<div id="gowrite">
-				<input type="button" value="글쓰기" id="writebtn">
+					<input type="button" value="글쓰기" id="writebtn">
 				</div>
+			</div>
+			<div id="paging">
+				<c:if test="${paging.prev}">
+					<a href="/notice/list?pageNum=${paging.startPage-1}&amount=${paging.cri.amount}">이전</a>
+				</c:if>
+				<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+					<a id="${num}" href="/notice/list?pageNum=${num}&amount=${paging.cri.amount}">${num}</a>
+				</c:forEach>
+				<c:if test="${paging.next}">
+					<a href="/notice/list?pageNum=${paging.endPage+1}&amount=${paging.cri.amount}">다음</a>
+				</c:if>
 			</div>
 		</div>
 	</div>

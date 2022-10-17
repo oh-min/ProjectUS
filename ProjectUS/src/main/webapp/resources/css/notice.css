@@ -25,7 +25,7 @@ tr {
 	height: 40px;
 }
 
-a:hover {
+.title>a:hover {
 	color: #528555;
 	text-decoration: underline;
 }
@@ -59,35 +59,51 @@ a:hover {
 	padding: 10px 10px 10px 10px;
 }
 /*버튼*/
-#btn{
+#btn {
 	width: 80%;
 	margin: 0 auto;
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
-input[type=button]{ 
+
+input[type=button] {
 	width: 80px;
 	height: 40px;
 }
 /*리스트 > 글쓰기 이동 버튼 오른쪽에 위치*/
-#gowrite{  
+#gowrite {
 	width: 80px;
 	float: right;
 	margin-bottom: 30px;
 }
 /*공지 글쓰기*/
-.hc{
+.hc {
 	width: 150px;
 	text-align: center;
 }
-.NdetailInfo{
+
+.NdetailInfo {
 	padding: 10px 10px 10px 10px;
 }
-input[class="NdetailInfo"]{
+
+input[class="NdetailInfo"] {
 	width: 97%;
 }
 /*글작성 버튼 가운데 위치*/
-#write{
+#write {
 	width: 80px;
 	margin: 0 auto;
+}
+/* 페이징 */
+#paging{
+	width: fit-content ;
+	margin: 0 auto;
+	font-weight: bold;
+}
+#paging>a:hover{
+	text-decoration: underline;
+	color:black;
+}
+.nowpage{
+	color: #528555;
 }

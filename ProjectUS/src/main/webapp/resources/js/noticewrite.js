@@ -3,13 +3,22 @@
  */
 window.onload = function() {
 	const title = document.getElementById("title");
+	const id = document.getElementById("id");
 	const category = document.getElementById("category");
-	const content = document.getElementById("content");
+	const content = document.getElementById("Ncontent");
+	
+	/* 글 작성 버튼 click */
 	document.getElementById("writebtn").onclick = function() {
-		alert("hello");
-		console.log(title.value);
-		console.log(category.value);
-		console.log(content); // undefined 나옴
-		// document.getElementById('writeform').submit();
+		if (title.value == "") {
+			alert("제목을 입력해 주세요.")
+		} else if (id.value == "") {
+			alert("나중에 관리자 아이디로 로그인 했을 경우만 글 작성 가능하도록 변경해야한다.")
+		} else if (category.value == "null") {
+			alert("카테고리를 설정해 주세요.")
+		} else if (content.value == "") {
+			alert("내용을 입력해 주세요.")
+		} else {
+			document.getElementById('writeform').submit();
+		}
 	}
 }

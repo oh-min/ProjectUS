@@ -5,6 +5,8 @@ body{
 	position: relative;
 	padding-bottom:100px;
 	min-height: calc(100vh - 100px);
+	width: 1500px;
+	margin: 0 auto;
 }
 a {
 	text-decoration: none;
@@ -12,7 +14,7 @@ a {
 }
 
 a:hover {
-	color: white;
+	color: #528555;
 }
 
 li {
@@ -20,16 +22,17 @@ li {
 }
 /* header */
 #header {
-	background-color: #528555;
+	background-color: white;
 	height: 120px;
 	padding: 5px 10px 0px 10px;
+	width: 1480px;
 }
 
 #logo>a {
 	float: left;
 	font-size: 40px;
 	font-weight: bold;
-	color: white;
+	color: #528555;
 }
 #headerR{
 	overflow: hidden;
@@ -42,9 +45,11 @@ li {
 /* nav */
 #nav {
 	overflow: hidden;
-	background-color: #FED168;
+	background-color: #F5F5F4;
+	border-top: 2px solid #528555;
+	border-bottom: 2px solid #528555;
 	height: 50px;
-	width: 100%;
+	width: 1500px;
 }
 
 #nav>ul {
@@ -76,7 +81,7 @@ li {
 /* 이벤트 슬라이드 */
 #event {
 	border: solid 2px black;
-	width: 70%;
+	width: 1000px;
 	margin: 0 auto;
 	height: 300px;
 	margin-top: 30px;
@@ -84,7 +89,7 @@ li {
 /* 대회 슬라이드 */
 #competition {
 	border: solid 2px black;
-	width: 70%;
+	width: 1000px;
 	margin: 0 auto;
 	height: 200px;
 	margin-top: 30px;
@@ -92,7 +97,7 @@ li {
 /* 크루,공지 목록 */
 #crew, #notice {
 	border: solid 2px black;
-	width: 33%;
+	width: 300px;
 	margin: 0 auto;
 	height: 200px;
 	margin-top: 30px;
@@ -110,10 +115,10 @@ li {
 
 /* footer */
 #footer {
-	background-color: #F5F5F4;
 	bottom: 0px;
 	height: 100px;
-	width: 100%;
+	width: 1500px;
 	box-sizing: border-box;
 	clear: both;
+	border-top: 2px solid #528555;
 }

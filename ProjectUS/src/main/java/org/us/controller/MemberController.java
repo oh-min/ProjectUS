@@ -24,6 +24,7 @@ public class MemberController {
 	/* 회원가입 페이지로 이동 */
 	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
 	public void join() {
+		System.out.println("회원가입");
 	}
 
 	/* 회원가입 */

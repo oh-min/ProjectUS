@@ -3,16 +3,50 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.us.mapper.NoticeMapper">
+	<!-- 목록, 페이징 -->
 	<select id="list" resultType="org.us.model.NoticeVO">
-		select * from notice
+		select *
+		from(
+		select @rownum:=@rownum+1 rownum, n.*
+		from notice n,(select @rownum:=0) as tmp
+		order by nno desc
+		) as noticelist
+		<![CDATA[
+			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+		]]>
 	</select>
+	<!-- 조회수 -->
 	<update id="cntup">
 		update notice
 		set cnt = cnt + 1
 		where nno = #{nno}
 	</update>
+	<!-- 디테일 -->
 	<select id="detail" resultType="org.us.model.NoticeVO">
 		select * from notice
 		where nno=#{nno}
+	</select>
+	<!-- 공지사항 작성 -->
+	<insert id="write">
+		<selectKey keyProperty="nno" order="BEFORE" resultType="int">
+			select max(nno)+1 nno
+			from notice
+		</selectKey>
+		insert into notice(nno, id, title, category, content, cnt)
+		values(#{nno},#{id},#{title}, #{category}, #{content}, 0)
+	</insert>
+	<!-- 공지사항 전체 개수 -->
+	<select id="total" resultType="int">
+		select count(*) from notice
+	</select>
+	<!-- 공지사항 이전글 -->
+	<select id="pre"  resultType="org.us.model.NoticeVO">
+		select * from notice
+		where nno = #{nno}-1
+	</select>
+	<!-- 공지사항 다음글 -->
+	<select id="next"  resultType="org.us.model.NoticeVO">
+		select * from notice
+		where nno = #{nno}+1
 	</select>
 </mapper>

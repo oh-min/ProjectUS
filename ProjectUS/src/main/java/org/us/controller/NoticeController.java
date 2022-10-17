@@ -1,5 +1,7 @@
 package org.us.controller;
 
+import org.us.model.CriteriaVO;
+import org.us.model.PageVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,11 @@ public class NoticeController {
 
 	/* 공지 리스트 페이지로 이동 */
 	@RequestMapping(value = "/notice/list", method = RequestMethod.GET)
-	public String list(Model model) {
-		model.addAttribute("list", ns.list());
+	public String list(Model model, CriteriaVO cri) {
+		model.addAttribute("list", ns.list(cri));
+		System.out.println("리스트 이동 컨트롤러1111");
+		int total = ns.total(cri);
+		model.addAttribute("paging", new PageVO(cri, total));
 		return "/notice/list";
 	}
 
@@ -25,19 +30,21 @@ public class NoticeController {
 	@RequestMapping(value = "/notice/detail", method = RequestMethod.GET)
 	public void detail(NoticeVO nvo, Model model) {
 		model.addAttribute("detail", ns.detail(nvo));
+		
+
+		model.addAttribute("pre", ns.pre(nvo));
+		model.addAttribute("next", ns.next(nvo));
 	}
 
 	/* 공지 작성 페이지로 이동 */
 	@RequestMapping(value = "/notice/write", method = RequestMethod.GET)
 	public void gowrite(NoticeVO nvo) {
-		System.out.println("공지작성 controller 연결 완료");
 	}
 
 	/* 공지 작성 */
 	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)
-	public String wirte(NoticeVO nvo) {
-		System.out.println("공지작성 post 연결 완료");
-		System.out.println(nvo);
-		return null;
+	public String write(NoticeVO nvo) {
+		ns.write(nvo);
+		return "redirect:/notice/list";
 	}
 }

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticedetail.js"></script>
 <!-- 임시 -->
-<link rel="shortcut icon" href="#">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
 <meta charset="UTF-8">
 <title>공지사항</title>
@@ -29,7 +29,7 @@
 					<td class="category">${detail.category}</td>
 					<td class="id">${detail.id}</td>
 					<td class="regdate">${detail.regdate}</td>
-					<td class="cnt">${detail.cnt}</td>
+					<td class="cnt" id="cntchk">${detail.cnt}</td>
 				</tr>
 				<tr>
 					<td colspan="4" class="content" id="contentD">${detail.content}</td>
@@ -39,13 +39,13 @@
 				</tr>
 			</table>
 			<table id="ponTable" class="Ntable" border="1">
-				<tr id="pre">
-					<td class="pon">이전글</td>
-					<td>이전글 제목</td>
-				</tr>
 				<tr id="next">
 					<td class="pon">다음글</td>
-					<td>다음글 제목</td>
+					<td><a href="/notice/detail?nno=${next.nno}">${next.title}</a></td>
+				</tr>
+				<tr id="pre">
+					<td class="pon">이전글</td>
+					<td><a href="/notice/detail?nno=${pre.nno}">${pre.title}</a></td>
 				</tr>
 			</table>
 			<div id="btn">

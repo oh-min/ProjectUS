@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticewrite.js"></script>
 <!-- 임시 -->
-<link rel="shortcut icon" href="#">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
 <meta charset="UTF-8">
 <title>공지사항</title>
@@ -20,10 +20,15 @@
 			<h2>공지사항</h2>
 			<form action="/notice/write" method="post" id="writeform">
 				<table class="Ntable" id="writeTable" border="1">
+			
 					<tr>
 						<td class="hc">제목</td>
 						<td><input type="text" name="title" class="NdetailInfo" id="title"></td>
 					</tr>
+					<tr>
+						<td class="hc">작성자</td>
+						<td><input type="text" name="id" class="NdetailInfo" id="id"></td>
+					</tr> <!-- 나중에 로그인 정보 가져와서 넣어야 한다. -->
 					<tr>
 						<td class="hc">분류</td>
 						<td><select class="NdetailInfo" name="category" id="category">
@@ -36,7 +41,7 @@
 					<tr>
 						<td class="hc">내용</td>
 						<td><textarea rows="30" cols="100" name="content"
-								class="NdetailInfo" id="content"></textarea></td>
+								class="NdetailInfo" id="Ncontent"></textarea></td>
 					</tr>
 					<tr>
 						<td class="hc">첨부파일</td>
