@@ -3,9 +3,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
+<script type="text/javascript" src="/resources/js/home.js"></script>
 <!-- 임시 -->
-<link rel="shortcut icon" href="#">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
+
 <title>Home</title>
 </head>
 <body>

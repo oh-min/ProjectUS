@@ -23,4 +23,13 @@ window.onload = function() {
 
 		}
 	}
+
+	/* 네이버 로그인 */
+	var naver_id_login = new window.naver_id_login("cdycnoa2eTLT0zibGaQY", "http://localhost:8080/member/navercallback"); // 새창이 뜨는 주소
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("green", 200, 45);
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+
 }

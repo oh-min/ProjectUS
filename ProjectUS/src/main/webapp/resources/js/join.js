@@ -240,8 +240,6 @@ window.onload = function() {
 				msg.innerHTML = "중복확인 해주세요."
 				msg.style.color = "red";
 				chkbtn.onclick = function() {
-					alert("chlick")
-						
 					// 데이터를 json 타입으로 변형
 					data = JSON.stringify({
 						id: id.value,

@@ -6,9 +6,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/login.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/resources/js/login.js"></script>
 <!-- 임시 -->
-<link rel="shortcut icon" href="#">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
+<!-- 네이버 로그인 -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- 네이버 로그인 -->
 <title>Login</title>
 </head>
 <body>
@@ -24,13 +30,13 @@
 			</div>
 		</form>
 		<div id="sns">
-			<div>네이버 로그인</div>
+			<!-- 네이버 로그인 -->
+			<div id="naver_id_login">
+			</div>
 			<div>구글 로그인</div>
 			<div>카카오 로그인</div>
 		</div>
 	</div>
 	<%@include file="../footer.jsp"%>
 </body>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/login.js"></script>
 </html>
