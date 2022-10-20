@@ -48,6 +48,8 @@ window.onload = function() {
 	console.log("인가코드 = " + code) // 인가 코드
 	console.log("http://localhost:8080/member/login?code"+code) // uri
 	
+	
+	
 	$.ajax({
         type: "POST",
         url: 'https://kauth.kakao.com/oauth/token',
