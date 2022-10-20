@@ -15,6 +15,6 @@
 	<select id="samechk" resultType="org.us.model.MemberVO">
 		select * from member
 		where id = #{id}
-		or nick = #{nick}
+		<!-- or nick = #{nick} --> <!-- 일단 아이디만 uq -->
 	</select>
 </mapper>

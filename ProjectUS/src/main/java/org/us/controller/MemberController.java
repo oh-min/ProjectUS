@@ -1,6 +1,8 @@
 package org.us.controller;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,6 +42,7 @@ public class MemberController {
 	/* 아이디, 닉네임 중복 체크 */
 	@RequestMapping(value = "/member/samechk", method = RequestMethod.POST)
 	public ResponseEntity<String> samechk(@RequestBody MemberVO mvo) {
+		System.out.println("중복체크 post 연결완료");
 		return ms.samechk(mvo) == null ? new ResponseEntity<>("canUse", HttpStatus.OK)
 				: new ResponseEntity<>("cannotUse", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -48,7 +52,6 @@ public class MemberController {
 	public void login() {
 		// session.invalidate(); == 로그인 무효화
 	}
-
 
 	/* 로그인 */
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
@@ -72,14 +75,20 @@ public class MemberController {
 			return "/member/login";
 		}
 	}
-	
+
 	/* 네이버 로그인 이동 */
 	@RequestMapping(value = "/member/navercallback", method = RequestMethod.GET)
 	public void navercallback(MemberVO mvo, HttpSession session) {
 	}
-	
-	
-	
+
+	/* 카카오 로그인 */
+	@RequestMapping(value = "https://kauth.kakao.com/oauth/token", method = RequestMethod.POST)
+	public ResponseEntity<String> replywrite(@RequestBody String code) {
+		System.out.println(code);
+		String result = code;
+		return result != "" ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
 	/* 로그아웃 */
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logoutget(HttpSession session) {
