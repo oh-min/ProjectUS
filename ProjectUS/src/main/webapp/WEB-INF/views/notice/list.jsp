@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticelist.js"></script>
+<script type="text/javascript" src="/resources/js/toggle.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
@@ -28,6 +29,7 @@
 					<th>작성일자</th>
 					<th>조회</th>
 				</tr>
+				<tr></tr>
 				<c:forEach items="${list}" var="list">
 					<tr id="NlistInfo">
 						<td class="nno">${list.nno}</td>

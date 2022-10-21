@@ -23,7 +23,6 @@
 	// SDK 초기화 여부를 판단합니다.
 	console.log(Kakao.isInitialized()); // true
 </script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <!-- 카카오 로그인 -->
 <title>Login</title>
 </head>
@@ -47,12 +46,21 @@
 					width="222" alt="카카오 로그인 버튼" />
 				</a>
 				<p id="token-result"></p>
+				<!-- <button class="api-btn" onclick="requestUserInfo()" style="visibility:hidden">사용자 정보 가져오기</button> -->
+				<button class="api-btn" onclick="kakaologinfnc()" >사용자 정보 가져오기</button>
 
 
 			</div>
+			
 
 			<div>구글 로그인</div>
 		</div>
+		<div id="forkakao">
+		
+		
+		</div>
+		
+		
 	</div>
 	<%@include file="../footer.jsp"%>
 </body>

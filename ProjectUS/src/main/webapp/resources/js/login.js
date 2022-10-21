@@ -31,43 +31,72 @@ window.onload = function() {
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
-}
+	
+} // window.onload 종료
+
 /* 카카오 로그인 */
 function loginWithKakao() {
 	Kakao.Auth.authorize({
 		redirectUri : 'http://localhost:8080/member/login',
-	});
+		scope: 'account_email,gender,birthday',
+	});				
 }
 
-window.onload = function() {
-	
-	// url에서 인가코드를 추출하기
-	const uri = location.search
-	const redirectUri = new URLSearchParams(uri);
-	const code = redirectUri.get('code');
-	console.log("인가코드 = " + code) // 인가 코드
-	console.log("http://localhost:8080/member/login?code"+code) // uri
-	
-	
-	
-	$.ajax({
-        type: "POST",
-        url: 'https://kauth.kakao.com/oauth/token',
-        data: JSON.stringify({
-            grant_type: 'authorization_code',
-            client_id: 'bb70e04e0d5931a3241ef1a2ebcb994d',
-            redirect_uri: "http://localhost:8080/member/login",
-            code: code,
-        }),
-        contentType:"application/x-www-form-urlencoded;charset=utf-8",
-        success:function(result){
-        	if(result=="success"){
-        		console.log("성공")
-        	}else[
-        		console.log("실패")
-        	]
-        }
-    });
+const code = location.search.split('?code=')[1];
+console.log(code); // 인가 코드
 
+if(code){ // 인가 코드가 있을 경우
+	const JS_APP_KEY ="f42e808f1e635004cb0b41d796f2c56d";
+	const REDIRECT_URI = "http://localhost:8080/member/login";
+	const makeFormData = params => {
+		const searchParams = new URLSearchParams()
+		Object.keys(params).forEach(key => {
+			searchParams.append(key, params[key])
+		})
+		return searchParams
+	}
+	    
+	$.ajax({
+		type: "POST",
+		url: 'https://kauth.kakao.com/oauth/token',
+		data: {
+			grant_type: 'authorization_code',
+			client_id: JS_APP_KEY,
+			redirect_uri: REDIRECT_URI,
+			code
+		},
+		beforeSend: function (xhr) {
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded;charset=utf-8");
+		},
+		success: function (res) {
+			console.log(res);
+	            
+			const accessTK = res.access_token;
+	            
+			console.log("토큰 = "+accessTK)
+			Kakao.Auth.setAccessToken(accessTK) // 토큰 할당
+		}
+	});
+}else{ // 없을경우
+	
+}
+function kakaologinfnc(){	
+	Kakao.API.request({
+		url: '/v2/user/me',
+})
+	.then(function(res) {
+		alert(JSON.stringify(res));
+		console.log("============"+res);
+		console.log(res.kakao_account.email); // 이메일	
+		console.log(res.id);  // 아이디(임시)
+		console.log(res.properties.nickname); // 닉네임
+		alert("확인")
+
+	})
+	.catch(function(err) {
+		alert(
+				'failed to request user information: ' + JSON.stringify(err)
+		);
+	});
 	
 }

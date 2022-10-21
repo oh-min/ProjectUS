@@ -81,12 +81,9 @@ public class MemberController {
 	public void navercallback(MemberVO mvo, HttpSession session) {
 	}
 
-	/* 카카오 로그인 */
-	@RequestMapping(value = "https://kauth.kakao.com/oauth/token", method = RequestMethod.POST)
-	public ResponseEntity<String> replywrite(@RequestBody String code) {
-		System.out.println(code);
-		String result = code;
-		return result != "" ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	/* 카카오 로그인 이동 */
+	@RequestMapping(value = "/member/kakao", method = RequestMethod.GET)
+	public void kakaocallback(MemberVO mvo, HttpSession session) {
 	}
 
 	/* 로그아웃 */

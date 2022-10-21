@@ -20,7 +20,6 @@ public class NoticeController {
 	@RequestMapping(value = "/notice/list", method = RequestMethod.GET)
 	public String list(Model model, CriteriaVO cri) {
 		model.addAttribute("list", ns.list(cri));
-		System.out.println("리스트 이동 컨트롤러1111");
 		int total = ns.total(cri);
 		model.addAttribute("paging", new PageVO(cri, total));
 		return "/notice/list";
@@ -30,8 +29,6 @@ public class NoticeController {
 	@RequestMapping(value = "/notice/detail", method = RequestMethod.GET)
 	public void detail(NoticeVO nvo, Model model) {
 		model.addAttribute("detail", ns.detail(nvo));
-		
-
 		model.addAttribute("pre", ns.pre(nvo));
 		model.addAttribute("next", ns.next(nvo));
 	}
@@ -47,4 +44,6 @@ public class NoticeController {
 		ns.write(nvo);
 		return "redirect:/notice/list";
 	}
+
+	/* 공지 토글 */
 }
