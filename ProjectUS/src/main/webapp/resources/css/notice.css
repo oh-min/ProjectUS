@@ -14,15 +14,32 @@ h2 {
 	margin-bottom: 30px;
 }
 
+.search {
+	width: 80%;
+	height: 40px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	clear: both;
+}
+
 .Ntable {
 	width: 80%;
 	margin: 0 auto;
-	border: 2px solid black;
+	border-top: 2px solid #528555;
 	border-collapse: collapse;
 }
 
+td {
+	border-bottom: 1px solid #528555;
+	padding: 10px;
+}
+
+th {
+	border-bottom: 2px solid #528555;
+}
+
 tr {
-	height: 40px;
+	height: 50px;
 }
 
 .title>a:hover {
@@ -33,15 +50,23 @@ tr {
 .nno, .category, .id, .regdate, .cnt {
 	text-align: center;
 }
+/* 검색 */
+#search {
+	height: 34px;
+	width: 200px;
+}
+.search>form>input{
+	float: right;
+}
 /* 공지 목록 */
 #NlistInfo>.title {
 	padding-left: 10px;
-	width: 600px;
+	width: 500px;
 }
 
 #NlistInfo>.title>a {
 	display: inline-block;
-	width: 580px;
+	width: 480px;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -70,6 +95,10 @@ input[type=button] {
 	width: 80px;
 	height: 40px;
 }
+input[type=submit] {
+	width: 80px;
+	height: 40px;
+}
 /*리스트 > 글쓰기 이동 버튼 오른쪽에 위치*/
 #gowrite {
 	width: 80px;
@@ -95,15 +124,17 @@ input[class="NdetailInfo"] {
 	margin: 0 auto;
 }
 /* 페이징 */
-#paging{
-	width: fit-content ;
+#paging {
+	width: fit-content;
 	margin: 0 auto;
 	font-weight: bold;
 }
-#paging>a:hover{
+
+#paging>a:hover {
 	text-decoration: underline;
-	color:black;
+	color: black;
 }
-.nowpage{
+
+.nowpage {
 	color: #528555;
 }

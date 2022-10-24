@@ -11,6 +11,7 @@ public class NoticeVO {
 	private int category; // 카테고리
 	private Date regdate; // 작성일자
 	private int cnt; // 조회수
+	private int top; // 공지 설정
 
 	public String getId() {
 		return id;
@@ -68,10 +69,18 @@ public class NoticeVO {
 		this.cnt = cnt;
 	}
 
+	public int getTop() {
+		return top;
+	}
+
+	public void setTop(int top) {
+		this.top = top;
+	}
+
 	@Override
 	public String toString() {
 		return "NoticeVO [id=" + id + ", nno=" + nno + ", title=" + title + ", content=" + content + ", category=" + category + ", regdate=" + regdate
-				+ ", cnt=" + cnt + "]";
+				+ ", cnt=" + cnt + ", top=" + top + "]";
 	}
 
 }

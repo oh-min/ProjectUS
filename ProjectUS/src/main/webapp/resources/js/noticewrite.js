@@ -6,9 +6,11 @@ window.onload = function() {
 	const id = document.getElementById("id");
 	const category = document.getElementById("category");
 	const content = document.getElementById("Ncontent");
-	
+	const top = document.getElementById("top");
+
 	/* 글 작성 버튼 click */
 	document.getElementById("writebtn").onclick = function() {
+
 		if (title.value == "") {
 			alert("제목을 입력해 주세요.")
 		} else if (id.value == "") {
@@ -18,7 +20,12 @@ window.onload = function() {
 		} else if (content.value == "") {
 			alert("내용을 입력해 주세요.")
 		} else {
-			document.getElementById('writeform').submit();
+			if (top.checked == true) {
+				document.getElementById('writeform').submit();
+			} else {
+				document.getElementById('writeform').submit();
+
+			}
 		}
 	}
 }

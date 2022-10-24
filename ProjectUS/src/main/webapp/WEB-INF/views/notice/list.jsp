@@ -6,8 +6,8 @@
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/notice.css">
+<link rel="stylesheet" href="/resources/css/top.css">
 <script type="text/javascript" src="/resources/js/noticelist.js"></script>
-<script type="text/javascript" src="/resources/js/toggle.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
@@ -20,7 +20,13 @@
 	<div id="content">
 		<div id="Nlist">
 			<h2>공지사항</h2>
-			<table class="Ntable" id="listTable" border="1">
+			<!-- 검색 -->
+			<div class="search">
+				<form action="/notice/list" method="get">
+					<input type="submit" value="검색"> <input type="text" id="search" name="keyword">
+				</form>
+			</div>
+			<table class="Ntable" id="listTable">
 				<tr>
 					<th>번호</th>
 					<th>분류</th>
@@ -29,7 +35,18 @@
 					<th>작성일자</th>
 					<th>조회</th>
 				</tr>
-				<tr></tr>
+				<!-- 토글 -->
+				<c:forEach items="${top}" var="top" end="4">
+					<tr id="topInfo">
+						<td class="nno" id="topN"><span>공 지</span></td>
+						<td class="category">${top.category}</td>
+						<td class="title"><a href="/notice/detail?nno=${top.nno}">${top.title}</a></td>
+						<td class="id">${top.id}</td>
+						<td class="regdate"><fmt:formatDate value="${top.regdate}" pattern="yyyy-MM-dd" /></td>
+						<td class="cnt">${top.cnt}</td>
+					</tr>
+				</c:forEach>
+				<!-- 목록 -->
 				<c:forEach items="${list}" var="list">
 					<tr id="NlistInfo">
 						<td class="nno">${list.nno}</td>

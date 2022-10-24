@@ -9,6 +9,9 @@
 		from(
 		select @rownum:=@rownum+1 rownum, n.*
 		from notice n,(select @rownum:=0) as tmp
+		<if test="keyword != null">
+			where title like concat('%',#{keyword},'%')
+		</if>
 		order by nno desc
 		) as noticelist
 		<![CDATA[
@@ -32,20 +35,23 @@
 			select max(nno)+1 nno
 			from notice
 		</selectKey>
-		insert into notice(nno, id, title, category, content, cnt)
-		values(#{nno},#{id},#{title}, #{category}, #{content}, 0)
+		insert into notice(nno, id, title, category, content, cnt,top)
+		values(#{nno},#{id},#{title}, #{category}, #{content}, 0,#{top})
 	</insert>
 	<!-- 공지사항 전체 개수 -->
 	<select id="total" resultType="int">
 		select count(*) from notice
+		<if test="keyword != null">
+			where title like concat('%',#{keyword},'%')
+		</if>
 	</select>
 	<!-- 공지사항 이전글 -->
-	<select id="pre"  resultType="org.us.model.NoticeVO">
+	<select id="pre" resultType="org.us.model.NoticeVO">
 		select * from notice
 		where nno = #{nno}-1
 	</select>
 	<!-- 공지사항 다음글 -->
-	<select id="next"  resultType="org.us.model.NoticeVO">
+	<select id="next" resultType="org.us.model.NoticeVO">
 		select * from notice
 		where nno = #{nno}+1
 	</select>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,15 +19,16 @@
 			<h2>공지사항</h2>
 			<form action="/notice/write" method="post" id="writeform">
 				<table class="Ntable" id="writeTable" border="1">
-			
+
 					<tr>
 						<td class="hc">제목</td>
-						<td><input type="text" name="title" class="NdetailInfo" id="title"></td>
+						<td colspan="3"><input type="text" name="title" class="NdetailInfo" id="title"></td>
 					</tr>
 					<tr>
 						<td class="hc">작성자</td>
-						<td><input type="text" name="id" class="NdetailInfo" id="id"></td>
-					</tr> <!-- 나중에 로그인 정보 가져와서 넣어야 한다. -->
+						<td colspan="3"><input type="text" name="id" class="NdetailInfo" id="id"></td>
+					</tr>
+					<!-- 나중에 로그인 정보 가져와서 넣어야 한다. -->
 					<tr>
 						<td class="hc">분류</td>
 						<td><select class="NdetailInfo" name="category" id="category">
@@ -37,15 +37,16 @@
 								<option value="2">이벤트</option>
 								<option value="3">기타</option>
 						</select></td>
+						<td class="hc">공지 선택</td>
+						<td><input type="checkbox" name="top" id="top" value="1"></td>
 					</tr>
 					<tr>
 						<td class="hc">내용</td>
-						<td><textarea rows="30" cols="100" name="content"
-								class="NdetailInfo" id="Ncontent"></textarea></td>
+						<td colspan="3"><textarea rows="30" cols="100" name="content" class="NdetailInfo" id="Ncontent"></textarea></td>
 					</tr>
 					<tr>
 						<td class="hc">첨부파일</td>
-						<td class="NdetailInfo">첨부파일 올리는~~</td>
+						<td class="NdetailInfo" colspan="3">첨부파일 올리는~~</td>
 					</tr>
 				</table>
 				<div id="btn">
