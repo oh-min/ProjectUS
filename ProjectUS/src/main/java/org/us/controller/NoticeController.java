@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.us.model.NoticeVO;
 import org.us.service.NoticeService;
 import org.us.service.TopService;
@@ -51,5 +52,5 @@ public class NoticeController {
 		return "redirect:/notice/list";
 	}
 
-	/* 공지 토글 */
+	
 }
