@@ -13,4 +13,5 @@ public class AttachFileVO {
 	private String uuid; // uuid 정보
 	private boolean image; // 업로드된 파일이 이미지파일인지 아닌지 구분
 	private int nno;
+
 }

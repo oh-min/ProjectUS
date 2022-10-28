@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticewrite.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/upload.js"></script>
+<script type="text/javascript" src="/resources/js/attach.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
@@ -43,14 +43,13 @@
 						<td><input type="checkbox" name="top" id="top" value="1"></td>
 					</tr>
 					<tr>
-						<td class="hc">첨부파일</td>
-						<td class="NdetailInfo" colspan="3"><input type="file" name="uploadimg" id="uploadimg" multiple></td>
-					</tr>
-					<tr>
-						<td class="hc">내용</td>
+						<td class="hc" rowspan="2">내용</td>
 						<td colspan="3"><textarea rows="30" cols="100" name="content" class="NdetailInfo" id="Ncontent"></textarea></td>
 					</tr>
-					<tr>
+					<tr id="trPreview">
+						<td colspan="3" id="preview"></td>
+					</tr>
+					<tr class="line2px">
 						<td class="hc">첨부파일</td>
 						<td class="NdetailInfo" colspan="3"><input type="file" name="attachFile" id="attachFile" multiple></td>
 					</tr>

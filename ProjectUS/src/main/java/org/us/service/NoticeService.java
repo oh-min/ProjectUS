@@ -12,7 +12,7 @@ public interface NoticeService {
 	// 디테일 페이지 설계
 	public NoticeVO detail(NoticeVO nvo);
 
-	// 공지작성 설계
+	// 공지작성 설계 (+upload, +attach)
 	public void write(NoticeVO nvo);
 
 	// notice테이블 전체건수 설계

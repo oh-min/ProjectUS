@@ -50,12 +50,18 @@ tr {
 .nno, .category, .id, .regdate, .cnt {
 	text-align: center;
 }
+
+input:focus, textarea:focus {
+	outline: 1px solid #F5F5F4;
+}
+
 /* 검색 */
 #search {
 	height: 34px;
 	width: 200px;
 }
-.search>form>input{
+
+.search>form>input {
 	float: right;
 }
 /* 공지 목록 */
@@ -95,6 +101,7 @@ input[type=button] {
 	width: 80px;
 	height: 40px;
 }
+
 input[type=submit] {
 	width: 80px;
 	height: 40px;
@@ -116,7 +123,18 @@ input[type=submit] {
 }
 
 input[class="NdetailInfo"] {
-	width: 97%;
+	width: 98%;
+	border: none;
+}
+textarea[class="NdetailInfo"] {
+	width: 98%;
+	border: none;
+}
+.line2px{
+	border-bottom: 2px solid #528555;
+}
+#preview{
+	border-top: 1px solid #F5F5F4;
 }
 /*글작성 버튼 가운데 위치*/
 #write {
