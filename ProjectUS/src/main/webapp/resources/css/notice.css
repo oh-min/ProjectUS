@@ -55,6 +55,14 @@ input:focus, textarea:focus {
 	outline: 1px solid #F5F5F4;
 }
 
+.hc {
+	width: 150px;
+	text-align: center;
+}
+
+.bb2 {
+	border-bottom: 2px solid #528555;
+}
 /* 검색 */
 #search {
 	height: 34px;
@@ -86,8 +94,32 @@ input:focus, textarea:focus {
 	width: 100px;
 }
 
-#titleD, #contentD, #attachD, #pre>td, #next>td {
+#titleD, #pre>td, #next>td {
 	padding: 10px 10px 10px 10px;
+}
+
+#circ {
+	height: 20px;
+	font-size: 13px;
+}
+
+#circ>.hc {
+	border-left: 1px solid #528555;
+	border-right: 1px solid #F5F5F4;
+}
+
+#contentD {
+	padding: 30px 50px 30px 50px;
+}
+
+#attachD {
+	padding: 20px 180px 20px 180px;
+	text-align: right;
+}
+
+#attachD>img {
+	padding-right: 20px;
+	padding-top: 20px;
 }
 /*버튼*/
 #btn {
@@ -113,11 +145,6 @@ input[type=submit] {
 	margin-bottom: 30px;
 }
 /*공지 글쓰기*/
-.hc {
-	width: 150px;
-	text-align: center;
-}
-
 .NdetailInfo {
 	padding: 10px 10px 10px 10px;
 }
@@ -126,14 +153,17 @@ input[class="NdetailInfo"] {
 	width: 98%;
 	border: none;
 }
+
 textarea[class="NdetailInfo"] {
 	width: 98%;
 	border: none;
 }
-.line2px{
+
+.line2px {
 	border-bottom: 2px solid #528555;
 }
-#preview{
+
+#preview {
 	border-top: 1px solid #F5F5F4;
 }
 /*글작성 버튼 가운데 위치*/

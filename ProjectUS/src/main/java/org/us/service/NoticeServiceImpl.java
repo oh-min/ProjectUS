@@ -27,7 +27,6 @@ public class NoticeServiceImpl implements NoticeService {
 	// 디테일 페이지 구현
 	@Transactional
 	public NoticeVO detail(NoticeVO nvo) {
-
 		nm.cntup(nvo); // 조회수 증가
 		return nm.detail(nvo);
 	}

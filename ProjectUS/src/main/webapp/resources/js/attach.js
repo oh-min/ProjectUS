@@ -62,19 +62,19 @@ $(document).ready(function() {
 					console.log(obj.fileName)
 
 					if (obj.image) { // 이미지 파일일 경우 -> 사진 보기
-						str += "<input type='text' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
-						str += "<input type='text' id='uuid' name='attach[" + i + "].uuid' value='" + obj.uuid + "'>";
-						str += "<input type='text' id='attachPath' name='attach[" + i + "].attachPath' value='" + obj.attachPath + "'>";
-						str += "<input type='text' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
+						str += "<input type='hidden' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
+						str += "<input type='hidden' id='uuid' name='attach[" + i + "].uuid' value='" + obj.uuid + "'>";
+						str += "<input type='hidden' id='attachPath' name='attach[" + i + "].attachPath' value='" + obj.attachPath + "'>";
+						str += "<input type='hidden' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
 
 						let filePath = encodeURIComponent(obj.attachPath + "/s_" + obj.uuid + "_" + obj.fileName);
 						console.log(filePath);
-						str += "<img src='\display?fileName=" + filePath + "'>" + obj.fileName + "<br>"
+						str += "<img src='\display?fileName=" + filePath + "'><br>"
 					} else { // 그 외의 파일일 경우 -> 다운로드
-						str += "<input type='text' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
-						str += "<input type='text' id='uuid' name='attach[" + i + "].uuid' value='" + obj.uuid + "'>";
-						str += "<input type='text' id='attachPath' name='attach[" + i + "].attachPath' value='" + obj.attachPath + "'>";
-						str += "<input type='text' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
+						str += "<input type='hidden' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
+						str += "<input type='hidden' id='uuid' name='attach[" + i + "].uuid' value='" + obj.uuid + "'>";
+						str += "<input type='hidden' id='attachPath' name='attach[" + i + "].attachPath' value='" + obj.attachPath + "'>";
+						str += "<input type='hidden' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
 
 						let fileName = obj.fileName.replace(/,/g, "")
 						console.log(fileName)
@@ -87,10 +87,5 @@ $(document).ready(function() {
 			}
 		})
 	}
-	
-	function hihi(){
-		
-	}
-	
-	
+
 })

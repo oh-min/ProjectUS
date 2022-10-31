@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -8,6 +7,8 @@
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticedetail.js"></script>
+<script type="text/javascript" src="/resources/js/attachlist.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
@@ -20,36 +21,43 @@
 	<div id="content">
 		<div id="Ndetail">
 			<h2>공지사항</h2>
-			<table class="Ntable" id="detailTable" border="1">
+			<!-- 값 가져오기 -->
+			<input type="text" value="${now.rownum}">
+			<input type="hidden" id="nno" value="${detail.nno}">
+			<!-- 값 가져오기 -->
+			<table class="Ntable" id="detailTable">
 				<tr>
 					<td class="nno" id="idD">${detail.nno}</td>
-					<td colspan="3" class="title" id="titleD">${detail.title}</td>
+					<td colspan="6" class="title" id="titleD">${detail.title}</td>
 				</tr>
-				<tr>
+				<tr id="circ" class="bb2">
 					<td class="category">${detail.category}</td>
+					<td class="hc">작성자</td>
 					<td class="id">${detail.id}</td>
-					<td class="regdate">${detail.regdate}</td>
+					<td class="hc">작성일</td>
+					<td class="regdate"><fmt:formatDate value="${detail.regdate}" pattern="yyyy-MM-dd" /></td>
+					<td class="hc">조회수</td>
 					<td class="cnt" id="cntchk">${detail.cnt}</td>
 				</tr>
-				<tr>
-					<td colspan="4" class="content" id="contentD">${detail.content}</td>
+				<tr id="attachTR">
+					<td colspan="7" class="attach" id="attachD"></td>
 				</tr>
-				<tr>
-					<td colspan="4" class="attach" id="attachD">첨부파일</td>
+				<tr id="contentTR" class="bb2">
+					<td colspan="7" class="content" id="contentD">${detail.content}</td>
 				</tr>
 			</table>
-			<table id="ponTable" class="Ntable" border="1">
+			<table id="ponTable" class="Ntable">
 				<tr id="next">
 					<td class="pon">다음글</td>
 					<td><a href="/notice/detail?nno=${next.nno}">${next.title}</a></td>
 				</tr>
-				<tr id="pre">
+				<tr id="pre" class="bb2">
 					<td class="pon">이전글</td>
 					<td><a href="/notice/detail?nno=${pre.nno}">${pre.title}</a></td>
 				</tr>
 			</table>
 			<div id="btn">
-				<input type="button" value="목록" id="listbtn">
+				<input type="button" value="목록" id="listbtn" onclick="listbtn()">
 			</div>
 		</div>
 	</div>

@@ -7,4 +7,8 @@
 		insert into attach(uuid, attachpath, filename, image, nno)
 		values(#{uuid},#{attachPath},#{fileName},#{image},#{nno});
 	</insert>
+	<select id="attachlist" resultType="org.us.model.AttachFileVO">
+		select * from attach
+		where nno = #{nno}
+	</select>
 </mapper>
