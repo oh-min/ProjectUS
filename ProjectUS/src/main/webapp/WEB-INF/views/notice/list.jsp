@@ -26,6 +26,7 @@
 					<input type="submit" value="검색"> <input type="text" id="search" name="keyword">
 				</form>
 			</div>
+			<!-- 목록 -->
 			<table class="Ntable" id="listTable">
 				<tr>
 					<th>번호</th>
@@ -39,7 +40,17 @@
 				<c:forEach items="${top}" var="top" end="4">
 					<tr id="topInfo">
 						<td class="nno" id="topN"><span>공 지</span></td>
-						<td class="category">${top.category}</td>
+						<c:choose>
+							<c:when test="${top.category eq 1}">
+								<td class="category">일반</td>
+							</c:when>
+							<c:when test="${top.category eq 2}">
+								<td class="category">이벤트</td>
+							</c:when>
+							<c:when test="${top.category eq 3}">
+								<td class="category">기타</td>
+							</c:when>
+						</c:choose>
 						<td class="title"><a href="/notice/detail?nno=${top.nno}">${top.title}</a></td>
 						<td class="id">${top.id}</td>
 						<td class="regdate"><fmt:formatDate value="${top.regdate}" pattern="yyyy-MM-dd" /></td>
@@ -50,7 +61,17 @@
 				<c:forEach items="${list}" var="list">
 					<tr id="NlistInfo">
 						<td class="nno">${list.nno}</td>
-						<td class="category">${list.category}</td>
+						<c:choose>
+							<c:when test="${list.category eq 1}">
+								<td class="category">일반</td>
+							</c:when>
+							<c:when test="${list.category eq 2}">
+								<td class="category">이벤트</td>
+							</c:when>
+							<c:when test="${list.category eq 3}">
+								<td class="category">기타</td>
+							</c:when>
+						</c:choose>
 						<td class="title"><a href="/notice/detail?nno=${list.nno}">${list.title}</a></td>
 						<td class="id">${list.id}</td>
 						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>

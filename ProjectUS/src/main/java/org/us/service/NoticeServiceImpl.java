@@ -27,19 +27,21 @@ public class NoticeServiceImpl implements NoticeService {
 	// 디테일 페이지 구현
 	@Transactional
 	public NoticeVO detail(NoticeVO nvo) {
-		nm.cntup(nvo); // 조회수 증가
+
 		return nm.detail(nvo);
 	}
 
 	// 공지작성 구현
 	public void write(NoticeVO nvo) {
 		nm.write(nvo);
+		if (nvo.getAttach() != null) {
 
-		// 첨부파일 insert 구현
-		nvo.getAttach().forEach(avo -> {
-			avo.setNno(nvo.getNno());
-			am.insert(avo);
-		});
+			// 첨부파일 insert 구현
+			nvo.getAttach().forEach(avo -> {
+				avo.setNno(nvo.getNno());
+				am.insert(avo);
+			});
+		}
 
 	}
 
@@ -49,13 +51,4 @@ public class NoticeServiceImpl implements NoticeService {
 		return nm.total(cri);
 	}
 
-	// 이전글 구현
-	public NoticeVO pre(NoticeVO nvo) {
-		return nm.pre(nvo);
-	}
-
-	// 다음글 구현
-	public NoticeVO next(NoticeVO nvo) {
-		return nm.next(nvo);
-	}
 }

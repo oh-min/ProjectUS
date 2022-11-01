@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.us.model.AttachFileVO;
 import org.us.model.CriteriaVO;
+import org.us.model.NextPreVO;
 import org.us.model.NoticeVO;
 import org.us.model.PageVO;
 import org.us.service.AttachService;
 import org.us.service.NoticeService;
-import org.us.service.RownumService;
+import org.us.service.NextPreService;
 import org.us.service.TopService;
 
 @Controller
@@ -29,9 +30,9 @@ public class NoticeController {
 
 	@Autowired
 	AttachService as;
-	
+
 	@Autowired
-	RownumService rs;
+	NextPreService nps;
 
 	/* 공지 리스트 페이지로 이동 */
 	@RequestMapping(value = "/notice/list", method = RequestMethod.GET)
@@ -45,12 +46,9 @@ public class NoticeController {
 
 	/* 공지 디테일 페이지로 이동 */
 	@RequestMapping(value = "/notice/detail", method = RequestMethod.GET)
-	public void detail(NoticeVO nvo, Model model) {
-		System.out.println(rs.now(nvo));
-		model.addAttribute("now", rs.now(nvo));
+	public void detail(NoticeVO nvo, Model model, NextPreVO npvo) {
+		model.addAttribute("nextpre", nps.NP(npvo));
 		model.addAttribute("detail", ns.detail(nvo));
-		model.addAttribute("pre", ns.pre(nvo));
-		model.addAttribute("next", ns.next(nvo));
 	}
 
 	/* 공지 작성 페이지로 이동 */
@@ -61,6 +59,7 @@ public class NoticeController {
 	/* 공지 작성 */
 	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)
 	public String write(NoticeVO nvo) {
+		System.out.println("공지작성 컨트롤러"+nvo);
 		ns.write(nvo);
 		return "redirect:/notice/list";
 	}

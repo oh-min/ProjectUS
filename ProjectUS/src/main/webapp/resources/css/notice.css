@@ -114,7 +114,6 @@ input:focus, textarea:focus {
 
 #attachD {
 	padding: 20px 180px 20px 180px;
-	text-align: right;
 }
 
 #attachD>img {
@@ -157,6 +156,7 @@ input[class="NdetailInfo"] {
 textarea[class="NdetailInfo"] {
 	width: 98%;
 	border: none;
+	resize: none;
 }
 
 .line2px {

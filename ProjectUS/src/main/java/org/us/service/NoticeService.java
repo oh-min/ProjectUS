@@ -17,10 +17,4 @@ public interface NoticeService {
 
 	// notice테이블 전체건수 설계
 	public int total(CriteriaVO cri);
-
-	// 이전글 설계
-	public NoticeVO pre(NoticeVO nvo);
-
-	// 다음글 설계
-	public NoticeVO next(NoticeVO nvo);
 }

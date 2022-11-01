@@ -1,7 +1,8 @@
 /**
  * 첨부파일 목록 가져오기
  */
-window.onload = function() {
+function attachlistfnc() {
+
 	const nno = document.getElementById('nno').value;
 
 	console.log(nno)

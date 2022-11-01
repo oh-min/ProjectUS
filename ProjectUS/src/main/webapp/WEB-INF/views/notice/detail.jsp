@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticedetail.js"></script>
-<script type="text/javascript" src="/resources/js/attachlist.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -22,7 +21,6 @@
 		<div id="Ndetail">
 			<h2>공지사항</h2>
 			<!-- 값 가져오기 -->
-			<input type="text" value="${now.rownum}">
 			<input type="hidden" id="nno" value="${detail.nno}">
 			<!-- 값 가져오기 -->
 			<table class="Ntable" id="detailTable">
@@ -47,14 +45,30 @@
 				</tr>
 			</table>
 			<table id="ponTable" class="Ntable">
-				<tr id="next">
-					<td class="pon">다음글</td>
-					<td><a href="/notice/detail?nno=${next.nno}">${next.title}</a></td>
-				</tr>
-				<tr id="pre" class="bb2">
-					<td class="pon">이전글</td>
-					<td><a href="/notice/detail?nno=${pre.nno}">${pre.title}</a></td>
-				</tr>
+				<c:choose>
+					<c:when test="${!empty nextpre[1].nno}">
+						<tr id="next">
+							<td class="pon">다음글</td>
+							<td><a href="/notice/detail?nno=${nextpre[1].nno}">${nextpre[1].title}</a></td>
+						</tr>
+						<tr id="pre" class="bb2">
+							<td class="pon">이전글</td>
+							<td><a href="/notice/detail?nno=${nextpre[0].nno}">${nextpre[0].title}</a></td>
+						</tr>
+					</c:when>
+					<c:when test="${nextpre[0].nno < detail.nno}">
+						<tr id="pre" class="bb2">
+							<td class="pon">이전글</td>
+							<td><a href="/notice/detail?nno=${nextpre[0].nno}">${nextpre[0].title}</a></td>
+						</tr>
+					</c:when>
+					<c:when test="${nextpre[0].nno > detail.nno}">
+						<tr id="next">
+							<td class="pon">다음글</td>
+							<td><a href="/notice/detail?nno=${nextpre[0].nno}">${nextpre[0].title}</a></td>
+						</tr>
+					</c:when>
+				</c:choose>
 			</table>
 			<div id="btn">
 				<input type="button" value="목록" id="listbtn" onclick="listbtn()">
