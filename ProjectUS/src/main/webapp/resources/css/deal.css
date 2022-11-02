@@ -1,0 +1,88 @@
+@charset "UTF-8";
+/* 공통사항 */
+#Dlist {
+	width: 1500px;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+h2 {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.Dtable {
+	width: 80%;
+	margin: 0 auto;
+	border-top: 2px solid #528555;
+	border-collapse: collapse;
+}
+
+td {
+	border-bottom: 1px solid #528555;
+	padding: 10px;
+}
+
+th {
+	border-bottom: 2px solid #528555;
+}
+
+tr {
+	height: 50px;
+}
+
+.title>a:hover {
+	color: #528555;
+	text-decoration: underline;
+}
+.dno, .way, .price, .nick, .state, .regdate, .cnt {
+	text-align: center;
+}
+/* 검색 */
+.search {
+	width: 80%;
+	height: 40px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	clear: both;
+}
+
+#search {
+	height: 34px;
+	width: 200px;
+}
+
+.search>form>input {
+	float: right;
+}
+/* 거래게시판 목록 */
+#DlistInfo>.product {
+	padding-left: 10px;
+	width: 500px;
+}
+#DlistInfo>.product>a {
+	display: inline-block;
+	width: 480px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+#DlistInfo>.nick>p {
+	display: inline-block;
+	width: 150px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	margin: 0px;
+}
+#DlistInfo>.price>p {
+	display: inline-block;
+	width: 50px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	margin: 0px;
+}
