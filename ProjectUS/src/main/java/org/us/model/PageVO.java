@@ -1,5 +1,12 @@
 package org.us.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class PageVO {
 
 	private int startPage; // 시작번호
@@ -24,60 +31,6 @@ public class PageVO {
 		}
 		this.prev = this.startPage > 1; // startPage가 1보다 크면 이전버튼 활성화
 		this.next = this.endPage < realEnd; // endPage가 realEnd 보다 작으면
-	}
-
-	public int getStartPage() {
-		return startPage;
-	}
-
-	public void setStartPage(int startPage) {
-		this.startPage = startPage;
-	}
-
-	public int getEndPage() {
-		return endPage;
-	}
-
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
-
-	public boolean isPrev() {
-		return prev;
-	}
-
-	public void setPrev(boolean prev) {
-		this.prev = prev;
-	}
-
-	public boolean isNext() {
-		return next;
-	}
-
-	public void setNext(boolean next) {
-		this.next = next;
-	}
-
-	public CriteriaVO getCri() {
-		return cri;
-	}
-
-	public void setCri(CriteriaVO cri) {
-		this.cri = cri;
-	}
-
-	public int getTotal() {
-		return total;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
-	}
-
-	@Override
-	public String toString() {
-		return "PageVO [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next + ", cri=" + cri + ", total=" + total
-				+ "]";
 	}
 
 }

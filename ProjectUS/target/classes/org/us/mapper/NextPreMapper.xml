@@ -3,13 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.us.mapper.NextPreMapper">
-	<select id="NP" resultType="org.us.model.NextPreVO">
+	<!-- 공지사항 -->
+	<select id="nnp" resultType="org.us.model.NextPreVO">
 		select * from notice
 		where nno in(
 		<![CDATA[
 		(select nno from notice where nno < #{nno} order by nno desc limit 1),
-		(select
-		nno from notice where nno > #{nno} order by nno limit 1)
+		(select nno from notice where nno > #{nno} order by nno limit 1)
+		]]>
+		)
+	</select>
+
+	<!-- 중고거래 -->
+	<select id="dnp" resultType="org.us.model.NextPreVO">
+		select *
+		from deal
+		where
+		dno in(
+		<![CDATA[
+		(select dno from deal where dno < #{dno} order by dno desc limit 1),
+		(select dno from deal where dno > #{dno} order by dno limit 1)
 		]]>
 		)
 	</select>

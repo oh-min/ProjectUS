@@ -47,7 +47,7 @@ public class NoticeController {
 	/* 공지 디테일 페이지로 이동 */
 	@RequestMapping(value = "/notice/detail", method = RequestMethod.GET)
 	public void detail(NoticeVO nvo, Model model, NextPreVO npvo) {
-		model.addAttribute("nextpre", nps.NP(npvo));
+		model.addAttribute("nextpre", nps.nnp(npvo));
 		model.addAttribute("detail", ns.detail(nvo));
 	}
 

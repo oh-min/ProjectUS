@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.us.mapper.NoticeMapper">
-	<!-- 목록, 페이징 -->
+	<!-- 목록, 페이징, 검색 -->
 	<select id="list" resultType="org.us.model.NoticeVO">
 		select *
 		from(

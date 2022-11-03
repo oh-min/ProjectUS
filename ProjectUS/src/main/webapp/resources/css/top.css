@@ -23,3 +23,7 @@
 	color: white;
 	border-radius: 2em;
 }
+
+.nno, .category, .id, .regdate, .cnt {
+	text-align: center;
+}

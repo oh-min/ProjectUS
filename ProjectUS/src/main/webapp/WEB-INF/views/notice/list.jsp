@@ -23,7 +23,7 @@
 			<!-- 검색 -->
 			<div class="search">
 				<form action="/notice/list" method="get">
-					<input type="submit" value="검색"> <input type="text" id="search" name="keyword">
+					<input type="submit" value="검색"> <input type="text" id="search" name="keyword" value="${paging.cri.keyword}">
 				</form>
 			</div>
 			<!-- 목록 -->
@@ -36,7 +36,7 @@
 					<th>작성일자</th>
 					<th>조회</th>
 				</tr>
-				<!-- 토글 -->
+				<!-- 고정공지 -->
 				<c:forEach items="${top}" var="top" end="4">
 					<tr id="topInfo">
 						<td class="nno" id="topN"><span>공 지</span></td>
@@ -84,15 +84,16 @@
 					<input type="button" value="글쓰기" id="writebtn">
 				</div>
 			</div>
+			<!-- 페이징 -->
 			<div id="paging">
 				<c:if test="${paging.prev}">
-					<a href="/notice/list?pageNum=${paging.startPage-1}&amount=${paging.cri.amount}">이전</a>
+					<a href="/notice/list?keyword=${paging.cri.keyword}&pageNum=${paging.startPage-1}&amount=${paging.cri.amount}">이전</a>
 				</c:if>
 				<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-					<a id="${num}" href="/notice/list?pageNum=${num}&amount=${paging.cri.amount}">${num}</a>
+					<a id="${num}" href="/notice/list?keyword=${paging.cri.keyword}&pageNum=${num}&amount=${paging.cri.amount}">${num}</a>
 				</c:forEach>
 				<c:if test="${paging.next}">
-					<a href="/notice/list?pageNum=${paging.endPage+1}&amount=${paging.cri.amount}">다음</a>
+					<a href="/notice/list?keyword=${paging.cri.keyword}&pageNum=${paging.endPage+1}&amount=${paging.cri.amount}">다음</a>
 				</c:if>
 			</div>
 		</div>

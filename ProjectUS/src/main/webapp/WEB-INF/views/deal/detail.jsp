@@ -5,67 +5,66 @@
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
-<link rel="stylesheet" href="/resources/css/notice.css">
-<script type="text/javascript" src="/resources/js/noticedetail.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="/resources/css/deal.css">
+<script type="text/javascript" src="/resources/js/dealdetail.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>중고거래</title>
 </head>
 <body>
 	<%@include file="../header.jsp"%>
 	<%@include file="../nav.jsp"%>
 	<div id="content">
-		<div id="Ndetail">
-			<h2>공지사항</h2>
-			<!-- 값 가져오기 -->
-			<input type="hidden" id="nno" value="${detail.nno}">
-			<!-- 값 가져오기 -->
-			<table class="Ntable" id="detailTable">
+		<div id="Ddetail">
+			<h2>중고거래</h2>
+			<!-- 디테일 -->
+			<table class="Dtable" id="detailTable">
 				<tr>
-					<td class="nno" id="idD">${detail.nno}</td>
-					<td colspan="6" class="title" id="titleD">${detail.title}</td>
+					<td class="dno" id="dno">${detail.dno}</td>
+					<td colspan="4" class="product" id="productD">${detail.product}</td>
+					<td colspan="2" class="state">${detail.state}</td>
 				</tr>
-				<tr id="circ" class="bb2">
-					<td class="category">${detail.category}</td>
+				<tr id="wnrc" class="bb2">
+					<td class="way">${detail.way}</td>
 					<td class="hc">작성자</td>
-					<td class="id">${detail.id}</td>
+					<td class="nick">${detail.nick}</td>
 					<td class="hc">작성일</td>
 					<td class="regdate"><fmt:formatDate value="${detail.regdate}" pattern="yyyy-MM-dd" /></td>
 					<td class="hc">조회수</td>
 					<td class="cnt" id="cntchk">${detail.cnt}</td>
 				</tr>
-				<tr id="attachTR">
-					<td colspan="7" class="attach" id="attachD"></td>
+				<tr>
+					<td colspan="7" id="infoD">${detail.info}</td>
 				</tr>
-				<tr id="contentTR" class="bb2">
-					<td colspan="7" class="content" id="contentD">${detail.content}</td>
+				<tr class="bb2">
+					<td colspan="7" id="attachD">첨부된 파일</td>
 				</tr>
 			</table>
-			<table id="ponTable" class="Ntable">
+			<!-- 이전글 / 다음글 -->
+			<table id="ponTable" class="Dtable">
 				<c:choose>
-					<c:when test="${!empty nextpre[1].nno}">
+					<c:when test="${!empty nextpre[1].dno}">
 						<tr id="next">
 							<td class="pon">다음글</td>
-							<td><a href="/notice/detail?nno=${nextpre[1].nno}">${nextpre[1].title}</a></td>
+							<td><a href="/deal/detail?dno=${nextpre[1].dno}">${nextpre[1].product}</a></td>
 						</tr>
 						<tr id="pre" class="bb2">
 							<td class="pon">이전글</td>
-							<td><a href="/notice/detail?nno=${nextpre[0].nno}">${nextpre[0].title}</a></td>
+							<td><a href="/deal/detail?dno=${nextpre[0].dno}">${nextpre[0].product}</a></td>
 						</tr>
 					</c:when>
-					<c:when test="${nextpre[0].nno < detail.nno}">
+					<c:when test="${nextpre[0].dno < detail.dno}">
 						<tr id="pre" class="bb2">
 							<td class="pon">이전글</td>
-							<td><a href="/notice/detail?nno=${nextpre[0].nno}">${nextpre[0].title}</a></td>
+							<td><a href="/deal/detail?dno=${nextpre[0].dno}">${nextpre[0].product}</a></td>
 						</tr>
 					</c:when>
-					<c:when test="${nextpre[0].nno > detail.nno}">
+					<c:when test="${nextpre[0].dno > detail.dno}">
 						<tr id="next" class="bb2">
 							<td class="pon">다음글</td>
-							<td><a href="/notice/detail?nno=${nextpre[0].nno}">${nextpre[0].title}</a></td>
+							<td><a href="/deal/detail?dno=${nextpre[0].dno}">${nextpre[0].product}</a></td>
 						</tr>
 					</c:when>
 				</c:choose>

@@ -21,9 +21,4 @@ public interface NoticeMapper {
 	// notice테이블 전체건수 DB설계
 	public int total(CriteriaVO cri);
 
-	// 이전글 DB설계
-	public NoticeVO pre(NoticeVO nvo);
-
-	// 다음글 DB설계
-	public NoticeVO next(NoticeVO nvo);
 }

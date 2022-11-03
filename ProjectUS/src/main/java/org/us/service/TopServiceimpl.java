@@ -16,7 +16,6 @@ public class TopServiceimpl implements TopService {
 
 	// 토글 구현
 	public ArrayList<NoticeVO> top(CriteriaVO cri){
-		System.out.println("top service="+cri);
 		return tm.top(cri);
 	}
 }
