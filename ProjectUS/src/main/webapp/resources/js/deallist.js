@@ -2,6 +2,11 @@
  * 거래 리스트
  */
 window.onload = function() {
+	/* 글 작성페이지로 이동 */
+	document.getElementById("writebtn").onclick = function() {
+		location.href = "/deal/write";
+	}
+
 	/* 페이징 class 변경 */
 	// url 주소에서 pageNum 값
 	const urlParams = new URL(location.href).searchParams;
@@ -12,5 +17,5 @@ window.onload = function() {
 	if (pagenum == anum.text) {
 		anum.className = "nowpage";
 	}
-	
+
 }

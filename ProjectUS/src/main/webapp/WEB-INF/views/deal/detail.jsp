@@ -23,7 +23,8 @@
 			<table class="Dtable" id="detailTable">
 				<tr>
 					<td class="dno" id="dno">${detail.dno}</td>
-					<td colspan="4" class="product" id="productD">${detail.product}</td>
+					<td colspan="3" class="product" id="productD">${detail.product}</td>
+					<td colspan="1" class="state">${detail.price} 원</td>
 					<td colspan="2" class="state">${detail.state}</td>
 				</tr>
 				<tr id="wnrc" class="bb2">
@@ -42,6 +43,10 @@
 					<td colspan="7" id="attachD">첨부된 파일</td>
 				</tr>
 			</table>
+			<!-- 채팅 버튼 -->
+			<div id="btn">
+				<input type="button" value="채팅하기" id="chatbtn" onclick="chatbtn()">
+			</div>
 			<!-- 이전글 / 다음글 -->
 			<table id="ponTable" class="Dtable">
 				<c:choose>

@@ -21,11 +21,11 @@
 			<h2>공지사항</h2>
 			<form action="/notice/write" method="post" id="writeform">
 				<table class="Ntable" id="writeTable" border="1">
-
 					<tr>
 						<td class="hc">제목</td>
 						<td colspan="3"><input type="text" name="title" class="NdetailInfo" id="title"></td>
 					</tr>
+					<!-- 나중에 로그인 정보 가져와서 넣어야 한다. -->
 					<tr>
 						<td class="hc">작성자</td>
 						<td colspan="3"><input type="text" name="id" class="NdetailInfo" id="id"></td>

@@ -21,7 +21,7 @@ public class DealController {
 
 	@Autowired
 	TopService ts;
-	
+
 	@Autowired
 	NextPreService nps;
 
@@ -41,5 +41,18 @@ public class DealController {
 	public void detail(DealVO dvo, Model model, NextPreVO npvo) {
 		model.addAttribute("detail", ds.detail(dvo));
 		model.addAttribute("nextpre", nps.dnp(npvo));
+	}
+
+	/* 거래게시판 작성 페이지로 이동 */
+	@RequestMapping(value = "/deal/write", method = RequestMethod.GET)
+	public void gowrite(DealVO dvo) {
+	}
+
+	/* 거래게시판 게시물 작성하기 */
+
+	/* 채팅 페이지로 이동 */
+	@RequestMapping(value = "/deal/chat", method = RequestMethod.GET)
+	public void gochat() {
+
 	}
 }

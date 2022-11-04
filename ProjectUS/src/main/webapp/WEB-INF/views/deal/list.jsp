@@ -90,6 +90,12 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<!-- 글쓰기 버튼 -->
+			<div id="btn">
+				<div id="gowrite">
+					<input type="button" value="글쓰기" id="writebtn">
+				</div>
+			</div>
 			<!-- 페이징 -->
 			<div id="paging">
 				<c:if test="${paging.prev}">

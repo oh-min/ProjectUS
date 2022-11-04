@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* 공통사항 */
-#Dlist, #Ddetail {
+#Dlist, #Ddetail, #Dwrite {
 	width: 1500px;
 	margin: 0 auto;
 	margin-top: 30px;
@@ -74,7 +74,8 @@ input:focus, textarea:focus {
 .search>form>input, .search>form>select {
 	float: right;
 }
-.search>form>select{
+
+.search>form>select {
 	height: 40px;
 }
 /* 거래게시판 목록 */
@@ -170,4 +171,47 @@ input[type=button] {
 input[type=submit] {
 	width: 80px;
 	height: 40px;
+}
+/*리스트 > 글쓰기 이동 버튼 오른쪽에 위치*/
+#gowrite {
+	width: 80px;
+	float: right;
+	margin-bottom: 30px;
+}
+/*공지 글쓰기*/
+.DdetailInfo {
+	padding: 10px 10px 10px 10px;
+}
+
+input[class="DdetailInfo"] {
+	width: 98%;
+	border: none;
+}
+
+textarea[class="DdetailInfo"] {
+	width: 98%;
+	border: none;
+	resize: none;
+}
+
+.line2px {
+	border-bottom: 2px solid #528555;
+}
+
+#preview {
+	border-top: 1px solid #F5F5F4;
+}
+/*글작성 버튼 가운데 위치*/
+#write {
+	width: 80px;
+	margin: 0 auto;
+}
+/* 채팅하기 버튼 오른쪽에 위치 */
+#chatbtn {
+	float: right;
+	margin-bottom: 30px;
+}
+
+#ponTable {
+	clear: both;
 }
