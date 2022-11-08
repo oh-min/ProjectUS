@@ -9,7 +9,6 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 @Controller
 public class ChatController  extends TextWebSocketHandler{
 	
-
 	/* websocket 연결 성공 */
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {

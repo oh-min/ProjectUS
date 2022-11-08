@@ -27,7 +27,7 @@
 
 	<!-- 채팅을 위한 websocket handler -->
 	<websocket:handlers>
-		<websocket:mapping handler="ChatController" path="/deal/chat" />
+		<websocket:mapping handler="ChatController" path="/chatting" />
 		<websocket:sockjs></websocket:sockjs>
 	</websocket:handlers>
 	<beans:bean id="ChatController" class="org.us.controller.ChatController"/>
