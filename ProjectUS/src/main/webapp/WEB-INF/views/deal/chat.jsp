@@ -4,8 +4,11 @@
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
 <script type="text/javascript" src="/resources/js/chat.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	// websocket 주소
+	//let wsurl = "ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket/echo";
+	let wsurl = "ws://localhost:8080/websocket/echo";
+</script>
 <meta charset="UTF-8">
 <title>중고거래 채팅</title>
 </head>
@@ -16,16 +19,12 @@
 		<div>
 			<h2>중고거래 채팅</h2>
 			<div>
-				<button type="button">채팅 참여</button>
+				<button type="button" id="chatopen" onclick="connect()">채팅 참여</button>
 				<button type="button">채팅 나가기</button>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<!-- div with messages -->
 				<div id="messages"></div>
-				<br>
-				<br>
-				<br> <input type="text" id="sendms">
+				<br> <br> <br> <input type="text" id="sendms">
 				<button type="button" id="sendbtn">메세지 전송</button>
 			</div>
 		</div>
