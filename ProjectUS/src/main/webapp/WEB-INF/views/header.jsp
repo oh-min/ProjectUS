@@ -15,8 +15,9 @@
 			<ul>
 				<li><a href="/member/logout">로그아웃</a></li>
 				<li><a href="#">마이페이지</a></li>
-				<li>${user.nick}님</li>
+				<li id ="headerNick">${user.nick}&nbsp님</li>
 			</ul>
+			<input type="hidden" value="${user.id}" id="headerId">
 		</c:if>
 	</div>
 </div>

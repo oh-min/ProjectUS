@@ -23,8 +23,12 @@
 				<button type="button">채팅 나가기</button>
 				<br> <br> <br>
 				<!-- div with messages -->
-				<div id="messages"></div>
-				<br> <br> <br> <input type="text" id="sendms">
+				<div id="messages">
+					<p></p>
+				</div>
+				<br> <br> <br>
+				<!-- 닉네임은 임시 -->
+				<input type="text" id="nick"> <input type="text" id="sendms">
 				<button type="button" id="sendbtn">메세지 전송</button>
 			</div>
 		</div>

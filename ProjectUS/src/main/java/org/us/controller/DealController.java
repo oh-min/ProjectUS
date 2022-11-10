@@ -52,7 +52,7 @@ public class DealController {
 
 	/* 채팅 페이지로 이동 */
 	@RequestMapping(value = "/deal/chat", method = RequestMethod.GET)
-	public void gochat() {
-
+	public void gochat(DealVO dvo, Model model) {
+		model.addAttribute("detail", ds.detail(dvo));
 	}
 }

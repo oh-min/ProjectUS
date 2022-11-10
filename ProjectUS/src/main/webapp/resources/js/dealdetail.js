@@ -7,5 +7,7 @@ function listbtn() {
 }
 /*채팅 버튼*/
 function chatbtn(){
-	location.href = "/deal/chat";
+	let dno = document.getElementById("dno").innerText; // dno값 가져오기
+	console.log(dno)
+	location.href = "/deal/chat?dno="+dno+"";
 }
