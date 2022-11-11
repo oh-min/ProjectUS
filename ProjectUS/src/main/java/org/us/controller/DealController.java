@@ -28,7 +28,6 @@ public class DealController {
 	/* 거래게시판 리스트 페이지로 이동 */
 	@RequestMapping(value = "/deal/list", method = RequestMethod.GET)
 	public String list(Model model, CriteriaVO cri) {
-		System.out.println(cri);
 		model.addAttribute("top", ts.top(cri));
 		model.addAttribute("list", ds.list(cri));
 		int total = ds.total(cri);
@@ -53,6 +52,13 @@ public class DealController {
 	/* 채팅 페이지로 이동 */
 	@RequestMapping(value = "/deal/chat", method = RequestMethod.GET)
 	public void gochat(DealVO dvo, Model model) {
+		model.addAttribute("detail", ds.detail(dvo));
+	}
+	
+	//////////// 나중에 지워
+	/* 채팅 페이지로 이동 */
+	@RequestMapping(value = "/deal/testforchat", method = RequestMethod.GET)
+	public void test(DealVO dvo, Model model) {
 		model.addAttribute("detail", ds.detail(dvo));
 	}
 }

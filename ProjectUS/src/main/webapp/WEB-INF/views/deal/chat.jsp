@@ -28,8 +28,8 @@
 				</div>
 				<br> <br> <br>
 				<!-- 닉네임은 임시 -->
-				<input type="text" id="nick"> <input type="text" id="sendms">
-				<button type="button" id="sendbtn">메세지 전송</button>
+				<input type="text" id="sendms" placeholder="메세지를 입력하세요">
+				<button type="button" id="sendbtn" onclick="sendMessage()">메세지 전송</button>
 			</div>
 		</div>
 	</div>

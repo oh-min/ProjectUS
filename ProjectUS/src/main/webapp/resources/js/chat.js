@@ -28,63 +28,55 @@ function connect() {
 
 	ws = new WebSocket(wsurl); // websocket 연결
 
-	/* 웹 소켓에 연결되었을 때 호출될 함수 */
-	ws.onopen = function(e) {
-		console.log("서버 연결 성공");
-		console.log(e)
-		data(dno, id, nick, "ENTER-CHAT"); // data를 json타입으로 저장하는 함수 호출
-	}
+	/* 웹 소켓에 연결되었을 때 호출될 함수 호출 */
+	ws.onopen = onOpen;
+	/* 받은 메세지 함수 선언 */
+	ws.onmessage = onMessage;
 
-	/* 메세지 보내기 */
-	let sendms = document.getElementById("sendms") // 입력된 메세지
-	// 메세지 전송 버튼 클릭시
-	document.getElementById("sendbtn").onclick = function() {
-		data(dno, id, nick, sendms.value); // data를 json타입으로 저장하는 함수 호출
-		// 입력된메세지를 보내기
-		ws.send(data);
-		console.log("메세지 보내기 성공")
-	}
-//	 // * 2 메세지 수신
-//    function onMessage(evt) {
-//        
-//       let receive = evt.data.split(",");
-//        
-//       const data = {
-//               "name" : receive[0],
-//               "email" : receive[1],
-//            "message" : receive[2]
-//       };
-//        
-//        if(data.email != "${ loginUser.email }"){
-//           CheckLR(data);
-//        }
-////   }
-	/* 받은 메세지 */
-	ws.onmessage = function(event) {
-		alert("받음")
-		let receive = event.data.split(",");
-		
-		console.log(receive)
-		
-		console.log(`Data received from server: ${event.data}`);
-		console.log(event.data) // 입력한 메세지 내용
-	};
-//
-//	/* 채팅 종료 */
-//	ws.onclose = function(event) {
-//		if (event.wasClean) {
-//			console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-//			console.log("코드 1 = " + event.code)
-//			console.log("이유 1 = " + event.reason)
-//		} else {
-//			console.log(event)
-//			console.log("코드 2 = " + event.code)
-//			console.log("이유 2 = " + event.reason)
-//			alert('연결종료');
-//		}
-//	};
 }
 
+/* 웹 소켓에 연결되었을 때 호출될 함수 선언 */
+function onOpen() {
+	console.log("서버 연결 성공");
+	// console.log(e)
+	data(dno, id, nick, "ENTER-CHAT"); // data를 json타입으로 저장하는 함수 호출
+
+}
+/* 메세지 보내기 함수 선언 */
+function sendMessage(message) {
+	console.log("메세지 전송")
+	let sendms = document.getElementById("sendms") // 입력된 메세지
+	console.log(sendms.value)
+
+	let a = sendms.value.replace(/\s|/gi, "");
+	console.log(a)
+	
+	// 공백이 있으면 안됨
+	if (sendms.value.replace(/\s|\gi/, "").length == 0) {
+		alert("hello")
+	}
+
+	data(dno, id, nick, sendms.value);
+}
+
+/* 받은 메세지 함수 선언 */
+function onMessage(evt) {
+	console.log("받은 메세지")
+}
+
+/* 채팅 종료 */
+// ws.onclose = function(event) {
+// if (event.wasClean) {
+// console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+// console.log("코드 1 = " + event.code)
+// console.log("이유 1 = " + event.reason)
+// } else {
+// console.log(event)
+// console.log("코드 2 = " + event.code)
+// console.log("이유 2 = " + event.reason)
+// alert('연결종료');
+// }
+// };
 /* data를 json타입으로 저장하는 함수 선언 */
 function data(dno, id, nick, message) {
 	const data = {
