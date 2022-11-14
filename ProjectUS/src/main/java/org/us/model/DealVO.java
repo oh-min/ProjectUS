@@ -16,6 +16,7 @@ public class DealVO {
 	private String info; // 물품정보
 	private int price; // 가격
 	private String nick; // 판매자(닉네임)
+	private String id; // 판매자(아이디)
 	private int state; // 거래상황
 	private Date regdate; // 작성일자
 	private int cnt; // 조회수

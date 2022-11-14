@@ -4,11 +4,6 @@
 <head>
 <link rel="stylesheet" href="/resources/css/home.css">
 <script type="text/javascript" src="/resources/js/chat.js"></script>
-<script type="text/javascript">
-	// websocket 주소
-	//let wsurl = "ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket/echo";
-	let wsurl = "ws://localhost:8080/websocket/echo";
-</script>
 <meta charset="UTF-8">
 <title>중고거래 채팅</title>
 </head>
@@ -16,20 +11,25 @@
 	<%@include file="../header.jsp"%>
 	<%@include file="../nav.jsp"%>
 	<div id="content">
+		<!-- 정보 가져오기 -->
+		<div>
+			<table border="1">
+				<tr>
+					<td>${detail.dno}</td>
+					<td>${detail.product}</td>
+					<td id="writernick">${detail.nick}</td>
+					<td id="writerid">${detail.id}</td>
+				</tr>
+			</table>
+		</div>
 		<div>
 			<h2>중고거래 채팅</h2>
 			<div>
-				<button type="button" id="chatopen" onclick="connect()">채팅 참여</button>
-				<button type="button">채팅 나가기</button>
-				<br> <br> <br>
-				<!-- div with messages -->
-				<div id="messages">
-					<p></p>
-				</div>
-				<br> <br> <br>
-				<!-- 닉네임은 임시 -->
-				<input type="text" id="sendms" placeholder="메세지를 입력하세요">
-				<button type="button" id="sendbtn" onclick="sendMessage()">메세지 전송</button>
+				<!-- 주고받은 메세지들 -->
+				<div></div>
+				<!-- 주고받은 메세지들 -->
+				<br> <br> <br> <input type="text" id="message" placeholder="메세지를 입력하세요">
+				<button type="button" id="sendbtn">메세지 전송</button>
 			</div>
 		</div>
 	</div>

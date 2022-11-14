@@ -55,10 +55,4 @@ public class DealController {
 		model.addAttribute("detail", ds.detail(dvo));
 	}
 	
-	//////////// 나중에 지워
-	/* 채팅 페이지로 이동 */
-	@RequestMapping(value = "/deal/testforchat", method = RequestMethod.GET)
-	public void test(DealVO dvo, Model model) {
-		model.addAttribute("detail", ds.detail(dvo));
-	}
 }

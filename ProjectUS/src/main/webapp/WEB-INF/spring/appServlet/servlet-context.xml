@@ -29,5 +29,5 @@
 	<websocket:handlers>
 		<websocket:mapping handler="myHandler" path="/websocket/echo" />
 	</websocket:handlers>
-	<beans:bean id="myHandler" class="org.us.controller.ChatController"/>
+	<beans:bean id="myHandler" class="org.us.Handler.ChatHandler"/>
 </beans:beans>
