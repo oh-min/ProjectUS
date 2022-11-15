@@ -1,8 +1,6 @@
 package org.us.controller;
 
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,7 +55,7 @@ public class MemberController {
 	public String signin(MemberVO mvo, HttpSession session, HttpServletResponse response) {
 		// service로 넘긴 id, pw를 이용하여 select되어 넘어온 값
 		session.setAttribute("user", ms.signin(mvo)); // id,pw 불일치 -> null
-		System.out.println(mvo);
+		System.out.println("로그인 완료"+mvo);
 		if (session.getAttribute("user") != null) {
 			return "redirect:/";
 		} else { // 불일치 -> alert 띄우고 이전페이지로 이동
@@ -93,4 +90,8 @@ public class MemberController {
 		return "redirect:/";
 	}
 
+	/* 마이페이지로 이동 */
+	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
+	public void mypage() {
+	}
 }

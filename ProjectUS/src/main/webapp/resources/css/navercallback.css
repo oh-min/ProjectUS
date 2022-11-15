@@ -14,18 +14,7 @@ form {
 	margin: 0 auto;
 }
 
-#id {
-	border: 0px;
-	font-size: 18px;
-	font-weight: bold;
-}
-#pw{
-	font-size: 18px;
-	font-weight: bold;
-}
-#msg {
-	margin-bottom: 50px;
-}
+
 
 .btn {
 	width: fit-content;

@@ -26,7 +26,9 @@ window.onload = function() {
 
 	/* 네이버 로그인 */
 	var naver_id_login = new window.naver_id_login("cdycnoa2eTLT0zibGaQY", "http://localhost:8080/member/navercallback"); // 새창이 뜨는 주소
+	console.log(naver_id_login)
 	var state = naver_id_login.getUniqState();
+	console.log(state)
 	naver_id_login.setButton("green", 200, 45);
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
