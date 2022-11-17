@@ -39,7 +39,7 @@ public class MemberController {
 	/* 아이디, 닉네임 중복 체크 */
 	@RequestMapping(value = "/member/samechk", method = RequestMethod.POST)
 	public ResponseEntity<String> samechk(@RequestBody MemberVO mvo) {
-		System.out.println("중복체크 post 연결완료");
+		System.out.println("중복체크");
 		return ms.samechk(mvo) == null ? new ResponseEntity<>("canUse", HttpStatus.OK)
 				: new ResponseEntity<>("cannotUse", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -50,32 +50,51 @@ public class MemberController {
 		// session.invalidate(); == 로그인 무효화
 	}
 
-	/* 로그인 */
+	/* 로그인 */ /* 네이버 로그인 */
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	public String signin(MemberVO mvo, HttpSession session, HttpServletResponse response) {
-		// service로 넘긴 id, pw를 이용하여 select되어 넘어온 값
-		session.setAttribute("user", ms.signin(mvo)); // id,pw 불일치 -> null
-		System.out.println("로그인 완료"+mvo);
-		if (session.getAttribute("user") != null) {
-			return "redirect:/";
-		} else { // 불일치 -> alert 띄우고 이전페이지로 이동
+		// service로 넘긴 id, pw를 이용하여 select되어 넘어온 값을 session에 저장
+		session.setAttribute("user", ms.signin(mvo));
+
+		System.out.println("로그인 정보 : " + ms.signin(mvo));
+		// id, pw 일치 -> MemberVO에 저장된 값을 반환
+		// id, pw 불일치 -> null
+
+		if (session.getAttribute("user") != null) { // id, pw 가 일치하는 경우
+			return "redirect:/"; // 메인페이지로 redirect
+		} else { // id, pw가 불일치하는 경우 -> alert 띄우고 이전페이지로 이동
+
+			/* alert 띄우기 */
 			try {
-				response.setContentType("text/html; charset=utf-8");
-				PrintWriter w = response.getWriter();
-				w.write("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.');location.href='/member/login';</script>");
-				w.flush();
-				w.close();
-				return "/member/login";
+				response.setContentType("text/html; charset=utf-8"); // utf-8 문자코드를 사용
+				PrintWriter w = response.getWriter(); // getWriter메소드를 호출하여 스트림에 텍스트를 기록
+				w.write("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.');location.href='/member/login';</script>"); // 알림창
+																																// //
+																																// 작성
+				w.flush(); // 모든 요소의 스트림 삭제
+				w.close(); // 스트림 닫기
+				return "/member/login"; // 이전페이지로 이동
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return "/member/login";
+
+			return "/member/login";// 이전페이지로 이동
 		}
 	}
 
 	/* 네이버 로그인 이동 */
 	@RequestMapping(value = "/member/navercallback", method = RequestMethod.GET)
 	public void navercallback(MemberVO mvo, HttpSession session) {
+	}
+
+	/* 네이버 회원가입 후 로그인 */
+	@RequestMapping(value = "/member/naverjoin", method = RequestMethod.POST)
+	public String naversignup(MemberVO mvo, HttpSession session) {
+		System.out.println("네이버 회원가입 정보 : " + mvo);
+		ms.signup(mvo);
+		System.out.println("네이버 로그인 정보 : " + ms.signin(mvo));
+		session.setAttribute("user", ms.signin(mvo));
+		return "redirect:/";
 	}
 
 	/* 카카오 로그인 이동 */

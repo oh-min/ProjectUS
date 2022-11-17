@@ -47,7 +47,7 @@
 			<!-- 아이디 -->
 			<input type="hidden" name="id" id="id">
 			<!-- 비밀번호 -->
-			<input type="hidden" name="pw" id="pw">
+			<input type="text" name="pw" id="pw">
 			<!-- 이름 -->
 			<input type="hidden" name="name" id="name">
 			<!-- 이메일 -->

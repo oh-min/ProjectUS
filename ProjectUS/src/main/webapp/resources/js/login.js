@@ -17,11 +17,7 @@ window.onload = function() {
 			loginmsg.innerHTML = "비밀번호를 입력해주세요."
 			loginmsg.style.color = "red";
 		}
-
-		if (id.value && pw.value) { // 아이디, 비밀번호가 모두 입력되는 경우
-			document.getElementById('login').submit();
-
-		}
+		
 	}
 
 	/* 네이버 로그인 */
@@ -33,6 +29,11 @@ window.onload = function() {
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
+	
+	document.getElementById("loginbtn").onclick = function() {
+		console.log("화면 새로고침")
+	}
+	
 	
 } // window.onload 종료
 
