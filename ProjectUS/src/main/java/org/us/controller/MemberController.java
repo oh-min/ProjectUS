@@ -68,9 +68,8 @@ public class MemberController {
 			try {
 				response.setContentType("text/html; charset=utf-8"); // utf-8 문자코드를 사용
 				PrintWriter w = response.getWriter(); // getWriter메소드를 호출하여 스트림에 텍스트를 기록
-				w.write("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.');location.href='/member/login';</script>"); // 알림창
-																																// //
-																																// 작성
+				w.write("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.');location.href='/member/login';</script>");
+				// 알림창 작성
 				w.flush(); // 모든 요소의 스트림 삭제
 				w.close(); // 스트림 닫기
 				return "/member/login"; // 이전페이지로 이동

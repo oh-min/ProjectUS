@@ -38,7 +38,7 @@
 				<p class="msgexcept" id="pwchkmsg"></p>
 			</div>
 			<div class="chk">
-				<p>이메일*</p>
+				<p>이메일</p>
 				<input type="text" name="email" id="email"><input type="button" value="본인인증">
 				<p class="msg" id="emailmsg"></p>
 			</div>
@@ -48,7 +48,7 @@
 				<p class="msg" id="nickmsg"></p>
 			</div>
 			<div>
-				<p>생년월일*</p>
+				<p>생년월일</p>
 				<input type="text" id="birthY" name="birthY" maxlength="4"> 년 <select id="birthM" name="birthM">
 					<option value="null">선택</option>
 					<option>1</option>
@@ -69,8 +69,8 @@
 				<p class="msg" id="birthmsg"></p>
 			</div>
 			<div class="chk">
-				<p>전화번호*</p>
-				<input type="text" name="phone" id="phone"><input type="button" value="본인인증">
+				<p>전화번호</p>
+				<input type="text" name="phone" id="phone">
 				<p class="msg" id="phonemsg"></p>
 			</div>
 			<div>

@@ -21,19 +21,15 @@ window.onload = function() {
 	}
 
 	/* 네이버 로그인 */
-	var naver_id_login = new window.naver_id_login("cdycnoa2eTLT0zibGaQY", "http://localhost:8080/member/navercallback"); // 새창이 뜨는 주소
+	// 													본인의 Client ID 					callback URL 
+	var naver_id_login = new window.naver_id_login("cdycnoa2eTLT0zibGaQY", "http://localhost:8080/member/navercallback"); 
 	console.log(naver_id_login)
-	var state = naver_id_login.getUniqState();
+	var state = naver_id_login.getUniqState(); // Uniq 코드 받아오기(새로고침할때마다 변경)
 	console.log(state)
-	naver_id_login.setButton("green", 200, 45);
-	naver_id_login.setState(state);
-	naver_id_login.setPopup();
-	naver_id_login.init_naver_id_login();
-	
-	document.getElementById("loginbtn").onclick = function() {
-		console.log("화면 새로고침")
-	}
-	
+	naver_id_login.setButton("green", 3, 45); // 버튼 설정
+	naver_id_login.setState(state); // Uniq 코드 설정
+	// naver_id_login.setPopup(); // 팝업창 열기
+	naver_id_login.init_naver_id_login(); // 설정 정보 초기화
 	
 } // window.onload 종료
 
@@ -90,7 +86,7 @@ function kakaologinfnc(){
 	.then(function(res) {
 		alert(JSON.stringify(res));
 		console.log("============"+res);
-		console.log(res.kakao_account.email); // 이메일	
+		console.log(res.kakao_account.email); // 이메일
 		console.log(res.id);  // 아이디(임시)
 		console.log(res.properties.nickname); // 닉네임
 		alert("확인")
