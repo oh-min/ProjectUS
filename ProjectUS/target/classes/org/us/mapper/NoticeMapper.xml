@@ -8,7 +8,8 @@
 		select *
 		from(
 		select @rownum:=@rownum+1 rownum, n.*
-		from notice n,(select @rownum:=0) as tmp
+		from notice
+		n,(select @rownum:=0) as tmp
 		<if test="keyword != null">
 			where title like concat('%',#{keyword},'%')
 		</if>
@@ -18,30 +19,34 @@
 			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
 		]]>
 	</select>
-	
+
 	<!-- 조회수 -->
 	<update id="cntup">
 		update notice
 		set cnt = cnt + 1
 		where nno = #{nno}
 	</update>
-	
+
 	<!-- 디테일 -->
 	<select id="detail" resultType="org.us.model.NoticeVO">
-		select * from notice
-		where nno=#{nno}
+		select *
+		from notice
 	</select>
-	
+
 	<!-- 공지사항 작성 -->
 	<insert id="write">
 		<selectKey keyProperty="nno" order="BEFORE" resultType="int">
-			select max(nno)+1 nno
+			select
+			case
+			when nno is null then 1
+			else max(nno)+1
+			end nno
 			from notice
 		</selectKey>
-		insert into notice(nno, id, title, category, content, cnt,top)
-		values(#{nno},#{id},#{title}, #{category}, #{content}, 0,#{top})
+		insert into notice(nno, id, nick, title, category, content, cnt,top)
+		values(#{nno},#{id},#{nick},#{title}, #{category}, #{content},0,#{top})
 	</insert>
-	
+
 	<!-- 공지사항 전체 개수 -->
 	<select id="total" resultType="int">
 		select count(*) from notice
@@ -49,5 +54,5 @@
 			where title like concat('%',#{keyword},'%')
 		</if>
 	</select>
-	
+
 </mapper>

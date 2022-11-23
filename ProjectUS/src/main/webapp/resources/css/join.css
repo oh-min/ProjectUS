@@ -16,19 +16,22 @@ h2 {
 	width: 50%;
 	margin: 0 auto;
 }
-p{
+
+p {
 	margin-bottom: 5px;
 	margin-top: 30px;
 }
-.msg, .msgexcept{
+
+.msg, .msgexcept {
 	margin-top: 5px;
 }
+
 input[type="text"], input[type="password"] {
 	width: 98%;
 	height: 30px;
 }
 
-.chk>input[type="text"]{
+.chk>input[type="text"] {
 	width: 70%
 }
 
@@ -46,10 +49,16 @@ select {
 	width: 20%;
 	height: 35px;
 }
-#joinbtn{
+
+#joinbtn {
 	width: 100%;
 	height: 45px;
 	margin: 0 auto;
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+/* 랜던 닉네임 자동생성 버튼 */
+#randomnick {
+	width: 99%;
+	margin: 5px 0px 0px 0px;
 }

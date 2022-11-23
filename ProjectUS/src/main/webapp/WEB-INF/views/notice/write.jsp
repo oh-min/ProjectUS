@@ -25,12 +25,13 @@
 						<td class="hc">제목</td>
 						<td colspan="3"><input type="text" name="title" class="NdetailInfo" id="title"></td>
 					</tr>
-					<!-- 나중에 로그인 정보 가져와서 넣어야 한다. -->
 					<tr>
 						<td class="hc">작성자</td>
-						<td colspan="3"><input type="text" name="id" class="NdetailInfo" id="id"></td>
+						<td colspan="3">
+							<input type="text" name="nick" class="NdetailInfo" id="nick" value="${user.nick}" readonly> 
+							<input type="hidden"name="id" class="NdetailInfo" id="id" value="${user.id}" readonly>
+						</td>
 					</tr>
-					<!-- 나중에 로그인 정보 가져와서 넣어야 한다. -->
 					<tr>
 						<td class="hc">분류</td>
 						<td><select class="NdetailInfo" name="category" id="category">

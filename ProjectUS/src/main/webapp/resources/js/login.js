@@ -16,6 +16,9 @@ window.onload = function() {
 		} else if (!pw.value) { // 비밀번호가 없는 경우
 			loginmsg.innerHTML = "비밀번호를 입력해주세요."
 			loginmsg.style.color = "red";
+		}else{
+			login.action="/member/login"
+			login.submit(); // '로그인' 으로 submit
 		}
 		
 	}

@@ -8,9 +8,6 @@
 <link rel="stylesheet" href="/resources/css/notice.css">
 <script type="text/javascript" src="/resources/js/noticedetail.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- 임시 -->
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-<!-- 임시 -->
 <meta charset="UTF-8">
 <title>공지사항</title>
 </head>
@@ -29,7 +26,17 @@
 					<td colspan="6" class="title" id="titleD">${detail.title}</td>
 				</tr>
 				<tr id="circ" class="bb2">
-					<td class="category">${detail.category}</td>
+					<c:choose>
+						<c:when test="${detail.category eq 1}">
+							<td class="category">일반</td>
+						</c:when>
+						<c:when test="${detail.category eq 2}">
+							<td class="category">이벤트</td>
+						</c:when>
+						<c:when test="${detail.category eq 3}">
+							<td class="category">기타</td>
+						</c:when>
+					</c:choose>
 					<td class="hc">작성자</td>
 					<td class="id">${detail.id}</td>
 					<td class="hc">작성일</td>
@@ -73,6 +80,8 @@
 			<!-- 목록 버튼 -->
 			<div id="btn">
 				<input type="button" value="목록" id="listbtn" onclick="listbtn()">
+				<input type="button" value="수정" id="editbtn" onclick="editbtn()">
+				<input type="button" value="삭제" id="deletebtn" onclick="deletebtn()">
 			</div>
 		</div>
 	</div>

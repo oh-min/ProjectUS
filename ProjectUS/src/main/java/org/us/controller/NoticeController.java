@@ -59,7 +59,7 @@ public class NoticeController {
 	/* 공지 작성 */
 	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)
 	public String write(NoticeVO nvo) {
-		System.out.println("공지작성 컨트롤러"+nvo);
+		System.out.println("공지작성 컨트롤러 : "+nvo);
 		ns.write(nvo);
 		return "redirect:/notice/list";
 	}

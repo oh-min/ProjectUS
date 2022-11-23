@@ -29,12 +29,12 @@ window.onload = function() {
 	let namereg = /^[가-힣]{2,20}$/; // 한글 2 ~ 20자
 	let idreg = /^[a-z0-9]{6,20}$/; // 소문자 영문, 숫자 6 ~ 20자
 	let pwreg = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/; // 8 ~ 16자 영문, 숫자
-	let emailreg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일 정규식
+	let emailreg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일  정규식
 	let nickreg = /^.{4,20}$/; // 4 ~ 20자
 	let phonereg = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/; // 01* - 숫자 3 ~ 4자 - 숫자 4자
 	// 년도 입력 정규식
 	let yearchk1 = /^[0-9]+$/; // 숫자만 입력
-	let yearchk2 = /^[0-9]{4}$/; // 4자리 숫자만 입력 
+	let yearchk2 = /^[0-9]{4}$/; // 4자리 숫자만 입력
 																	
 	/* 정규식 불일치시 msg */
 	let nameInnermsg = "2 ~ 20자 이내의 한글만 입력 가능합니다."
@@ -115,7 +115,7 @@ window.onload = function() {
 				birthDayfnc(birthY.value, birthM.value) // 월 입력시 1~12만 선택하는 함수 호출
 			}
 			
-		} else if (!birthY.value || birthD.value == "null") { // 년도와 일에 값이 없는 경우
+		} else if (!birthY.value || birthD.value == "null") { // 년도와 일에 값이 없는  경우
 			
 			birthmsg.innerHTML = ""
 				
@@ -132,34 +132,24 @@ window.onload = function() {
 		
 		if (birthY.value && birthM.value && birthD.value) { // 생년월일 모두 값이 존재
 			// 현재 날짜 구하기
-			let today = new Date();
-			let todayY = today.getFullYear(); // 년도
-			let todayM = today.getMonth() + 1; // 월
-			let todayD = today.getDate(); // 날짜
-			console.log(today)
-			console.log(todayY)
-			console.log(todayM)
-			console.log(todayD)
+			let today = new Date(); // 현재날짜
+			let todayY = today.getFullYear(); // 현재 년도
+			let todayM = today.getMonth() + 1; // 현재 월
+			let todayD = today.getDate(); // 현재 날짜
 
-			// 한자리 수인 경우 앞에 0을 넣어 2자리로 맞추기
-			var birthM00 = ('00' + birthM.value).slice(-2);
-			var birthD00 = ('00' + birthD.value).slice(-2);
-			console.log(birthM00)
-			console.log(birthD00)
+			// 한자리 수인 경우 앞에 0을 넣어 2자리로 맞추기. ex) 3 -> 03
+			let birthM00 = ('00' + birthM.value).slice(-2)
+			let birthD00 = ('00' + birthD.value).slice(-2); 
 			
-			var todayYMD = todayY + "/" + todayM + "/" + todayD; // 현재날짜
-			var birthYMD = birthY.value + "/" + birthM00 + "/" + birthD00; // 입력한날짜
-			console.log(todayYMD)
-			console.log(birthYMD)
+			// 날짜를 비교하기 위해 년도/월/일 형식으로 변경하기 ex) 22/11/22
+			let todayYMD = todayY + "/" + todayM + "/" + todayD; // 현재날짜
+			let birthYMD = birthY.value + "/" + birthM00 + "/" + birthD00; // 입력한날짜
+		
+			// 만 14세 미만인 경우를 구분하기위해 년도월일 형식으로 변경하기
+			var childtoday = todayY + "" + todayM + "" + todayD; // 현재날짜
+			var childBirth = birthY.value + birthM00 + birthD00; // 입력한 날짜
+			var under14 = (childtoday - childBirth) - 140000 // (현재날짜 -입력한날짜) - 14000
 			
-			// 만 14세 미만인 경우
-			var childtoday = todayY + "" + todayM + "" + todayD;
-			var childBirth = birthY.value + birthM00 + birthD00;
-			var under14 = (childtoday - childBirth) - 140000
-			console.log(childtoday)
-			console.log(childBirth)
-			console.log(under14)
-
 			// 현재날짜보다 입력한 날짜가 미래인 경우
 			if (todayYMD >= birthYMD) {
 				if (under14 < 0) { // 14세 미만인 경우
@@ -169,13 +159,13 @@ window.onload = function() {
 					birthmsg.innerHTML = ""
 				}
 			} else if (todayYMD < birthYMD) {
+				
 				birthmsg.innerHTML = "미래에서 오셨나요."
 				birthmsg.style.color = "red";
 			}
 		}
-		
-		
 	}
+	
 	/* 전화번호 확인 정규식 (phone blur) */ 
 	phone.onblur = function(){
 		regchkfnc(phone, phonemsg, phonereg, phoneInnermsg) 
@@ -220,7 +210,7 @@ window.onload = function() {
 
 	/* 년도, 월 입력시 일 옵션 함수 선언 */
 	function birthDayfnc(year, month) {
-		var lastday = new Date(Number(year), Number(month), 0).getDate(); // Date 객체 사용. getDate()사용하여 해당 년도의 해당 달의 일수 구하기
+		var lastday = new Date(Number(year), Number(month), 0).getDate(); // Date객체 사용. getDate() 사용하여 해당 년도의 해당 달의 일수 구하기
 		console.log("마지막 날짜 = " + lastday);
 		var str = "";
 		str += "<option value='null'>선택</option>"
@@ -278,11 +268,8 @@ window.onload = function() {
 						nick: nick.value 
 					});
 					xhr = new XMLHttpRequest(); // 통신에 사용 될 XMLHttpRequest 객체 정의
-					xhr.onreadystatechange = () => { // httpRequest의
-														// readyState가 변화했을때 함수
-														// 실행
-						// readyState가 Done이고 응답 값이 200일 때, 받아온 response로 id를
-						// 그려줌
+					xhr.onreadystatechange = () => { // httpRequest의 readyState가 변화했을때 함수 실행
+						// readyState가 Done이고 응답 값이 200일 때, 받아온 response로 id를 그려줌
 						if (xhr.readyState === XMLHttpRequest.DONE) {
 							let txt = xhr.responseText; // controller에서 응답된 문자열
 							if (xhr.status === 200) { // 연결이 된 경우
@@ -298,13 +285,7 @@ window.onload = function() {
 					};
 					xhr.open('POST','/member/samechk',true) // post 방식으로 id
 															// 파라미터와 할께 요청
-					xhr.setRequestHeader('Content-Type', 'application/json'); // 요청
-																				// Header에
-																				// 컨텐츠
-																				// 타입은
-																				// Json으로
-																				// 사전
-																				// 정의
+					xhr.setRequestHeader('Content-Type', 'application/json'); // 요청 Header에 컨텐츠 타입은 Json으로 사전 정의
 					xhr.send(data); // 정의된 서버에 Json 형식의 요청 Data를 포함하여 요청을 전송
 				}
 			}

@@ -33,6 +33,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	// 공지작성 구현
 	public void write(NoticeVO nvo) {
+		System.out.println("공지작성 서비스 : "+nvo);
 		nm.write(nvo);
 		if (nvo.getAttach() != null) {
 

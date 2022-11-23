@@ -13,6 +13,7 @@ import lombok.ToString;
 public class NoticeVO {
 
 	private String id; // 아이디
+	private String nick; // 닉네임
 	private int nno; // 공지번호
 	private String title; // 제목
 	private String content; // 내용

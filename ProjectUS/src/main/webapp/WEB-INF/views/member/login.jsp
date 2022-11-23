@@ -35,7 +35,7 @@
 	<%@include file="../header.jsp"%>
 	<%@include file="../nav.jsp"%>
 	<div id="content">
-		<form id="login" action="/member/login" method="post">
+		<form id="login" method="post">
 			<h2>로그인</h2>
 			<div>
 				<input type="text" placeholder="아이디" name="id" id="id"> <input

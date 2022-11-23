@@ -52,7 +52,7 @@
 							</c:when>
 						</c:choose>
 						<td class="title"><a href="/notice/detail?nno=${top.nno}">${top.title}</a></td>
-						<td class="id">${top.id}</td>
+						<td class="nick">${top.nick}</td>
 						<td class="regdate"><fmt:formatDate value="${top.regdate}" pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${top.cnt}</td>
 					</tr>
@@ -73,18 +73,20 @@
 							</c:when>
 						</c:choose>
 						<td class="title"><a href="/notice/detail?nno=${list.nno}">${list.title}</a></td>
-						<td class="id">${list.id}</td>
+						<td class="nick">${list.nick}</td>
 						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${list.cnt}</td>
 					</tr>
 				</c:forEach>
 			</table>
 			<!-- 글쓰기 버튼 -->
-			<div id="btn">
-				<div id="gowrite">
-					<input type="button" value="글쓰기" id="writebtn">
+			<c:if test="${user.admin eq 1}"> <!-- 관리자 아이디로 로그인 한 경우에만 버튼 생성 -->
+				<div id="btn">
+					<div id="gowrite">
+						<input type="button" value="글쓰기" id="writebtn">
+					</div>
 				</div>
-			</div>
+			</c:if>
 			<!-- 페이징 -->
 			<div id="paging">
 				<c:if test="${paging.prev}">
