@@ -113,10 +113,6 @@ input:focus, textarea:focus {
 	padding: 30px 50px 30px 50px;
 }
 
-#attachD {
-	padding: 20px 180px 20px 180px;
-}
-
 #attachD>img {
 	padding-right: 20px;
 	padding-top: 20px;
@@ -125,7 +121,7 @@ input:focus, textarea:focus {
 #btn {
 	width: 80%;
 	margin: 0 auto;
-/* 	margin-top: 30px; */
+	/* 	margin-top: 30px; */
 	margin-bottom: 30px;
 }
 
@@ -138,7 +134,8 @@ input[type=submit] {
 	width: 80px;
 	height: 40px;
 }
-#editbtn, #deletebtn{
+
+#editbtn, #deletebtn {
 	float: right;
 	margin-left: 5px;
 }
@@ -171,7 +168,7 @@ textarea[class="NdetailInfo"] {
 #preview {
 	border-top: 1px solid #F5F5F4;
 }
-/*글작성 버튼 가운데 위치*/
+/* 글작성 버튼 가운데 위치 */
 #write {
 	width: 80px;
 	margin: 0 auto;

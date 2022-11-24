@@ -59,7 +59,7 @@ public class NoticeController {
 	/* 공지 작성 */
 	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)
 	public String write(NoticeVO nvo) {
-		System.out.println("공지작성 컨트롤러 : "+nvo);
+		System.out.println("공지작성 컨트롤러 : " + nvo);
 		ns.write(nvo);
 		return "redirect:/notice/list";
 	}
@@ -68,6 +68,12 @@ public class NoticeController {
 	@RequestMapping(value = "/notice/attachlist", method = RequestMethod.GET)
 	public ResponseEntity<ArrayList<AttachFileVO>> uploadAjaxPost(int nno) {
 		return new ResponseEntity<>(as.attachlist(nno), HttpStatus.OK);
+	}
+
+	/* 공지 수정 페이지로 이동 */
+	@RequestMapping(value = "/notice/edit", method = RequestMethod.GET)
+	public void goedit(NoticeVO nvo, Model model) {
+		model.addAttribute("detail", ns.detail(nvo));
 	}
 
 }

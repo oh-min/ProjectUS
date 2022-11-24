@@ -31,6 +31,7 @@
 	<select id="detail" resultType="org.us.model.NoticeVO">
 		select *
 		from notice
+		where nno = #{nno}
 	</select>
 
 	<!-- 공지사항 작성 -->

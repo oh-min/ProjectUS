@@ -54,7 +54,7 @@ public class AttachController {
 		ArrayList<AttachFileVO> list = new ArrayList<>();
 
 		// 폴더 경로
-		String attachFolder = "D:\\01-STUDY\\usproject";
+		String attachFolder = "D:\\01-STUDY";
 
 		// 서버 업로드 경로와 getFolder메서드의 날짜문자열을 이어서 하나의 폴더 생성
 		File attachPath = new File(attachFolder, getFolder());
@@ -112,7 +112,7 @@ public class AttachController {
 	@RequestMapping(value = "/notice/display", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getFile(String fileName) {
 
-		File file = new File("D:\\01-STUDY\\usproject\\" + fileName);
+		File file = new File("D:\\01-STUDY\\" + fileName);
 
 		ResponseEntity<byte[]> result = null;
 
@@ -134,7 +134,7 @@ public class AttachController {
 	@RequestMapping(value = "/notice/download", method = RequestMethod.GET)
 	public ResponseEntity<Resource> downloadFile(String fileName) {
 
-		Resource resource = new FileSystemResource("D:\\01-STUDY\\usproject\\" + fileName);
+		Resource resource = new FileSystemResource("D:\\01-STUDY\\" + fileName);
 
 		// 다운로드시 파일의 이름을 처리
 		String resourceName = resource.getFilename();

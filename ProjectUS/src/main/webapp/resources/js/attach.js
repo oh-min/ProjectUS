@@ -33,8 +33,6 @@ $(document).ready(function() {
 		const attachFile = $("input[name='attachFile']"); // 선택된 파일 정보
 		const attachfiles = attachFile[0].files; // 선택된 파일을 배열에 저장
 
-		console.log(attachfiles)
-
 		for (let i = 0; i < attachfiles.length; i++) {
 
 			// 첨부파일 확장자 제한 함수 호출
@@ -59,7 +57,7 @@ $(document).ready(function() {
 				let input = "";
 				$(result).each(function(i, obj) {
 					console.log(obj)
-					console.log(obj.fileName)
+					console.log("파일 이름"+obj.fileName)
 
 					if (obj.image) { // 이미지 파일일 경우 -> 사진 보기
 						str += "<input type='hidden' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
@@ -68,7 +66,7 @@ $(document).ready(function() {
 						str += "<input type='hidden' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
 
 						let filePath = encodeURIComponent(obj.attachPath + "/s_" + obj.uuid + "_" + obj.fileName);
-						console.log(filePath);
+						console.log("이미지 파일 경로 : "+filePath);
 						str += "<img src='\display?fileName=" + filePath + "'><br>"
 					} else { // 그 외의 파일일 경우 -> 다운로드
 						str += "<input type='hidden' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
@@ -77,9 +75,9 @@ $(document).ready(function() {
 						str += "<input type='hidden' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
 
 						let fileName = obj.fileName.replace(/,/g, "")
-						console.log(fileName)
+						console.log("그 외의 파일 이름 : "+fileName)
 						let filePath = encodeURIComponent(obj.attachPath + "/" + obj.uuid + "_" + fileName);
-						console.log(filePath);
+						console.log("그 외의 파일 경로 : "+filePath);
 						str += "<a href='\download?fileName=" + filePath + "'>" + obj.fileName + "</a>" + "<br>"
 					}
 				})

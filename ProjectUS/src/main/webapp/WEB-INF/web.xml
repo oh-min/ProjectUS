@@ -26,7 +26,7 @@
 		<async-supported>true</async-supported> <!-- 채팅에서  동시에 전송된 데이터를 제어하기 위해 추가 -->
 		<multipart-config> <!-- 추가 -->
 			<location> <!-- 파일 업로드 경로 -->
-				D:\\01-STUDY\\usproject
+				D:\\01-STUDY
 			</location>
 			<max-file-size>	<!-- 파일 최대 크기 : 20MB -->
 				20971520
