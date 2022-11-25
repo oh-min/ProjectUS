@@ -4,6 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.us.mapper.TestMapper">
 	<select id="getTime" resultType="String">
-		select sysdate();
+		select sysdate()
 	</select>
+	<insert id="write">
+		insert into test(id,title,content)
+		values(#{id},#{title},#{content})
+	</insert>
 </mapper>

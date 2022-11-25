@@ -37,7 +37,6 @@ public class NoticeServiceImpl implements NoticeService {
 		System.out.println("공지작성 서비스 : "+nvo);
 		nm.write(nvo);
 		if (nvo.getAttach() != null) {
-
 			// 첨부파일 insert 구현
 			nvo.getAttach().forEach(avo -> {
 				avo.setNno(nvo.getNno());
@@ -51,6 +50,19 @@ public class NoticeServiceImpl implements NoticeService {
 	public int total(CriteriaVO cri) {
 
 		return nm.total(cri);
+	}
+	// 공지 수정 구현
+	public void edit(NoticeVO nvo) {
+		System.out.println("공지 수정 서비스 : "+nvo);
+		if (nvo.getAttach() != null) {
+			// 첨부파일 insert 구현
+			nvo.getAttach().forEach(avo -> {
+				avo.setNno(nvo.getNno());
+				am.insert(avo);
+			});
+			System.out.println(nvo.getAttach());
+		}
+		nm.edit(nvo);
 	}
 
 }

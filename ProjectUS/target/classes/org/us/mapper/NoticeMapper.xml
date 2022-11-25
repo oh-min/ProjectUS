@@ -56,4 +56,10 @@
 		</if>
 	</select>
 
+	<!-- 공지사항 수정 -->
+	<update id="edit">
+		update notice
+		set title = #{title}, content = #{content}, category= #{category}, top = #{top}
+		where nno = #{nno}
+	</update>
 </mapper>

@@ -28,4 +28,27 @@ window.onload = function() {
 		check.checked = true;
 	}
 
+	/* 글 작성 버튼 click */
+	document.getElementById("writebtn").onclick = function() {
+		let fileName = document.getElementById("fileName");
+		let uuid = document.getElementById("uuid");
+		let attachPath = document.getElementById("attachPath");
+		let image = document.getElementById("image");
+		if (title.value == "") {
+			alert("제목을 입력해 주세요.")
+		} else if (id.value == "") {
+			alert("나중에 관리자 아이디로 로그인 했을 경우만 글 작성 가능하도록 변경해야한다.")
+		} else if (category.value == "null") {
+			alert("카테고리를 설정해 주세요.")
+		} else if (content.value == "") {
+			alert("내용을 입력해 주세요.")
+		} else {
+			document.getElementById('editform').submit();
+		}
+
+	}
+
 }
+/*
+ * document.getElementById("xbtn").onclick = function(){ alert("hi") }
+ */

@@ -17,4 +17,7 @@ public interface NoticeService {
 
 	// notice테이블 전체건수 설계
 	public int total(CriteriaVO cri);
+	
+	// 공지 수정 설계
+	public void edit(NoticeVO nvo);
 }

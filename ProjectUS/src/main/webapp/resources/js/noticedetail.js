@@ -11,6 +11,7 @@ window.onload = function() {
 /* 목록 버튼 */
 function listbtn() {
 	location.href = "/notice/list";
+	alert("왜 이게 됨?")
 }
 /* 수정 버튼 */
 function editbtn() {

@@ -21,4 +21,7 @@ public interface NoticeMapper {
 	// notice테이블 전체건수 DB설계
 	public int total(CriteriaVO cri);
 
+	// 공지 수정 DB설계
+	public void edit(NoticeVO nvo);
+
 }

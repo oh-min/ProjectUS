@@ -2,27 +2,31 @@
  * 공지사항 작성
  */
 window.onload = function() {
-	const title = document.getElementById("title");
-	const id = document.getElementById("id");
-	const category = document.getElementById("category");
-	const content = document.getElementById("Ncontent");
-	const top = document.getElementById("top");
+	let title = document.getElementById("title");
+	let id = document.getElementById("id");
+	let category = document.getElementById("category");
+	let content = document.getElementById("Ncontent");
+	let top = document.getElementById("top");
 
-	const formData = new FormData(); // 파일 업로드
+	let formData = new FormData(); // 파일 업로드
 
 	/* 글 작성 버튼 click */
 	document.getElementById("writebtn").onclick = function() {
 		// 첨부된 파일 정보
-		const fileName = document.getElementById("fileName");
-		const uuid = document.getElementById("uuid");
-		const attachPath = document.getElementById("attachPath");
-		const image = document.getElementById("image");
+		let fileName = document.getElementById("fileName");
+		let uuid = document.getElementById("uuid");
+		let attachPath = document.getElementById("attachPath");
+		let image = document.getElementById("image");
 
 		if (title.value == "") {
 			alert("제목을 입력해 주세요.")
 		} else if (id.value == "") {
-			alert("나중에 관리자 아이디로 로그인 했을 경우만 글 작성 가능하도록 변경해야한다.")
-		} else if (category.value == "null") {
+			alert("로그인 후 작성해주세요.")
+			location.href="/member/login"
+		}else if (id.value != "admin"){ // 로그인된 아이디가 관리자 아이디가 아닌 경우
+			alert("관리자만 작성할 수 있습니다.")
+			location.href="/notice/list"
+		}else if (category.value == "null") {
 			alert("카테고리를 설정해 주세요.")
 		} else if (content.value == "") {
 			alert("내용을 입력해 주세요.")

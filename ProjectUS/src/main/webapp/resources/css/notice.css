@@ -189,3 +189,11 @@ textarea[class="NdetailInfo"] {
 .nowpage {
 	color: #528555;
 }
+/* 수정 */
+#xbtn {
+	background-color: white;
+	border: 1px solid gray;
+	margin: 10px;
+	color: red;
+	padding: 0px;
+}

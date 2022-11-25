@@ -4,8 +4,8 @@
 $(document).ready(function() {
 
 	/* 첨부파일 확장자 제한 함수 선언 */
-	const reg = new RegExp("(.*?)\.(exe|zip|alz)$") // 확장자 제한
-	const maxSize = 5242880; // 크기 제한
+	let reg = new RegExp("(.*?)\.(exe|zip|alz)$") // 확장자 제한
+	let maxSize = 5242880; // 크기 제한
 
 	function checkExtension(fileName, fileSize) {
 		// 파일크기 제한
@@ -28,10 +28,10 @@ $(document).ready(function() {
 
 	/* 파일 정보를 ajax방법으로 controller에 보내는 함수 선언 */
 	function attachAjax() {
-		const formData = new FormData(); // 파일 업로드
+		let formData = new FormData(); // 파일 업로드
 
-		const attachFile = $("input[name='attachFile']"); // 선택된 파일 정보
-		const attachfiles = attachFile[0].files; // 선택된 파일을 배열에 저장
+		let attachFile = $("input[name='attachFile']"); // 선택된 파일 정보
+		let attachfiles = attachFile[0].files; // 선택된 파일을 배열에 저장
 
 		for (let i = 0; i < attachfiles.length; i++) {
 

@@ -56,7 +56,7 @@ public class NoticeController {
 	public void gowrite(NoticeVO nvo) {
 	}
 
-	/* 공지 작성 */
+	/* 공지 작성 */	
 	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)
 	public String write(NoticeVO nvo) {
 		System.out.println("공지작성 컨트롤러 : " + nvo);
@@ -76,4 +76,11 @@ public class NoticeController {
 		model.addAttribute("detail", ns.detail(nvo));
 	}
 
+	/* 공지 수정 작성 */
+	@RequestMapping(value = "/notice/edit", method = RequestMethod.POST)
+	public String edit(NoticeVO nvo) {
+		System.out.println("공지수정 컨트롤러 : " + nvo);
+		ns.edit(nvo);
+		return "redirect:/notice/list";
+	}
 }

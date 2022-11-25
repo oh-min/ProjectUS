@@ -16,10 +16,10 @@
 	<div id="content">
 		<div id="Nwrite">
 			<h2>공지사항</h2>
-			<input type="hidden" value="${detail.nno}" id="nno">
 			<input type="hidden" value="${detail.category}" id="forcategory">
 			<input type="hidden" value="${detail.top}" id="fortop">
-			<form action="/notice/write" method="post" id="writeform">
+			<form action="/notice/edit" method="post" id="editform">
+			<input type="hidden" value="${detail.nno}" id="nno" name="nno">
 				<table class="Ntable" id="writeTable" border="1">
 					<tr>
 						<td class="hc">제목</td>
@@ -58,7 +58,7 @@
 				</table>
 				<div id="btn">
 					<div id="write">
-						<input type="button" value="글쓰기" id="writebtn">
+						<input type="button" value="수정하기" id="writebtn">
 					</div>
 				</div>
 			</form>
