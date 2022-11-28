@@ -1,6 +1,9 @@
 package org.us.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URL;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -111,5 +114,30 @@ public class MemberController {
 	/* 마이페이지로 이동 */
 	@RequestMapping(value = "/member/mypage", method = RequestMethod.GET)
 	public void mypage() {
+	}
+
+	/* 닉네임 자동생성 */
+	@RequestMapping(value = "/member/randomnick", produces = "application/text; charset=UTF-8", method = RequestMethod.GET)
+	public ResponseEntity<String> randomnick(HttpServletResponse response) {
+		final String HTTP_REQUEST = "https://nickname.hwanmoo.kr/?format=json&count=1"; // 수정이 불가능한 final 필드
+		try {
+			System.out.println("hello? it's try");
+
+			String info = "";
+			URL url = new URL(HTTP_REQUEST);
+			BufferedReader bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+			String line;
+			while ((line = bf.readLine()) != null) {
+				info += line;
+				System.out.println(info);
+
+				return new ResponseEntity<>(info, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			System.out.println("hello? it's catch" + e);
+			e.printStackTrace();
+		}
+		System.out.println("hello? it's nothing");
+		return null;
 	}
 }

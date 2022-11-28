@@ -8,10 +8,16 @@
 		insert into attach(uuid, attachpath, filename, image, nno)
 		values(#{uuid},#{attachPath},#{fileName},#{image},#{nno});
 	</insert>
-	
+
 	<!-- 첨부파일 목록 -->
 	<select id="attachlist" resultType="org.us.model.AttachFileVO">
 		select * from attach
 		where nno = #{nno}
 	</select>
+
+	<!-- 공지사항 삭제시 첨부파일 같이 삭제 -->
+	<delete id="attachdelete">
+		delete from attach
+		where nno = #{nno}
+	</delete>
 </mapper>

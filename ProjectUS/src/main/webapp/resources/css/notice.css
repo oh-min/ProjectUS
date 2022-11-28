@@ -68,6 +68,7 @@ input:focus, textarea:focus {
 #search {
 	height: 34px;
 	width: 200px;
+	padding-left: 10px
 }
 
 .search>form>input {
@@ -194,6 +195,30 @@ textarea[class="NdetailInfo"] {
 	background-color: white;
 	border: 1px solid gray;
 	margin: 10px;
-	color: red;
+	color: #528555;
 	padding: 0px;
+	width: 20px;
+	height: 20px;
+	font-weight: bold;
+}
+
+#xbtn:hover {
+	color: red;
+	font-weight: bold;
+}
+
+div>#xbtn {
+	background-color: white;
+	border: 1px solid gray;
+	margin: 10px;
+	color: #528555;
+	padding: 0px;
+	width: 20px;
+	height: 20px;
+	font-weight: bold;
+}
+
+div>#xbtn:hover {
+	color: red;
+	font-weight: bold;
 }

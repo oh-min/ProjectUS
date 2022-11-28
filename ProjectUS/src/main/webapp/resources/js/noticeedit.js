@@ -49,6 +49,3 @@ window.onload = function() {
 	}
 
 }
-/*
- * document.getElementById("xbtn").onclick = function(){ alert("hi") }
- */

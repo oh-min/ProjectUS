@@ -16,10 +16,9 @@
 	<div id="content">
 		<div id="Nwrite">
 			<h2>공지사항</h2>
-			<input type="hidden" value="${detail.category}" id="forcategory">
-			<input type="hidden" value="${detail.top}" id="fortop">
-			<form action="/notice/edit" method="post" id="editform">
-			<input type="hidden" value="${detail.nno}" id="nno" name="nno">
+			<input type="hidden" value="${detail.category}" id="forcategory"> <input type="hidden" value="${detail.top}" id="fortop">
+			<form method="post" id="editform">
+				<input type="hidden" value="${detail.nno}" id="nno" name="nno">
 				<table class="Ntable" id="writeTable" border="1">
 					<tr>
 						<td class="hc">제목</td>
@@ -46,9 +45,11 @@
 						<td colspan="3"><textarea rows="30" cols="100" name="content" class="NdetailInfo" id="Ncontent">${detail.title}</textarea></td>
 					</tr>
 					<tr id="trPreview">
+						<!-- 미리보기 -->
 						<td colspan="3" id="preview"></td>
 					</tr>
 					<tr id="inedit">
+						<!-- 첨부된 파일 -->
 						<td colspan="3" id="attachD"></td>
 					</tr>
 					<tr class="line2px">
@@ -58,12 +59,25 @@
 				</table>
 				<div id="btn">
 					<div id="write">
-						<input type="button" value="수정하기" id="writebtn">
+						<input type="button" value="수정하기" id="writebtn" formaction="/notice/edit">
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 	<%@include file="../footer.jsp"%>
+	<script type="text/javascript">
+		/* 수정페이지인 경우 x버튼 클릭시 첨부되었던 파일 삭제 */
+		function xbtn() {
+
+			let editform = document.getElementById('editform')
+			let attachinfo = document.getElementByClassName('attachinfo')
+			console.log("x버튼 클릭")
+			console.log(attachinfo)
+			/* editform.action = '/attach/delete';
+			editform.method = 'post';
+			editform.submit(); */
+		}
+	</script>
 </body>
 </html>

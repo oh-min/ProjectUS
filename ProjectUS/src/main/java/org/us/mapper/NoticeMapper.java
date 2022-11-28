@@ -23,5 +23,8 @@ public interface NoticeMapper {
 
 	// 공지 수정 DB설계
 	public void edit(NoticeVO nvo);
+	
+	// 공지 삭제 DB설계
+	public void delete(int nno);
 
 }

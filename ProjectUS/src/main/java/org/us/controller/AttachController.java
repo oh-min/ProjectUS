@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.us.model.AttachFileVO;
+import org.us.model.NoticeVO;
 
 import net.coobird.thumbnailator.Thumbnailator;
 
@@ -148,5 +149,11 @@ public class AttachController {
 		}
 
 		return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+	}
+
+	/* 첨부된 파일 삭제하기 */
+	@RequestMapping(value = "/attach/delete", method = RequestMethod.POST)
+	public void delete(AttachFileVO avo) {
+		System.out.println("첨부된 파일 삭제 컨트롤러 : " + avo);
 	}
 }

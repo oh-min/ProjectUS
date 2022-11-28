@@ -83,4 +83,11 @@ public class NoticeController {
 		ns.edit(nvo);
 		return "redirect:/notice/list";
 	}
+	/* 공지 삭제 */
+	@RequestMapping(value = "/notice/delete", method = RequestMethod.POST)
+	public String delete(int nno) {
+		System.out.println("공지 삭제 컨트롤러 : " + nno);
+		ns.delete(nno);
+		return "redirect:/notice/list";
+	}
 }

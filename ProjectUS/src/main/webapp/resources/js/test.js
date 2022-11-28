@@ -1,7 +1,8 @@
 /**
  * 
  */
-window.onload = function() {
+// test.jsp
+/*window.onload = function() {
 
 	let title = document.getElementById("title") // 제목
 	let id = document.getElementById("id") // 아이디
@@ -13,6 +14,11 @@ window.onload = function() {
 		console.log(id.value)
 		console.log(content.value)
 		
-		document.getElementById("writeform").submit(); // 
+		document.getElementById("writeform").submit(); // writeform 을 submit
 	}
+}*/
+
+// testlist.jsp
+window.onload = function(){
+	
 }

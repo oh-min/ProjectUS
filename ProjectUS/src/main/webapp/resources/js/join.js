@@ -46,6 +46,7 @@ window.onload = function() {
 	/* 버튼 */
 	let sameidchk = document.getElementById('sameidchk'); // 아이디 중복체크
 	let samenickchk = document.getElementById('samenickchk'); // 닉네임 중복 체크
+	let randomnick = document.getElementById('randomnick'); // 닉네임 자동생성
 
 	/* 이름 확인 정규식 (name blur) */
 	name.onblur = function(){
@@ -206,6 +207,30 @@ window.onload = function() {
 		}
 	}
 
+	randomnick.onclick = function(){
+		console.log("randomnick")
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET', '/member/randomnick', true);
+		xhr.onload = function() {
+			  if (xhr.status >= 200 && xhr.status < 400) {
+			    console.log("success")
+			    let data = JSON.parse(xhr.responseText);
+			    console.log(data.words)
+			    nick.value = data.words; // 닉네임 입력 창에 값 넣기
+			    sameregchkfnc(randomnick, nickmsg, nickreg, nickInnermsg, samenickchk)
+			  } else {
+				console.log("what's wrong?")
+			  }
+			};
+
+			xhr.onerror = function(e) {
+				console.log(e)
+			};
+
+			xhr.send();
+	}
+	
+	
 	/* 함수 선언 */
 
 	/* 년도, 월 입력시 일 옵션 함수 선언 */
@@ -262,12 +287,11 @@ window.onload = function() {
 				
 				// 버튼을 클릭할때
 				chkbtn.onclick = function() {
-					data = JSON.stringify({ // id 값과 nick 값을 json타입의 data로 변형하여
-											// 이동
+					data = JSON.stringify({ // id 값과 nick 값을 json타입의 data로 변형하여 이동
 						id: id.value,
 						nick: nick.value 
 					});
-					xhr = new XMLHttpRequest(); // 통신에 사용 될 XMLHttpRequest 객체 정의
+					let xhr = new XMLHttpRequest(); // 통신에 사용 될 XMLHttpRequest 객체 정의
 					xhr.onreadystatechange = () => { // httpRequest의 readyState가 변화했을때 함수 실행
 						// readyState가 Done이고 응답 값이 200일 때, 받아온 response로 id를 그려줌
 						if (xhr.readyState === XMLHttpRequest.DONE) {

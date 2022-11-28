@@ -3,11 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.us.mapper.TestMapper">
-	<select id="getTime" resultType="String">
-		select sysdate()
-	</select>
-	<insert id="write">
+	<insert id="write"> <!-- write 메서드와 연결 -->
 		insert into test(id,title,content)
 		values(#{id},#{title},#{content})
 	</insert>
+	<!-- 글 목록 DB 구현 -->
+	<select id="list" resultType="org.us.model.TestVO">
+		select * from test
+	</select>
 </mapper>

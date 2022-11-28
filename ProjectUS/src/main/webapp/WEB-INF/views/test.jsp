@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/test/write" method="post" id="writeform">
+<!-- test/write 에 post 형식으로 submit -->
+<form action="/test/write" method="post" id="writeform"> 
 제&nbsp;&nbsp;&nbsp;목 : <input type="text" name="title" id="title"><br>
 작성자 : <input type="text" name="id" id="id"><br>
 내&nbsp;&nbsp;&nbsp;용 : <textarea name="content" id="content"></textarea><br>

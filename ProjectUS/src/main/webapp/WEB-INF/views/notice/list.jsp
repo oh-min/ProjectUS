@@ -23,7 +23,7 @@
 			<!-- 검색 -->
 			<div class="search">
 				<form action="/notice/list" method="get">
-					<input type="submit" value="검색"> <input type="text" id="search" name="keyword" value="${paging.cri.keyword}">
+					<input type="submit" value="검색"> <input type="text" id="search" name="keyword" value="${paging.cri.keyword}" placeholder="제목 검색">
 				</form>
 			</div>
 			<!-- 목록 -->
@@ -80,7 +80,8 @@
 				</c:forEach>
 			</table>
 			<!-- 글쓰기 버튼 -->
-			<c:if test="${user.admin eq 1}"> <!-- 관리자 아이디로 로그인 한 경우에만 버튼 생성 -->
+			<c:if test="${user.admin eq 1}">
+				<!-- 관리자 아이디로 로그인 한 경우에만 버튼 생성 -->
 				<div id="btn">
 					<div id="gowrite">
 						<input type="button" value="글쓰기" id="writebtn">

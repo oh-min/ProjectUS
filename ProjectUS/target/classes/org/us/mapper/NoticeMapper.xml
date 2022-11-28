@@ -62,4 +62,10 @@
 		set title = #{title}, content = #{content}, category= #{category}, top = #{top}
 		where nno = #{nno}
 	</update>
+
+	<!-- 공지사항 삭제 -->
+	<delete id="delete">
+		delete from notice
+		where nno = #{nno}
+	</delete>
 </mapper>

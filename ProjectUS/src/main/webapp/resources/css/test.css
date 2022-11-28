@@ -1,5 +1,6 @@
 @charset "EUC-KR";
-input[type="text"]{
+/* 글 작성 */
+/* input[type="text"]{
 	height: 20px;
 	width: 200px;
 	margin: 5px;
@@ -13,4 +14,25 @@ input[type="button"]{
 	height: 30px;
 	width: 100px;
 	margin-left: 100px;
+} */
+
+/* 글 목록 */
+table, tr, td{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+table{
+	width: 600px;
+	margin: 20px;
+}
+td{
+	padding: 10px;
+	text-align: center;
+	height: 20px;
+}
+.fixS{
+	width: 50px;
+}
+.fixM{
+	width: 85px;
 }

@@ -20,4 +20,7 @@ public interface NoticeService {
 	
 	// 공지 수정 설계
 	public void edit(NoticeVO nvo);
+	
+	// 공지 삭제 설계
+	public void delete(int nno);
 }

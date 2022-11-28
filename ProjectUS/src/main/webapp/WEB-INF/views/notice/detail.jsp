@@ -20,6 +20,7 @@
 			<!-- 값 가져오기 -->
 			<input type="hidden" id="nno" value="${detail.nno}">
 			<!-- 값 가져오기 -->
+			<form method="post" id="deleteform">
 			<table class="Ntable" id="detailTable">
 				<tr>
 					<td class="nno" id="idD">${detail.nno}</td>
@@ -79,10 +80,13 @@
 			</table>
 			<!-- 목록 버튼 -->
 			<div id="btn">
-				<input type="button" value="목록" id="listbtn" onclick="listbtn()">
-				<input type="button" value="수정" id="editbtn" onclick="editbtn()">
-				<input type="button" value="삭제" id="deletebtn" onclick="deletebtn()">
+				<input type="button" value="목록" id="listbtn">
+				<c:if test="${user.admin eq 1}">
+				<input type="button" value="수정" id="editbtn">
+				<input type="button" value="삭제" id="deletebtn">
+				</c:if>
 			</div>
+			</form>
 		</div>
 	</div>
 	<%@include file="../footer.jsp"%>

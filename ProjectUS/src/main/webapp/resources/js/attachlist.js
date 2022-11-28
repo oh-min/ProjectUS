@@ -23,20 +23,24 @@ function attachlistfnc() {
 			if (attach.image) {
 				// 아래에 있는거 실행
 				let filePath = encodeURIComponent(attach.attachPath + "/s_" + attach.uuid + "_" + attach.fileName);
-				str += "<img src='\display?fileName=" + filePath + "'>"
+				//str += "<div>"
+				str += "<img src='\display?fileName=" + filePath + "' class='attachinfo'>"
 				// 수정페이지인 경우 -> x 버튼
 				if (para[0] == "http://localhost:8080/notice/edit") {
-					str += "<input type='button' value='x' onclick='xbtn()'>"
+					str += "<input type='button' value='x' onclick='xbtn()' id='xbtn'>"
 				}
+				//str += "</div>"
 				str += "<br>"
 			} else { // 그렇지 않으면
 				// 다운로드 할 수 있도록 실행
 				let filePath = encodeURIComponent(attach.uploadPath + "/" + attach.uuid + "_" + attach.fileName);
-				str += "<a href='\download?fileName=" + filePath + "'>" + attach.fileName + "</a>"
+				//str += "<div>"
+				str += "<a href='\download?fileName=" + filePath + "'class='attachinfo'>" + attach.fileName + "</a>"
 				// 수정페이지인 경우 -> x 버튼
 				if (para[0] == "http://localhost:8080/notice/edit") {
-					str += "<input type='button' value='x' onclick='xbtn()'>"
+					str += "<input type='button' value='x' onclick='xbtn()' id='xbtn'>"
 				}
+				//str += "</div>"
 				str += "<br>"
 			}
 		})
@@ -45,7 +49,4 @@ function attachlistfnc() {
 	})
 
 }
-/* 수정페이지인 경우 x버튼 클릭시 첨부되었던 파일 삭제 */
-function xbtn() {
-	alert("hi")
-}
+
