@@ -1,15 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <!-- 네이버 로그인 -->
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/resources/js/navercallback.js"></script>
 <!-- 네이버 로그인 -->
 <!-- 임시 -->
@@ -21,9 +17,9 @@
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("cdycnoa2eTLT0zibGaQY", "http://localhost:8080/member/navercallback");
 		console.log(naver_id_login.oauthParams.access_token); // 토큰 값
-		
+
 		naver_id_login.get_naver_userprofile("naverSignInCallback()"); // 네이버 사용자 프로필 조회 함수 호출
-		
+
 		/* 네이버 사용자 프로필 조회 함수 선언 */
 		function naverSignInCallback() {
 			$("#id").val(naver_id_login.getProfileData('email')) // 아이디 - 이메일을 아이디로 사용
@@ -34,14 +30,17 @@
 	</script>
 	<div id="content">
 		<form id="naverjoinform" method="post">
+		<!-- <form method="post"> -->
 			<!-- 아이디 -->
-			<input type="hidden" name="id" id="id"><br>
+			<input type="text" name="id" id="id"><br>
 			<!-- 비밀번호 -->
-			<input type="hidden" name="pw" id="pw"><br>
+			<input type="text" name="pw" id="pw"><br>
 			<!-- 이름 -->
-			<input type="hidden" name="name" id="name"><br>
+			<input type="text" name="name" id="name"><br>
+			<!-- 닉네임 -->
+			<input type="text" name="nick" id="nick"><br>
 			<!-- 이메일 -->
-			<input type="hidden" name="email" id="email"><br>
+			<input type="text" name="email" id="email"><br>
 		</form>
 	</div>
 </body>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -7,21 +6,17 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/home.css">
 <link rel="stylesheet" href="/resources/css/login.css">
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/login.js"></script>
 <!-- 임시 -->
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
 <!-- 네이버 로그인 -->
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-	charset="utf-8"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <!-- 네이버 로그인 -->
 <!-- 카카오 로그인 -->
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
-	integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
-	crossorigin="anonymous"></script>
+	integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	// SDK를 초기화 합니다. 사용하려는 앱의 JavaScript 키 입력
 	Kakao.init('f42e808f1e635004cb0b41d796f2c56d');
@@ -38,11 +33,9 @@
 		<form id="login" method="post">
 			<h2>로그인</h2>
 			<div>
-				<input type="text" placeholder="아이디" name="id" id="id"> <input
-					type="password" placeholder="비밀번호" name="pw" id="pw">
+				<input type="text" placeholder="아이디" name="id" id="id"> <input type="password" placeholder="비밀번호" name="pw" id="pw">
 				<p class="msg" id="loginmsg"></p>
-				<input type="button" value="로그인" id="loginbtn"> <a
-					href="/member/join">회원가입</a> <a href="">아이디/비밀번호 찾기</a>
+				<input type="button" value="로그인" id="loginbtn"> <a href="/member/join">회원가입</a> <a href="">아이디/비밀번호 찾기</a>
 			</div>
 		</form>
 		<div id="sns">
@@ -51,15 +44,12 @@
 			<!-- 카카오 로그인 -->
 			<div>
 
-				<a id="kakao-login-btn" href="javascript:loginWithKakao()"> <img
-					src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+				<a id="kakao-login-btn" href="javascript:loginWithKakao()"> <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
 					width="222" alt="카카오 로그인 버튼" />
 				</a>
 				<p id="token-result"></p>
-				<button class="api-btn" onclick="requestUserInfo()"
-					style="visibility: hidden">사용자 정보 가져오기</button>
-				<button class="api-btn" onclick="kakaologinfnc()">사용자 정보
-					가져오기</button>
+				<button class="api-btn" onclick="requestUserInfo()" style="visibility: hidden">사용자 정보 가져오기</button>
+				<button class="api-btn" onclick="kakaologinfnc()">사용자 정보 가져오기</button>
 
 
 			</div>

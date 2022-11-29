@@ -60,10 +60,10 @@ $(document).ready(function() {
 					console.log("파일 이름"+obj.fileName)
 
 					if (obj.image) { // 이미지 파일일 경우 -> 사진 보기
-						str += "<input type='hidden' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
-						str += "<input type='hidden' id='uuid' name='attach[" + i + "].uuid' value='" + obj.uuid + "'>";
-						str += "<input type='hidden' id='attachPath' name='attach[" + i + "].attachPath' value='" + obj.attachPath + "'>";
-						str += "<input type='hidden' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
+						str += "<input type='text' id='fileName' name='attach[" + i + "].fileName' value='" + obj.fileName + "'>";
+						str += "<input type='text' id='uuid' name='attach[" + i + "].uuid' value='" + obj.uuid + "'>";
+						str += "<input type='text' id='attachPath' name='attach[" + i + "].attachPath' value='" + obj.attachPath + "'>";
+						str += "<input type='text' id='image' name='attach[" + i + "].image' value='" + obj.image + "'>";
 
 						let filePath = encodeURIComponent(obj.attachPath + "/s_" + obj.uuid + "_" + obj.fileName);
 						console.log("이미지 파일 경로 : "+filePath);

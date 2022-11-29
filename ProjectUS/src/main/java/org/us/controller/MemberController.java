@@ -36,7 +36,7 @@ public class MemberController {
 		System.out.println("회원가입 controller 연결 성공");
 		System.out.println(mvo);
 		ms.signup(mvo);
-		return "redirect:/";
+		return "redirect:/member/login";
 	}
 
 	/* 아이디, 닉네임 중복 체크 */
@@ -119,6 +119,7 @@ public class MemberController {
 	/* 닉네임 자동생성 */
 	@RequestMapping(value = "/member/randomnick", produces = "application/text; charset=UTF-8", method = RequestMethod.GET)
 	public ResponseEntity<String> randomnick(HttpServletResponse response) {
+		System.out.println("닉네임 자동 생성 컨트롤러");
 		final String HTTP_REQUEST = "https://nickname.hwanmoo.kr/?format=json&count=1"; // 수정이 불가능한 final 필드
 		try {
 			System.out.println("hello? it's try");

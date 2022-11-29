@@ -4,7 +4,7 @@
 	<ul>
 		<li><a href="#">11111</a></li>
 		<li><a href="#">11111</a></li>
-		<li><a href="/deal/list">중고거래</a></li>
+		<li><a href="/board/list">중고거래</a></li>
 		<li><a href="#">11111</a></li>
 		<li><a href="/notice/list">공지</a></li>
 	</ul>

@@ -26,8 +26,8 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
 
 	<!-- 채팅을 위한 websocket handler -->
-	<websocket:handlers>
+	<!-- <websocket:handlers>
 		<websocket:mapping handler="myHandler" path="/websocket/echo" />
 	</websocket:handlers>
-	<beans:bean id="myHandler" class="org.us.Handler.ChatHandler"/>
+	<beans:bean id="myHandler" class="org.us.Handler.ChatHandler"/> -->
 </beans:beans>

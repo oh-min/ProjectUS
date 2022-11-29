@@ -18,8 +18,8 @@ public class NextPreServiceImpl implements NextPreService {
 		return npm.nnp(npvo);
 	}
 
-	// 중고거래
-	public ArrayList<NextPreVO> dnp(NextPreVO npvo) {
-		return npm.dnp(npvo);
+	// 자유게시판
+	public ArrayList<NextPreVO> bnp(NextPreVO npvo) {
+		return npm.bnp(npvo);
 	}
 }

@@ -9,7 +9,7 @@ public interface NextPreService {
 	// 공지사항
 	public ArrayList<NextPreVO> nnp(NextPreVO npvo);
 
-	// 중고거래
-	public ArrayList<NextPreVO> dnp(NextPreVO npvo);
+	// 자유게시판
+	public ArrayList<NextPreVO> bnp(NextPreVO npvo);
 
 }

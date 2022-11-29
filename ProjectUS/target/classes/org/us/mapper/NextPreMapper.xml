@@ -15,14 +15,14 @@
 	</select>
 
 	<!-- 중고거래 -->
-	<select id="dnp" resultType="org.us.model.NextPreVO">
+	<select id="bnp" resultType="org.us.model.NextPreVO">
 		select *
-		from deal
+		from board
 		where
-		dno in(
+		bno in(
 		<![CDATA[
-		(select dno from deal where dno < #{dno} order by dno desc limit 1),
-		(select dno from deal where dno > #{dno} order by dno limit 1)
+		(select bno from board where bno < #{bno} order by bno desc limit 1),
+		(select bno from board where bno > #{bno} order by bno limit 1)
 		]]>
 		)
 	</select>

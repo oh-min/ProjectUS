@@ -207,6 +207,7 @@ window.onload = function() {
 		}
 	}
 
+	/* 닉네임 자동생성 버튼 클릭시 */
 	randomnick.onclick = function(){
 		console.log("randomnick")
 		let xhr = new XMLHttpRequest();
