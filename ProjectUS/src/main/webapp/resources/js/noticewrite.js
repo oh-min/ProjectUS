@@ -2,11 +2,11 @@
  * 공지사항 작성
  */
 window.onload = function() {
-	let title = document.getElementById("title");
-	let id = document.getElementById("id");
-	let category = document.getElementById("category");
-	let content = document.getElementById("Ncontent");
-	let top = document.getElementById("top");
+	let title = document.getElementById("title"); // 제목
+	let id = document.getElementById("id"); // 아이디
+	let category = document.getElementById("category"); // 카테고리
+	let content = document.getElementById("Ncontent"); // 내용
+	let top = document.getElementById("top"); // 고정여부
 
 	let formData = new FormData(); // 파일 업로드
 

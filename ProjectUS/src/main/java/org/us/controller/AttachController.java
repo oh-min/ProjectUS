@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.us.model.AttachFileVO;
-import org.us.model.NoticeVO;
 
 import net.coobird.thumbnailator.Thumbnailator;
 
@@ -127,6 +126,25 @@ public class AttachController {
 			e.printStackTrace();
 		}
 
+		return result;
+	}
+	@RequestMapping(value = "/board/display", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> boardgetFile(String fileName) {
+		
+		File file = new File("D:\\01-STUDY\\upload\\" + fileName);
+		ResponseEntity<byte[]> result = null;
+		
+		HttpHeaders headers = new HttpHeaders();
+		
+		try {
+			
+			headers.add("Content-Type", Files.probeContentType(file.toPath()));
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 

@@ -67,4 +67,18 @@
 		select * from board
 		where bno = #{bno}
 	</select>
+
+	<!-- 글 작성 -->
+	<insert id="write">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select
+			case
+			when bno is null then 1
+			else max(bno)+1
+			end bno
+			from board
+		</selectKey>
+		insert into board(id, nick, title, content, category, price,cnt)
+		values(#{id},#{nick},#{title},#{content},#{category},#{price},0)
+	</insert>
 </mapper>

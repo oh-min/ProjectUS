@@ -20,7 +20,7 @@ public class BoardVO {
 	private Date regdate; // 작성일자
 	private int cnt; // 조회수
 	private int bookmark; // 즐겨찾기
-	private int price; // 가격
+	private String price; // 가격
 
 	// AttachFileVO(첨부파일 관련)
 	private ArrayList<AttachFileVO> attach;

@@ -12,14 +12,14 @@
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <!-- 임시 -->
 <meta charset="UTF-8">
-<title>거래 게시판</title>
+<title>자유게시판</title>
 </head>
 <body>
 	<%@include file="../header.jsp"%>
 	<%@include file="../nav.jsp"%>
 	<div id="content">
 		<div id="Blist">
-			<h2>중고거래</h2>
+			<h2>자유게시판</h2>
 			<!-- 검색 -->
 			<div class="search">
 				<form action="/board/list" method="get">
@@ -36,7 +36,7 @@
 			<table class="Btable" id="listTable">
 				<tr>
 					<th>번호</th>
-					<th>분류11</th>
+					<th>분류</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일자</th>
@@ -67,7 +67,17 @@
 				<c:forEach items="${list}" var="list">
 					<tr id="BlistInfo">
 						<td class="bno">${list.bno}</td>
-						<td class="category">${list.category}</td>
+						<c:choose>
+							<c:when test="${list.category eq 1}">
+								<td class="category">거래</td>
+							</c:when>
+							<c:when test="${list.category eq 2}">
+								<td class="category">질문</td>
+							</c:when>
+							<c:when test="${list.category eq 3}">
+								<td class="category">기타</td>
+							</c:when>
+						</c:choose>
 						<td class="title"><a href="/board/detail?bno=${list.bno}">${list.title}</a></td>
 						<td class="nick"><p>${list.nick}</p></td>
 						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>

@@ -17,4 +17,7 @@ public interface BoardMapper {
 
 	// 디테일 페이지 DB설계
 	public BoardVO detail(BoardVO bvo);
+
+	// 자유게시판 글 작성 DB설계
+	public void write(BoardVO bvo);
 }

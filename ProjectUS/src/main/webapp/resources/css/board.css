@@ -31,7 +31,7 @@ th {
 }
 
 tr {
-	height: 50px;
+	height: 60px;
 }
 
 .title>a:hover {
@@ -92,6 +92,9 @@ input:focus, textarea:focus {
 	white-space: nowrap;
 }
 
+td.nick>p {
+	margin: 0px;
+}
 /* 페이징 */
 #paging {
 	width: fit-content;
@@ -108,7 +111,7 @@ input:focus, textarea:focus {
 .nowpage {
 	color: #528555;
 }
-/* 중고거래 디테일 */
+/* 디테일 */
 #detailTable {
 	margin-bottom: 30px;
 }
@@ -121,19 +124,20 @@ input:focus, textarea:focus {
 	padding: 10px 10px 10px 10px;
 }
 
-#wnrc {
+#contentD {
+	padding: 30px 50px 30px 50px;
+}
+
+#info {
 	height: 20px;
 	font-size: 13px;
 }
 
-#wnrc>.hc {
+#info>.hc {
 	border-left: 1px solid #528555;
 	border-right: 1px solid #F5F5F4;
 }
 
-#attachB {
-	padding: 20px 180px 20px 180px;
-}
 /*버튼*/
 #btn {
 	width: 80%;
@@ -167,6 +171,10 @@ input[class="BdetailInfo"] {
 	border: none;
 }
 
+input[id="price"] {
+	width: auto;
+}
+
 textarea[class="BdetailInfo"] {
 	width: 98%;
 	border: none;
@@ -180,17 +188,13 @@ textarea[class="BdetailInfo"] {
 #preview {
 	border-top: 1px solid #F5F5F4;
 }
+
+.hiddenprice {
+	display: none
+}
+
 /*글작성 버튼 가운데 위치*/
 #write {
 	width: 80px;
 	margin: 0 auto;
-}
-/* 채팅하기 버튼 오른쪽에 위치 */
-#chatbtn {
-	float: right;
-	margin-bottom: 30px;
-}
-
-#ponTable {
-	clear: both;
 }

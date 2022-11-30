@@ -7,9 +7,6 @@
 <script type="text/javascript" src="/resources/js/noticewrite.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/attach.js"></script>
-<!-- 임시 -->
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-<!-- 임시 -->
 <meta charset="UTF-8">
 <title>공지사항</title>
 </head>

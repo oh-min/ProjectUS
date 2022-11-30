@@ -16,4 +16,8 @@ public class AttachServiceImpl implements AttachService {
 	public ArrayList<AttachFileVO> attachlist(int nno){
 		return am.attachlist(nno);
 	}
+	// 첨부파일 목록 가져오는 구현
+	public ArrayList<AttachFileVO> boardattachlist(int bno){
+		return am.boardattachlist(bno);
+	}
 }

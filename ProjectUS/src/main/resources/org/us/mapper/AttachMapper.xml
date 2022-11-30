@@ -8,11 +8,19 @@
 		insert into attach(uuid, attachpath, filename, image, nno)
 		values(#{uuid},#{attachPath},#{fileName},#{image},#{nno});
 	</insert>
+	<insert id="boardinsert">
+		insert into attach(uuid, attachpath, filename, image, bno)
+		values(#{uuid},#{attachPath},#{fileName},#{image},#{bno});
+	</insert>
 
 	<!-- 첨부파일 목록 -->
 	<select id="attachlist" resultType="org.us.model.AttachFileVO">
 		select * from attach
 		where nno = #{nno}
+	</select>
+	<select id="boardattachlist" resultType="org.us.model.AttachFileVO">
+		select * from attach
+		where bno = #{bno}
 	</select>
 
 	<!-- 공지사항 삭제시 첨부파일 같이 삭제 -->
@@ -20,4 +28,7 @@
 		delete from attach
 		where nno = #{nno}
 	</delete>
+	
+	
+	
 </mapper>

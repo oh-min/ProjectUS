@@ -9,24 +9,32 @@ window.onload = function() {
 	let nno = document.getElementById("nno")
 
 	/* 삭제 버튼 */
-	let deletebtn = document.getElementById("deletebtn")
-	deletebtn.onclick = function() {
-		let deleteform = document.getElementById("deleteform")
-		console.log("삭제 버튼 클릭")
-
-		if (confirm("삭제하시겠습니까?")) {
-			deleteform.action = '/notice/delete?nno=' + nno.value + '';
-			deleteform.submit();
-		} else {
-			console.log("취소됨")
+	try{
+		let deletebtn = document.getElementById("deletebtn")
+		deletebtn.onclick = function() {
+			let deleteform = document.getElementById("deleteform")
+			console.log("삭제 버튼 클릭")
+			
+			if (confirm("삭제하시겠습니까?")) {
+				deleteform.action = '/notice/delete?nno=' + nno.value + '';
+				deleteform.submit();
+			} else {
+				console.log("취소됨")
+			}
 		}
+	}catch(e){
+		console.log(e)
 	}
 	
 	/* 수정 버튼 */
-	let editbtn = document.getElementById("editbtn")
-	editbtn.onclick = function() {
-		console.log(nno.value)
-		location.href = "/notice/edit?nno=" + nno.value + "";
+	try{
+		let editbtn = document.getElementById("editbtn")
+		editbtn.onclick = function() {
+			console.log(nno.value)
+			location.href = "/notice/edit?nno=" + nno.value + "";
+		}
+	}catch(e){
+		console.log(e)
 	}
 	
 	/* 목록 버튼 */
