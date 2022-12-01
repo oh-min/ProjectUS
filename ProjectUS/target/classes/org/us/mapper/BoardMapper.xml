@@ -11,17 +11,17 @@
 		from board b,(select @rownum:=0) as tmp
 		<if test="keyword != null">
 			<choose>
-				<when test="type=='P'.toString()"> <!-- 판매물품명 -->
-					where product like concat('%',#{keyword},'%')
+				<when test="type=='T'.toString()"> <!-- 제목 -->
+					where title like concat('%',#{keyword},'%')
 				</when>
-				<when test="type=='I'.toString()"> <!-- 내용 -->
-					where info like concat('%',#{keyword},'%')
+				<when test="type=='C'.toString()"> <!-- 내용 -->
+					where content like concat('%',#{keyword},'%')
 				</when>
-				<when test="type=='PI'.toString()"> <!-- 판매물품명, 내용 -->
-					where product like concat('%',#{keyword},'%')
-					or info like concat('%',#{keyword},'%')
+				<when test="type=='TC'.toString()"> <!-- 제목, 내용 -->
+					where title like concat('%',#{keyword},'%')
+					or content like concat('%',#{keyword},'%')
 				</when>
-				<when test="type=='N'.toString()"> <!-- 판매자 -->
+				<when test="type=='N'.toString()"> <!-- 작성자 -->
 					where nick like concat('%',#{keyword},'%')
 				</when>
 			</choose>
@@ -38,17 +38,17 @@
 		select count(*) from board
 		<if test="keyword != null">
 			<choose>
-				<when test="type=='P'.toString()"> <!-- 판매물품명 -->
-					where product like concat('%',#{keyword},'%')
+				<when test="type=='T'.toString()"> <!-- 제목 -->
+					where title like concat('%',#{keyword},'%')
 				</when>
-				<when test="type=='I'.toString()"> <!-- 내용 -->
-					where info like concat('%',#{keyword},'%')
+				<when test="type=='C'.toString()"> <!-- 내용 -->
+					where content like concat('%',#{keyword},'%')
 				</when>
-				<when test="type=='PI'.toString()"> <!-- 판매물품명, 내용 -->
-					where product like concat('%',#{keyword},'%')
-					or info like concat('%',#{keyword},'%')
+				<when test="type=='TC'.toString()"> <!-- 제목, 내용 -->
+					where title like concat('%',#{keyword},'%')
+					or content like concat('%',#{keyword},'%')
 				</when>
-				<when test="type=='N'.toString()"> <!-- 판매자 -->
+				<when test="type=='N'.toString()"> <!-- 작성자 -->
 					where nick like concat('%',#{keyword},'%')
 				</when>
 			</choose>
@@ -80,5 +80,11 @@
 		</selectKey>
 		insert into board(id, nick, title, content, category, price,cnt)
 		values(#{id},#{nick},#{title},#{content},#{category},#{price},0)
+	</insert>
+	
+	<!-- 좋아요 추가 -->
+	<insert id="heartin">
+		insert into heart(id, bno, chk)
+		values(#{id},#{bno},1)
 	</insert>
 </mapper>

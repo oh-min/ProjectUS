@@ -18,28 +18,45 @@
 		<div id="Bdetail">
 			<h2>자유 게시판</h2>
 			<!-- 디테일 -->
-			<table class="Btable" id="detailTable">
-				<tr>
-					<td class="bno" id="bno">${detail.bno}</td>
-					<td colspan="5" class="title" id="titleB">${detail.title}</td>
-					<td class="bookmark">${detail.bookmark}</td>
-				</tr>
-				<tr id="info" class="bb2">
-					<td class="category">${detail.category}</td>
-					<td class="hc">작성자</td>
-					<td class="nick">${detail.nick}</td>
-					<td class="hc">작성일</td>
-					<td class="regdate"><fmt:formatDate value="${detail.regdate}" pattern="yyyy-MM-dd" /></td>
-					<td class="hc">조회수</td>
-					<td class="cnt" id="cntchk">${detail.cnt}</td>
-				</tr>
-				<tr>
-					<td colspan="7" id="attachD"></td>
-				</tr>
-				<tr class="bb2">
-					<td colspan="7" id="contentD">${detail.content}</td>
-				</tr>
-			</table>
+			<form method="post" id="heartform">
+				<table class="Btable" id="detailTable">
+					<tr>
+						<td class="bno" id="bno">${detail.bno}</td>
+						<td colspan="7" class="title" id="titleB">${detail.title}</td>
+						<!-- 빈하트 -->
+						<td class="heart"><img src="https://cdn-icons-png.flaticon.com/512/2107/2107952.png" height="20px" width="20px" id="heart_empty"></td>
+						<!-- 하트 -->
+						<!-- <td class="heart"><img src="https://cdn-icons-png.flaticon.com/512/2107/2107845.png" height="20px" width="20px" id="red_heart"></td> -->
+					</tr>
+					<tr id="info" class="bb2">
+						<c:choose>
+							<c:when test="${detail.category eq 1}">
+								<td class="category">거래</td>
+							</c:when>
+							<c:when test="${detail.category eq 2}">
+								<td class="category">질문</td>
+							</c:when>
+							<c:when test="${detail.category eq 3}">
+								<td class="category">기타</td>
+							</c:when>
+						</c:choose>
+						<td class="hc">작성자</td>
+						<td class="nick">${detail.nick}</td>
+						<td class="hc">작성일</td>
+						<td class="regdate"><fmt:formatDate value="${detail.regdate}" pattern="yyyy-MM-dd" /></td>
+						<td class="hc">조회수</td>
+						<td class="cnt" id="cntchk">${detail.cnt}</td>
+						<td class="hc">좋아요</td>
+						<td class="heart">00</td>
+					</tr>
+					<tr>
+						<td colspan="9" id="attachD"></td>
+					</tr>
+					<tr class="bb2">
+						<td colspan="9" id="contentD">${detail.content}</td>
+					</tr>
+				</table>
+			</form>
 			<!-- 이전글 / 다음글 -->
 			<table id="ponTable" class="Btable">
 				<c:choose>

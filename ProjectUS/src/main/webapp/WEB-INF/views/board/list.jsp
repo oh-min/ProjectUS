@@ -23,14 +23,19 @@
 			<!-- 검색 -->
 			<div class="search">
 				<form action="/board/list" method="get">
-					<input type="submit" value="검색"> <input type="text" id="search" name="keyword" value="${paging.cri.keyword}"> <select name="type">
-						<option value="P">판매물품명</option>
-						<!-- 검색 변경 필요 -->
-						<option value="I">내용</option>
-						<option value="PI">판매물품명+내용</option>
-						<option value="N">판매자</option>
+					<input type="submit" value="검색">
+					<input type="text" id="search" name="keyword" value="${paging.cri.keyword}"> 
+					<select name="type" id="type">
+						<option value="T" selected>제목</option>
+						<option value="C">내용</option>
+						<option value="TC">제목+내용</option>
+						<option value="N">작성자</option>
 					</select>
 				</form>
+			</div>
+			<!-- ~ 순으로 정렬 -->
+			<div>
+			
 			</div>
 			<!-- 목록 -->
 			<table class="Btable" id="listTable">
@@ -41,6 +46,7 @@
 					<th>작성자</th>
 					<th>작성일자</th>
 					<th>조회</th>
+					<th>좋아요</th>
 				</tr>
 				<!-- 고정공지 -->
 				<c:forEach items="${top}" var="top" end="4">
@@ -61,6 +67,7 @@
 						<td class="nick">${top.nick}</td>
 						<td class="regdate"><fmt:formatDate value="${top.regdate}" pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${top.cnt}</td>
+						<td></td>
 					</tr>
 				</c:forEach>
 				<!-- 목록 -->
@@ -82,6 +89,7 @@
 						<td class="nick"><p>${list.nick}</p></td>
 						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${list.cnt}</td>
+						<td class="heart">00</td>
 					</tr>
 				</c:forEach>
 			</table>

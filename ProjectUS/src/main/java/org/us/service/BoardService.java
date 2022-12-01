@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.us.model.BoardVO;
 import org.us.model.CriteriaVO;
+import org.us.model.HeartVO;
 
 public interface BoardService {
 	// 자유 게시판 목록 페이지 설계
@@ -17,4 +18,7 @@ public interface BoardService {
 
 	// 자유게시판 글 작성 설계
 	public void write(BoardVO bvo);
+	
+	// 좋아요 추가 설계
+	public void heartin(HeartVO hvo);
 }

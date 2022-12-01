@@ -39,7 +39,7 @@ tr {
 	text-decoration: underline;
 }
 
-.bno, .category, .price, .nick, .regdate, .cnt, .bookmark {
+.bno, .category, .price, .nick, .regdate, .cnt, .heart {
 	text-align: center;
 }
 

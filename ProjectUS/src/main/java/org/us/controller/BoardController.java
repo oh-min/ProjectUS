@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.us.model.AttachFileVO;
 import org.us.model.BoardVO;
 import org.us.model.CriteriaVO;
+import org.us.model.HeartVO;
 import org.us.model.NextPreVO;
 import org.us.model.PageVO;
 import org.us.service.AttachService;
@@ -30,7 +32,7 @@ public class BoardController {
 
 	@Autowired
 	NextPreService nps;
-	
+
 	@Autowired
 	AttachService as;
 
@@ -70,4 +72,10 @@ public class BoardController {
 		return new ResponseEntity<>(as.boardattachlist(bno), HttpStatus.OK);
 	}
 
+	/* 좋아요 추가 */
+	@RequestMapping(value = "/board/heartin", method = RequestMethod.POST)
+	public void heartin(@RequestBody HeartVO hvo) {
+		System.out.println("자유게시판 컨트롤러 : " + hvo);
+		bs.heartin(hvo);
+	}
 }

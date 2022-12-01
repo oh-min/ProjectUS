@@ -27,14 +27,12 @@ public class NoticeServiceImpl implements NoticeService {
 	// 디테일 페이지 구현
 	@Transactional
 	public NoticeVO detail(NoticeVO nvo) {
-		System.out.println("디테일 서비스 : " + nvo);
-		// nm.cntup(nvo);
+		nm.cntup(nvo);
 		return nm.detail(nvo);
 	}
 
 	// 공지작성 구현
 	public void write(NoticeVO nvo) {
-		System.out.println("공지작성 서비스 : " + nvo);
 		nm.write(nvo);
 		if (nvo.getAttach() != null) {
 			// 첨부파일 insert 구현
@@ -54,7 +52,6 @@ public class NoticeServiceImpl implements NoticeService {
 
 	// 공지 수정 구현
 	public void edit(NoticeVO nvo) {
-		System.out.println("공지 수정 서비스 : " + nvo);
 		if (nvo.getAttach() != null) {
 			// 첨부파일 insert 구현
 			nvo.getAttach().forEach(avo -> {
@@ -68,7 +65,6 @@ public class NoticeServiceImpl implements NoticeService {
 
 	// 공지 삭제 구현
 	public void delete(int nno) {
-		System.out.println("공지 삭제 서비스 : "+nno);
 		nm.delete(nno);
 		am.attachdelete(nno);
 	}

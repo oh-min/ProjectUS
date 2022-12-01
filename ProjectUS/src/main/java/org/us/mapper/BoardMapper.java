@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.us.model.BoardVO;
 import org.us.model.CriteriaVO;
+import org.us.model.HeartVO;
 
 public interface BoardMapper {
 	// 거래 게시판 목록 페이지 DB설계
@@ -20,4 +21,7 @@ public interface BoardMapper {
 
 	// 자유게시판 글 작성 DB설계
 	public void write(BoardVO bvo);
+
+	// 좋아요 추가 DB설계
+	public void heartin(HeartVO hvo);
 }
