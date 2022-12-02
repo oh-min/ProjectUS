@@ -44,14 +44,14 @@ function loginWithKakao() {
 	});				
 }
 
-const code = location.search.split('?code=')[1];
-console.log(code); // 인가 코드
+let code = location.search.split('?code=')[1];
+console.log("카카오 인가코드 = "+code); // 인가 코드
 
 if(code){ // 인가 코드가 있을 경우
-	const JS_APP_KEY ="f42e808f1e635004cb0b41d796f2c56d";
-	const REDIRECT_URI = "http://localhost:8080/member/login";
-	const makeFormData = params => {
-		const searchParams = new URLSearchParams()
+	let JS_APP_KEY ="f42e808f1e635004cb0b41d796f2c56d";
+	let REDIRECT_URI = "http://localhost:8080/member/login";
+	let makeFormData = params => {
+		let searchParams = new URLSearchParams()
 		Object.keys(params).forEach(key => {
 			searchParams.append(key, params[key])
 		})
@@ -77,12 +77,14 @@ if(code){ // 인가 코드가 있을 경우
 	            
 			console.log("토큰 = "+accessTK)
 			Kakao.Auth.setAccessToken(accessTK) // 토큰 할당
+			document.querySelector('#token-result').innerText = 'login success, ready to request API';
+		      document.querySelector('button.api-btn').style.visibility = 'visible';
 		}
 	});
 }else{ // 없을경우
 	
 }
-function kakaologinfnc(){	
+function requestUserInfo(){	
 	Kakao.API.request({
 		url: '/v2/user/me',
 })
@@ -97,8 +99,9 @@ function kakaologinfnc(){
 	})
 	.catch(function(err) {
 		alert(
-				'failed to request user information: ' + JSON.stringify(err)
+				'유저정보 요청 실패: ' + JSON.stringify(err)
 		);
 	});
 	
 }
+

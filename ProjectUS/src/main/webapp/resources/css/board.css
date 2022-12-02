@@ -78,6 +78,19 @@ input:focus, textarea:focus {
 .search>form>select {
 	height: 40px;
 }
+/* 정렬 */
+.order {
+	width: 80%;
+	height: 20px;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin: 0 auto;
+}
+
+.order>#order {
+	float: right;
+}
 /* 거래게시판 목록 */
 #BlistInfo>.title {
 	padding-left: 10px;

@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService {
 		return bm.detail(bvo);
 	}
 
-	// 자유게시판 글 작성 설계
+	// 자유게시판 글 작성 구현
 	public void write(BoardVO bvo) {
 		bm.write(bvo);
 		if (bvo.getAttach() != null) {
@@ -49,9 +49,27 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-	// 좋아요 추가 설계
+	// 좋아요 추가 구현
 	public void heartin(HeartVO hvo) {
 		System.out.println("좋아요 추가 서비스 : " + hvo);
 		bm.heartin(hvo);
 	}
+	// 좋아요 취소 구현
+	public void heartout(HeartVO hvo) {
+		System.out.println("좋아요 취소 서비스 : " + hvo);
+		bm.heartout(hvo);
+	}
+
+	// 좋아요 갯수 구현
+	public int heartcnt(HeartVO hvo) {
+		System.out.println("좋아요 개수 : " + hvo);
+		return bm.heartcnt(hvo);
+	}
+
+	// 특정 아이디 특정 게시물 좋아요 여부 설계
+	public int heartid(HeartVO hvo) {
+		System.out.println("좋아요 여부 서비스 : "+hvo);
+		return bm.heartid(hvo);
+	}
+
 }

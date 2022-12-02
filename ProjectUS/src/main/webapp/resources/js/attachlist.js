@@ -4,10 +4,7 @@
 
 function attachlistfnc() {
 	let url = document.location.href; // url주소 가져오기
-	console.log("url주소 : " + url);
 	let para = document.location.href.split("?"); // url주소의 파라미터값 
-	console.log("파라미터[0] : " + para[0]);
-	console.log("파라미터[1] : " + para[1]);
 	let what = para[1].split('=')[0] // bno 인지 nno 인지 구분
 	let nno;
 	let bno;
@@ -18,8 +15,6 @@ function attachlistfnc() {
 		bno = para[1].split('=')[1];
 	}
 
-	console.log("nno : " + nno)
-	console.log("bno : " + bno)
 
 	/* 공지사항 */
 	if (nno != undefined) {

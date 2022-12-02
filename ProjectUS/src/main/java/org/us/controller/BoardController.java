@@ -48,9 +48,10 @@ public class BoardController {
 
 	/* 자유게시판 디테일 페이지로 이동 */
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
-	public void detail(BoardVO bvo, Model model, NextPreVO npvo) {
-		model.addAttribute("detail", bs.detail(bvo));
-		model.addAttribute("nextpre", nps.bnp(npvo));
+	public void detail(BoardVO bvo, Model model, NextPreVO npvo, HeartVO hvo) {
+		model.addAttribute("detail", bs.detail(bvo)); // 디테일
+		model.addAttribute("nextpre", nps.bnp(npvo)); // 이전글 다음글
+		model.addAttribute("heartcnt", bs.heartcnt(hvo)); // 특정 게시판 좋아요 개수
 	}
 
 	/* 자유게시판 작성 페이지로 이동 */
@@ -75,7 +76,23 @@ public class BoardController {
 	/* 좋아요 추가 */
 	@RequestMapping(value = "/board/heartin", method = RequestMethod.POST)
 	public void heartin(@RequestBody HeartVO hvo) {
-		System.out.println("자유게시판 컨트롤러 : " + hvo);
+		System.out.println("좋아요 추가 컨트롤러  : " + hvo);
 		bs.heartin(hvo);
 	}
+
+	/* 좋아요 취소 */
+	@RequestMapping(value = "/board/heartout", method = RequestMethod.POST)
+	public void heartout(@RequestBody HeartVO hvo) {
+		System.out.println("좋아요 취소 컨트롤러  : " + hvo);
+		bs.heartout(hvo);
+	}
+
+	/* 특정 아이디, 특정 개시판 좋아요 여부 */
+	@RequestMapping(value = "/board/heartid", method = RequestMethod.POST)
+	public ResponseEntity<String> heartid(@RequestBody HeartVO hvo) {
+		System.out.println("좋아요 여부 컨트롤러 : " + hvo);
+		return bs.heartid(hvo) == 1 ? new ResponseEntity<>("canUse", HttpStatus.OK)
+				: new ResponseEntity<>("cannotUse", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
 }

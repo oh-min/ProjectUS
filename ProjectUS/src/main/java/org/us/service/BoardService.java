@@ -18,7 +18,16 @@ public interface BoardService {
 
 	// 자유게시판 글 작성 설계
 	public void write(BoardVO bvo);
-	
+
 	// 좋아요 추가 설계
 	public void heartin(HeartVO hvo);
+
+	// 좋아요 취소 설계
+	public void heartout(HeartVO hvo);
+
+	// 좋아요 갯수 설계
+	public int heartcnt(HeartVO hvo);
+
+	// 특정 아이디 특정 게시물 좋아요 여부 설계
+	public int heartid(HeartVO hvo);
 }

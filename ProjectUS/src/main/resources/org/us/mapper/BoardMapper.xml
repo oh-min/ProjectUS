@@ -81,10 +81,30 @@
 		insert into board(id, nick, title, content, category, price,cnt)
 		values(#{id},#{nick},#{title},#{content},#{category},#{price},0)
 	</insert>
-	
+
 	<!-- 좋아요 추가 -->
 	<insert id="heartin">
-		insert into heart(id, bno, chk)
-		values(#{id},#{bno},1)
+		insert into heart(id, bno)
+		values(#{id},#{bno})
 	</insert>
+
+	<!-- 좋아요 갯수 -->
+	<select id="heartcnt" resultType="int">
+		select count(*) from heart
+		where bno = #{bno}
+	</select>
+
+	<!-- 특정 아이디 특정 게시물 좋아요 여부 -->
+	<select id="heartid" resultType="int">
+		select exists (select * from heart
+		where id = #{id}
+		and bno = #{bno}) as success;
+	</select>
+
+	<!-- 좋아요 취소 -->
+	<delete id="heartout">
+		delete from heart
+		where id = #{id}
+		and bno = #{bno}
+	</delete>
 </mapper>

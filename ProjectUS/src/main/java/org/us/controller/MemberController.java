@@ -100,8 +100,9 @@ public class MemberController {
 	}
 
 	/* 카카오 로그인 이동 */
-	@RequestMapping(value = "/member/kakao", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/kakaocallback", method = RequestMethod.GET)
 	public void kakaocallback(MemberVO mvo, HttpSession session) {
+		System.out.println("카카오콜백이동");
 	}
 
 	/* 로그아웃 */

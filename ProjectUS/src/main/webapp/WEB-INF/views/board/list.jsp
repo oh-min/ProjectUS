@@ -23,9 +23,8 @@
 			<!-- 검색 -->
 			<div class="search">
 				<form action="/board/list" method="get">
-					<input type="submit" value="검색">
-					<input type="text" id="search" name="keyword" value="${paging.cri.keyword}"> 
-					<select name="type" id="type">
+					<input type="submit" value="검색"> <input type="text" id="search" name="keyword" value="${paging.cri.keyword}"> <select name="type"
+						id="type">
 						<option value="T" selected>제목</option>
 						<option value="C">내용</option>
 						<option value="TC">제목+내용</option>
@@ -34,8 +33,12 @@
 				</form>
 			</div>
 			<!-- ~ 순으로 정렬 -->
-			<div>
-			
+			<div class="order">
+				<select name="order" id="order">
+					<option value="order_new">최신순</option>
+					<option value="order_cnt">조회수순</option>
+					<option value="order_heart">좋아요순</option>
+				</select>
 			</div>
 			<!-- 목록 -->
 			<table class="Btable" id="listTable">
