@@ -20,7 +20,9 @@ public class BoardVO {
 	private Date regdate; // 작성일자
 	private int cnt; // 조회수
 	private String price; // 가격
+	private int heartcount; // 좋아요 누른 횟수
 
 	// AttachFileVO(첨부파일 관련)
 	private ArrayList<AttachFileVO> attach;
+
 }

@@ -30,4 +30,8 @@ public interface BoardService {
 
 	// 특정 아이디 특정 게시물 좋아요 여부 설계
 	public int heartid(HeartVO hvo);
+
+	// 게시글 별 좋아요 개수 설계
+	public ArrayList<BoardVO> heartlist(BoardVO bvo);
+//	public Object heartlist();
 }

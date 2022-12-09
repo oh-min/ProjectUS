@@ -14,10 +14,10 @@
 	<%@include file="header.jsp"%>
 	<%@include file="nav.jsp"%>
 	<div id="content">
-		<div id="event">이벤트(슬라이드)</div>
-		<div id="competition">대회(슬라이드)</div>
-		<div id="crew">크루(목록)</div>
-		<div id="notice">공지(목록)</div>
+		<div id="event"></div>
+		<div id="competition"></div>
+		<div id="crew"></div>
+		<div id="notice"></div>
 	</div>
 	<%@include file="footer.jsp"%>
 </body>

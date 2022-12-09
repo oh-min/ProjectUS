@@ -215,8 +215,9 @@ window.onload = function() {
 		xhr.onload = function() {
 			  if (xhr.status >= 200 && xhr.status < 400) {
 			    console.log("success")
+			    console.log(xhr.responseText)
 			    let data = JSON.parse(xhr.responseText);
-			    console.log(data.words)
+			    console.log(data)
 			    nick.value = data.words; // 닉네임 입력 창에 값 넣기
 			    sameregchkfnc(randomnick, nickmsg, nickreg, nickInnermsg, samenickchk)
 			  } else {

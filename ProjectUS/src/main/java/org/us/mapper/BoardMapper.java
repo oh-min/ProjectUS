@@ -24,14 +24,18 @@ public interface BoardMapper {
 
 	// 좋아요 추가 DB설계
 	public void heartin(HeartVO hvo);
-	
+
 	// 좋아요 취소 DB설계
 	public void heartout(HeartVO hvo);
-	
+
 	// 좋아요 갯수 DB설계
 	public int heartcnt(HeartVO hvo);
-	
+
 	// 특정 아이디 특정 게시물 좋아요 여부 DB설계
 	public int heartid(HeartVO hvo);
-	
+
+	// 게시글 별 좋아요 개수 DB설계
+	public ArrayList<BoardVO> heartlist(BoardVO bvo);
+//	public Object heartlist();
+
 }

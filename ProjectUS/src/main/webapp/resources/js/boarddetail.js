@@ -3,6 +3,26 @@
  */
 document.write('<script src="/resources/js/attachlist.js"></script>');
 window.onload = function() {
+	
+	
+	
+	let url =  document.location.href; // url주소 가져오기
+	console.log(url);
+	        
+	let para = document.location.href.split("?"); // url주소의 파라미터값 
+	console.log(para);
+	console.log(para[0]);
+	console.log(para[1]);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/* 첨부파일 목록 불러오는 함수 */
 	attachlistfnc()
 

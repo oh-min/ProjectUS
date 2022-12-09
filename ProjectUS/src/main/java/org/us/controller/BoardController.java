@@ -2,6 +2,8 @@ package org.us.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ import org.us.service.BoardService;
 import org.us.service.NextPreService;
 import org.us.service.TopService;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Controller
 public class BoardController {
 
@@ -38,9 +42,10 @@ public class BoardController {
 
 	/* 자유게시판 리스트 페이지로 이동 */
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
-	public String list(Model model, CriteriaVO cri) {
+	public String list(Model model, CriteriaVO cri, BoardVO bvo) {
 		model.addAttribute("top", ts.top(cri));
 		model.addAttribute("list", bs.list(cri));
+		model.addAttribute("heartlist", bs.heartlist(bvo));
 		int total = bs.total(cri);
 		model.addAttribute("paging", new PageVO(cri, total));
 		return "/board/list";
@@ -94,5 +99,26 @@ public class BoardController {
 		return bs.heartid(hvo) == 1 ? new ResponseEntity<>("canUse", HttpStatus.OK)
 				: new ResponseEntity<>("cannotUse", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+
+	/* bno별 좋아요 개수 */
+	/*@RequestMapping(value = "/board/heartlist", method = RequestMethod.POST)
+	public ResponseEntity<String> heartlist(HttpServletResponse response, HeartVO hvo) {
+		System.out.println("좋아요 목록 컨트롤러");
+		try {
+			System.out.println("try");
+			
+			// json 타입으로 변경
+//			ObjectMapper mapper = new ObjectMapper(); 
+//			String data = mapper.writeValueAsString(bs.heartlist(hvo));
+//			System.out.println("json = "+data);
+//			
+//			return new ResponseEntity<>(data, HttpStatus.OK);
+
+		} catch (Exception e) {
+			System.out.println("catch" + e);
+			e.printStackTrace();
+		}
+		return null;
+	}*/
 
 }

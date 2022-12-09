@@ -54,6 +54,7 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("좋아요 추가 서비스 : " + hvo);
 		bm.heartin(hvo);
 	}
+
 	// 좋아요 취소 구현
 	public void heartout(HeartVO hvo) {
 		System.out.println("좋아요 취소 서비스 : " + hvo);
@@ -68,8 +69,14 @@ public class BoardServiceImpl implements BoardService {
 
 	// 특정 아이디 특정 게시물 좋아요 여부 설계
 	public int heartid(HeartVO hvo) {
-		System.out.println("좋아요 여부 서비스 : "+hvo);
+		System.out.println("좋아요 여부 서비스 : " + hvo);
 		return bm.heartid(hvo);
+	}
+
+	// 게시글 별 좋아요 개수
+	public ArrayList<BoardVO> heartlist(BoardVO bvo) {
+		System.out.println("heartlist 좋아요 서비스 = " + bvo);
+		return bm.heartlist(bvo);
 	}
 
 }

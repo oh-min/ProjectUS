@@ -94,6 +94,14 @@
 		where bno = #{bno}
 	</select>
 
+	<!-- 게시글 별 좋아요 개수 -->
+	<!-- <select id="heartlist" resultType="org.us.model.HeartVO"> select * from heart </select> -->
+	<select id="heartlist" resultType="org.us.model.BoardVO">
+		select count(*) as heartcount,bno from heart
+		group by bno
+	</select>
+
+
 	<!-- 특정 아이디 특정 게시물 좋아요 여부 -->
 	<select id="heartid" resultType="int">
 		select exists (select * from heart

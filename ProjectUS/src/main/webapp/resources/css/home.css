@@ -80,7 +80,7 @@ li {
 
 /* 이벤트 슬라이드 */
 #event {
-	border: solid 2px black;
+	border: solid 2px #528555;
 	width: 1000px;
 	margin: 0 auto;
 	height: 300px;
@@ -88,7 +88,7 @@ li {
 }
 /* 대회 슬라이드 */
 #competition {
-	border: solid 2px black;
+	border: solid 2px #528555;
 	width: 1000px;
 	margin: 0 auto;
 	height: 200px;
@@ -96,8 +96,8 @@ li {
 }
 /* 크루,공지 목록 */
 #crew, #notice {
-	border: solid 2px black;
-	width: 300px;
+	border: solid 2px #528555;
+	width: 480px;
 	margin: 0 auto;
 	height: 200px;
 	margin-top: 30px;
@@ -105,12 +105,12 @@ li {
 
 #crew {
 	float: left;
-	margin-left: 15%;
+	margin-left: 16.5%;
 }
 
 #notice {
 	float: right;
-	margin-right: 15%;
+	margin-right: 16.5%;
 }
 
 /* footer */
@@ -121,4 +121,5 @@ li {
 	box-sizing: border-box;
 	clear: both;
 	border-top: 2px solid #528555;
+	background-color: #F5F5F4;
 }

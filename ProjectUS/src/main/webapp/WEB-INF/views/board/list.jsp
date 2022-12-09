@@ -73,10 +73,10 @@
 						<td></td>
 					</tr>
 				</c:forEach>
-				<!-- 목록 -->
-				<c:forEach items="${list}" var="list">
+
+				<c:forEach var="list" items="${list}" varStatus="status">
 					<tr id="BlistInfo">
-						<td class="bno">${list.bno}</td>
+						<td class="bno" id="bno">${list.bno}</td>
 						<c:choose>
 							<c:when test="${list.category eq 1}">
 								<td class="category">거래</td>
@@ -92,7 +92,12 @@
 						<td class="nick"><p>${list.nick}</p></td>
 						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${list.cnt}</td>
-						<td class="heart">00</td>
+						<td class="heart">${heartlist[status.index].heartcount}</td>
+						<%-- <c:if test="${list.bno eq ${heartlist[status.index].bno}">
+							<td class="heart">${heartlist[status.index].heartcount}</td>
+						</c:if> --%>
+
+						<!--안나오는 중 -->
 					</tr>
 				</c:forEach>
 			</table>
