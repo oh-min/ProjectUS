@@ -85,6 +85,16 @@
 			<div id="btn">
 				<input type="button" value="목록" id="listbtn" onclick="listbtn()">
 			</div>
+			<!-- 댓글 -->
+			<div id="reply">
+				<label>댓글</label>
+				<div>//댓글 목록//</div>
+				<div>
+					<textarea rows="6" cols="120" id="reply_content"></textarea>
+					<span id="reply_btn_part"> <input type="button" value="댓글작성" id="replybtn">
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<%@include file="../footer.jsp"%>

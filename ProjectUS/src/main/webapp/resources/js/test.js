@@ -1,24 +1,26 @@
 /**
  * 
  */
-// test.jsp
-/*window.onload = function() {
+window.onload = function() {
+	/* 01. new Date() */
+	// 현재 시간 및 날짜
+	let a = new Date() // Thu Dec 08 2022 16:33:25 GMT+0900 (한국 표준시)
+	console.log(a)
+	/* 02. new Date(value) */
+	// https://awebanalysis.com/ko/unix-timestamp-converter/
+	// http://chongmoa.com/unixtime
+	// value : unix타임스탬프 값
+	let b = new Date(1104879600)
+	console.log(b)
+	//	let c = new Date(dateString)
+	let c = new Date('2022-12-08')
+	console.log(c)
 
-	let title = document.getElementById("title") // 제목
-	let id = document.getElementById("id") // 아이디
-	let content = document.getElementById("content") // 내용
-	let btn = document.getElementById("btn") // 작성 버튼
+	new Date(year, monthIndex)
+	new Date(year, monthIndex, day)
+	new Date(year, monthIndex, day, hours)
+	new Date(year, monthIndex, day, hours, minutes)
+	new Date(year, monthIndex, day, hours, minutes, seconds)
+	new Date(year, monthIndex, day, hours, minutes, seconds, milliseconds)
 
-	btn.onclick = function() { // 작성 버튼 클릭시
-		console.log(title.value)
-		console.log(id.value)
-		console.log(content.value)
-		
-		document.getElementById("writeform").submit(); // writeform 을 submit
-	}
-}*/
-
-// testlist.jsp
-window.onload = function(){
-	
 }

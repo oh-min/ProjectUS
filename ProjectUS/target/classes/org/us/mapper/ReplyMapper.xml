@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.us.mapper.ReplyMapper">
+	<!-- 댓글 작성 -->
+	<insert id="replywrite">
+		insert into reply(id,bno,reply)
+		values(#{id},#{bno},#{reply})
+	</insert>
+
+	<!-- 댓글 목록 -->
+	<select id="replylist" resultType="org.us.model.ReplyVO">
+		select * from reply
+		where bno = #{bno}
+	</select>
+</mapper>

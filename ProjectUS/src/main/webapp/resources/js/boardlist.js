@@ -39,47 +39,12 @@ window.onload = function() {
 		location.href = "/board/write";
 	}
 
-	/* bno 별 좋아요 개수 */
-	// console.log(bno)
-	/*let heartinfo = document.getElementById("forheartlist")
-	console.log(heartinfo.innerText)
-
-	let xhr = new XMLHttpRequest();
-	xhr.open('POST', '/board/heartlist', true);
-	xhr.onload = function() {
-		if (xhr.status >= 200 && xhr.status < 400) {
-			console.log("ok")
-			console.log(xhr.responseText)
-			let data = JSON.parse(xhr.responseText);
-			console.log(data)
-
-			try {
-				for (i = 0, j = 0; i < data.length, j < 10; i++, j++) {
-					let bno_inlist = document.getElementsByClassName("bno")
-					let heart_inlist = document.getElementsByClassName("heart")
-					
-					console.log(data[i].bno+","+bno_inlist[j].innerText)
-					
-					// console.log(bno_inlist[j].innerText)
-					if (bno_inlist[j].innerText == data[i].bno) {
-						//heart_inlist[j].innerText = data[i].count
-					} else {
-						//heart_inlist[j].innerText = 0;
-					}
-				}
-			} catch (e) {
-				console.log(e)
-			}
-
-		} else {
-			console.log("no")
+	/* 글 좋아요 개수 */
+	let heartlist = document.getElementsByClassName("heart")
+	for (i = 0; i < 10; i++) {
+		let result = heartlist[i].innerHTML.replace(/\D/g, ''); // 숫자가 아닌 문자열 제거
+		if (!result) { // 값이 없는 경우 = 좋아요 눌린 경우가 없는 경우
+			heartlist[i].innerHTML = '0'
 		}
-	};
-
-	xhr.onerror = function(e) {
-		console.log(e)
-	};
-
-	xhr.send();
-*/
+	}
 }

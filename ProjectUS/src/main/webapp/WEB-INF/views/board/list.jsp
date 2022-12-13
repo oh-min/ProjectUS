@@ -92,12 +92,15 @@
 						<td class="nick"><p>${list.nick}</p></td>
 						<td class="regdate"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd" /></td>
 						<td class="cnt">${list.cnt}</td>
-						<td class="heart">${heartlist[status.index].heartcount}</td>
-						<%-- <c:if test="${list.bno eq ${heartlist[status.index].bno}">
-							<td class="heart">${heartlist[status.index].heartcount}</td>
-						</c:if> --%>
-
-						<!--안나오는 중 -->
+						<td class="heart"><c:forEach var="heartlist" items="${heartlist}" varStatus="status">
+								<c:choose>
+									<c:when test="${list.bno eq heartlist.bno}">
+									${heartlist.heartcount}
+								</c:when>
+									<c:when test="${list.bno ne heartlist.bno}">
+									</c:when>
+								</c:choose>
+							</c:forEach></td>
 					</tr>
 				</c:forEach>
 			</table>
